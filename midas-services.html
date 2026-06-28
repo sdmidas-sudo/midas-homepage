@@ -39,6 +39,7 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
+      overflow-x: hidden;
     }
 
     .site[data-theme="light"] {
@@ -70,6 +71,7 @@
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     body.nav-open {
@@ -90,7 +92,21 @@
 
     .wrap {
       width: min(100% - 80px, var(--max));
+      max-width: 100%;
       margin: 0 auto;
+    }
+
+    .header-inner,
+    .hero-grid > *,
+    .index-grid > *,
+    .service-block > *,
+    .info-grid > *,
+    .process-card > *,
+    .process-list > *,
+    .service-actions > *,
+    .cta-box > *,
+    .footer-inner > * {
+      min-width: 0;
     }
 
     .site-header {
@@ -731,7 +747,7 @@
 
       .wrap,
       .site-header .wrap {
-        width: min(100% - 44px, var(--max));
+        width: min(100% - 32px, var(--max));
       }
 
       .brand img {
@@ -784,6 +800,9 @@
       .process-card,
       .cta-box {
         padding: 24px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
       }
 
       .service-section,
@@ -799,6 +818,35 @@
 
       .info-grid,
       .process-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .index-card,
+      .service-media,
+      .info-box,
+      .process-list li,
+      .ref-chip {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .service-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .refs {
+        display: grid;
         grid-template-columns: 1fr;
       }
 

@@ -69,6 +69,7 @@
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     body.nav-open {
@@ -99,11 +100,24 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
+      overflow-x: hidden;
     }
 
     .wrap {
       width: min(100% - 80px, var(--max));
+      max-width: 100%;
       margin: 0 auto;
+    }
+
+    .header-inner,
+    .about-grid > *,
+    .service-grid > *,
+    .portfolio-grid > *,
+    .studio-grid > *,
+    .intro-actions > *,
+    .contact-actions > *,
+    .footer-inner > * {
+      min-width: 0;
     }
 
     .site-header {
@@ -1137,11 +1151,11 @@
       }
 
       .wrap {
-        width: min(100% - 44px, var(--max));
+        width: min(100% - 32px, var(--max));
       }
 
       .site-header .wrap {
-        width: min(100% - 44px, var(--max));
+        width: min(100% - 32px, var(--max));
       }
 
       .brand img {
@@ -1263,6 +1277,10 @@
 
       .button {
         width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
       }
 
       .section-head {
@@ -1289,10 +1307,35 @@
       .service-grid,
       .portfolio-grid {
         grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .service-card,
+      .work,
+      .studio-photo,
+      .studio-copy {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .service-card,
+      .work {
+        min-height: clamp(205px, 58vw, var(--showcase-card-min-h));
       }
 
       .studio-photo {
         min-height: 280px;
+      }
+
+      .studio-copy {
+        padding: 26px;
+      }
+
+      .chip {
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.35;
       }
 
       .footer-inner {

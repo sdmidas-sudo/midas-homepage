@@ -39,6 +39,7 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
+      overflow-x: hidden;
     }
 
     .site[data-theme="light"] {
@@ -70,6 +71,7 @@
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     body.nav-open {
@@ -90,7 +92,19 @@
 
     .wrap {
       width: min(100% - 80px, var(--max));
+      max-width: 100%;
       margin: 0 auto;
+    }
+
+    .header-inner,
+    .hero-actions > *,
+    .facts > *,
+    .faq-layout > *,
+    .faq-nav > *,
+    .inquiry-box > *,
+    .inquiry-actions > *,
+    .footer-inner > * {
+      min-width: 0;
     }
 
     .site-header {
@@ -579,7 +593,7 @@
 
       .wrap,
       .site-header .wrap {
-        width: min(100% - 44px, var(--max));
+        width: min(100% - 32px, var(--max));
       }
 
       .brand img {
@@ -634,11 +648,25 @@
 
       .button {
         width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
       }
 
       .facts,
       .faq-nav {
         grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .fact,
+      .faq-nav a,
+      .faq-item,
+      .inquiry-box {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
       }
 
       .faq-section {

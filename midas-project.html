@@ -40,6 +40,7 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
+      overflow-x: hidden;
     }
 
     .site[data-theme="light"] {
@@ -72,6 +73,7 @@
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     body.nav-open {
@@ -100,7 +102,18 @@
 
     .wrap {
       width: min(100% - 80px, var(--max));
+      max-width: 100%;
       margin: 0 auto;
+    }
+
+    .header-inner,
+    .project-grid > *,
+    .field-grid > *,
+    .choice-grid > *,
+    .info-list > *,
+    .form-actions > *,
+    .footer-inner > * {
+      min-width: 0;
     }
 
     .site-header {
@@ -719,7 +732,7 @@
 
       .wrap,
       .site-header .wrap {
-        width: min(100% - 44px, var(--max));
+        width: min(100% - 32px, var(--max));
       }
 
       .brand img {
@@ -774,6 +787,9 @@
       .form-panel,
       .info-panel {
         padding: 22px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
       }
 
       .field-grid,
@@ -788,6 +804,19 @@
       .submit-button,
       .form-actions .button {
         width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .info-item,
+      .choice,
+      input,
+      select,
+      textarea {
+        max-width: 100%;
+        min-width: 0;
       }
 
       .footer-inner {
