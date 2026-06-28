@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>프로젝트 문의 | MIDAS COMMUNICATION</title>
+  <meta name="description" content="마이다스 커뮤니케이션 영상 제작 견적 문의. 홈쇼핑 인서트, 바우처 영상, 라이브커머스 판매 방송 상담">
+  <style>
+    @font-face {
+      font-family: "Pretendard Variable";
+      src: url("asset/pretendard-variable.woff2") format("woff2-variations");
+      font-weight: 45 920;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --accent: #3fb6ff;
+      --danger: #ff1d1d;
+      --radius: 8px;
+      --card-radius: 24px;
+      --max: 1240px;
+      --header-h: 80px;
+    }
+
+    .site {
+      --bg: #080a0f;
+      --panel: #10131a;
+      --panel-2: #151922;
+      --ink: #ffffff;
+      --ink-soft: #d7dde7;
+      --muted: #9aa4b3;
+      --quiet: #6f7886;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --field-bg: rgba(255, 255, 255, 0.045);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+      --header-bg: rgba(8, 12, 18, 0.9);
+      --header-border: rgba(255, 255, 255, 0.06);
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .site[data-theme="light"] {
+      --bg: #ffffff;
+      --panel: #f4f6fa;
+      --panel-2: #e9edf4;
+      --ink: #0a0e14;
+      --ink-soft: #303846;
+      --muted: #5d6674;
+      --quiet: #8993a1;
+      --line: rgba(10, 14, 20, 0.12);
+      --line-strong: rgba(10, 14, 20, 0.2);
+      --field-bg: #ffffff;
+      --shadow: 0 18px 50px rgba(20, 30, 55, 0.12);
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --header-border: rgba(10, 14, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080a0f;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    fieldset {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(100% - 80px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--header-border);
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header .wrap {
+      width: min(100% - 92px, 1820px);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 58px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 172px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .theme-toggle {
+      width: 68px;
+      height: 34px;
+      padding: 3px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .site[data-theme="light"] .theme-toggle {
+      background: #eef2f6;
+      border-color: rgba(10, 14, 20, 0.12);
+    }
+
+    .theme-option {
+      width: 30px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .site[data-theme="light"] .theme-option.light,
+    .site[data-theme="dark"] .theme-option.dark {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 4px 14px rgba(63, 182, 255, 0.28);
+    }
+
+    .theme-option svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      gap: 26px;
+    }
+
+    .nav a {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+
+    .button,
+    .icon-button,
+    .menu-button {
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button {
+      min-height: 44px;
+      padding: 0 22px;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .icon-button,
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+    }
+
+    .youtube {
+      border-color: transparent;
+      border-radius: 999px;
+      background: var(--danger);
+      color: #ffffff;
+      box-shadow: 0 14px 34px rgba(255, 29, 29, 0.2);
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    main {
+      padding-top: var(--header-h);
+    }
+
+    .project-hero {
+      padding: 108px 0 72px;
+      background:
+        radial-gradient(72% 70% at 50% 0%, rgba(63, 182, 255, 0.14), transparent 62%),
+        var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+    }
+
+    .project-hero h1 {
+      max-width: 980px;
+      color: var(--ink);
+      font-size: clamp(56px, 6vw, 104px);
+      line-height: 1.04;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .project-hero p {
+      max-width: 760px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .project-body {
+      padding: 74px 0 116px;
+      background: var(--panel);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .info-panel,
+    .form-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--bg);
+      box-shadow: var(--shadow);
+    }
+
+    .info-panel {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+      padding: 28px;
+    }
+
+    .info-panel h2 {
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .info-panel p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .info-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(63, 182, 255, 0.14);
+      color: var(--accent);
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .info-item span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .direct-contact {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .direct-contact .button {
+      width: 100%;
+      border-radius: var(--radius);
+    }
+
+    .form-panel {
+      padding: 30px;
+    }
+
+    .project-form {
+      display: grid;
+      gap: 24px;
+    }
+
+    .form-section {
+      display: grid;
+      gap: 18px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .form-section:last-of-type {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .section-title h2 {
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.3;
+      font-weight: 900;
+    }
+
+    .section-title span {
+      color: var(--quiet);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    legend {
+      color: var(--ink-soft);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .required {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--field-bg);
+      color: var(--ink);
+      padding: 0 15px;
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    textarea {
+      min-height: 180px;
+      padding: 15px;
+      line-height: 1.65;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--quiet);
+    }
+
+    select {
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) 22px,
+        calc(100% - 12px) 22px;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 40px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(63, 182, 255, 0.14);
+    }
+
+    fieldset {
+      min-width: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .choice {
+      position: relative;
+      display: flex;
+      min-height: 50px;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--field-bg);
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+      transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .choice input {
+      width: 16px;
+      height: 16px;
+      min-height: 0;
+      accent-color: var(--accent);
+      flex: 0 0 auto;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .choice:has(input:checked) {
+      border-color: rgba(63, 182, 255, 0.72);
+      background: rgba(63, 182, 255, 0.12);
+      color: var(--ink);
+    }
+
+    .consent-box {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .consent-copy {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .consent-copy strong {
+      color: var(--ink-soft);
+      font-weight: 900;
+    }
+
+    .consent-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .consent-check input {
+      width: 18px;
+      height: 18px;
+      min-height: 0;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding-top: 6px;
+    }
+
+    .submit-button {
+      min-height: 56px;
+      padding: 0 30px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: #06121c;
+      cursor: pointer;
+      font-weight: 950;
+      box-shadow: 0 16px 40px rgba(63, 182, 255, 0.24);
+    }
+
+    .form-status {
+      display: none;
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 28px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-addresses {
+      display: grid;
+      gap: 4px;
+      font-style: normal;
+    }
+
+    .footer-addresses strong {
+      color: var(--ink-soft);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1220px) {
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        display: none;
+        gap: 0;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .nav.open {
+        display: grid;
+      }
+
+      .nav.open a {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 18px;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --header-h: 68px;
+      }
+
+      .wrap,
+      .site-header .wrap {
+        width: min(100% - 44px, var(--max));
+      }
+
+      .brand img {
+        width: 118px;
+        height: 38px;
+      }
+
+      .brand {
+        height: 44px;
+      }
+
+      .brand-group {
+        gap: 8px;
+      }
+
+      .theme-toggle {
+        width: 62px;
+        height: 32px;
+      }
+
+      .theme-option {
+        width: 27px;
+        height: 24px;
+      }
+
+      .header-actions .button {
+        display: none;
+      }
+
+      .youtube,
+      .menu-button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .project-hero {
+        padding: 74px 0 52px;
+      }
+
+      .project-hero h1 {
+        font-size: 44px;
+      }
+
+      .project-hero p {
+        font-size: 16px;
+      }
+
+      .project-body {
+        padding: 48px 0 82px;
+      }
+
+      .form-panel,
+      .info-panel {
+        padding: 22px;
+      }
+
+      .field-grid,
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-actions {
+        display: grid;
+      }
+
+      .submit-button,
+      .form-actions .button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site" id="site" data-theme="dark">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand-group">
+          <a class="brand" href="midas-communication.html#top" aria-label="MIDAS COMMUNICATION 홈">
+            <img src="asset/midas-logo.webp" alt="MIDAS COMMUNICATION">
+          </a>
+
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="라이트 / 다크 모드 전환">
+            <span class="theme-option light" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+            </span>
+            <span class="theme-option dark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 14.6A8.8 8.8 0 0 1 9.4 3a7.2 7.2 0 1 0 11.6 11.6Z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <nav class="nav" id="site-nav" aria-label="주요 메뉴">
+          <a href="midas-about.html">회사소개</a>
+          <a href="midas-services.html">서비스</a>
+          <a href="midas-portfolio.html">성공사례</a>
+          <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
+          <a href="midas-inquiry.html">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-button youtube" href="https://www.youtube.com/@midas_communication" target="_blank" rel="noopener" aria-label="YouTube 채널">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 7.2a2.75 2.75 0 0 0-1.93-1.95C17.96 4.8 12 4.8 12 4.8s-5.96 0-7.67.45A2.75 2.75 0 0 0 2.4 7.2 28.7 28.7 0 0 0 1.95 12c0 1.62.15 3.23.45 4.8a2.75 2.75 0 0 0 1.93 1.95c1.71.45 7.67.45 7.67.45s5.96 0 7.67-.45a2.75 2.75 0 0 0 1.93-1.95c.3-1.57.45-3.18.45-4.8 0-1.62-.15-3.23-.45-4.8ZM10.05 15V9l5.2 3-5.2 3Z"></path>
+            </svg>
+          </a>
+          <a class="button button-primary" href="midas-project.html">프로젝트 문의</a>
+          <button class="menu-button" id="menu-toggle" type="button" aria-label="메뉴 열기">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="project-hero">
+        <div class="wrap">
+          <div class="kicker">PROJECT INQUIRY</div>
+          <h1>견적 문의</h1>
+          <p>제품과 목적, 희망 일정을 알려주시면 영상 종류와 제작 범위에 맞춰 상담을 도와드리겠습니다.</p>
+        </div>
+      </section>
+
+      <section class="project-body" aria-label="견적 문의 양식">
+        <div class="wrap project-grid">
+          <aside class="info-panel">
+            <h2>필요한 내용만 간단히 남겨주세요.</h2>
+            <p>홈쇼핑 인서트, 바우처 영상, 라이브커머스 판매 방송까지 프로젝트 성격에 맞춰 확인 후 연락드립니다.</p>
+
+            <div class="info-list" aria-label="문의 안내">
+              <div class="info-item">
+                <span class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </span>
+                <div>
+                  <strong>필수 항목 6개</strong>
+                  <span>성함, 이메일, 휴대폰, 연락 방법, 영상 종류, 문의 내용</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M12 6v6l4 2"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <strong>영업일 기준 1~2일</strong>
+                  <span>선호하시는 연락 방법으로 순차 안내드립니다.</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M4 4h16v16H4z"></path>
+                    <path d="m4 7 8 6 8-6"></path>
+                  </svg>
+                </span>
+                <div>
+                  <strong>알림 메일</strong>
+                  <span>문의 내용은 담당 메일로 정리해 전달됩니다.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="direct-contact">
+              <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
+              <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+            </div>
+          </aside>
+
+          <section class="form-panel">
+            <form class="project-form" id="project-form">
+              <div class="form-section">
+                <div class="section-title">
+                  <h2>기본 정보</h2>
+                  <span>필수 항목 포함</span>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="name">성함(담당자) <span class="required">필수</span></label>
+                    <input id="name" name="성함" type="text" autocomplete="name" required>
+                  </div>
+                  <div class="field">
+                    <label for="company">회사·브랜드명</label>
+                    <input id="company" name="회사·브랜드명" type="text" autocomplete="organization">
+                  </div>
+                  <div class="field">
+                    <label for="email">이메일 <span class="required">필수</span></label>
+                    <input id="email" name="이메일" type="email" autocomplete="email" required>
+                  </div>
+                  <div class="field">
+                    <label for="phone">휴대폰 번호 <span class="required">필수</span></label>
+                    <input id="phone" name="휴대폰 번호" type="tel" autocomplete="tel" required>
+                  </div>
+                </div>
+
+                <fieldset>
+                  <legend>선호 연락 방법 <span class="required">필수</span></legend>
+                  <div class="choice-grid">
+                    <label class="choice">
+                      <input type="radio" name="선호 연락 방법" value="전화" required>
+                      전화
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="선호 연락 방법" value="이메일">
+                      이메일
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="선호 연락 방법" value="문자">
+                      문자
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="선호 연락 방법" value="카카오톡">
+                      카카오톡
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="form-section">
+                <div class="section-title">
+                  <h2>프로젝트 정보</h2>
+                  <span>견적 산정 기준</span>
+                </div>
+
+                <fieldset>
+                  <legend>문의 영상 종류 <span class="required">필수</span></legend>
+                  <div class="choice-grid">
+                    <label class="choice">
+                      <input type="radio" name="문의 영상 종류" value="인서트 영상" required>
+                      인서트 영상
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="문의 영상 종류" value="바우처 영상">
+                      바우처 영상
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="문의 영상 종류" value="라이브커머스 판매 방송">
+                      라이브커머스 판매 방송
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="문의 영상 종류" value="아직 정하지 못함">
+                      아직 정하지 못함
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div class="field-grid">
+                  <div class="field full">
+                    <label for="project-name">프로젝트명 또는 제품·브랜드</label>
+                    <input id="project-name" name="프로젝트명 또는 제품·브랜드" type="text">
+                  </div>
+                  <div class="field">
+                    <label for="budget">예산 범위</label>
+                    <select id="budget" name="예산 범위">
+                      <option value="">선택</option>
+                      <option>미정·협의</option>
+                      <option>500만원 이하</option>
+                      <option>500만~1,000만원</option>
+                      <option>1,000만원 이상</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="schedule">희망 일정</label>
+                    <select id="schedule" name="희망 일정">
+                      <option value="">선택</option>
+                      <option>미정</option>
+                      <option>1개월 이내</option>
+                      <option>1~3개월</option>
+                      <option>3개월 이상</option>
+                    </select>
+                  </div>
+                  <div class="field full">
+                    <label for="message">문의 내용 <span class="required">필수</span></label>
+                    <textarea id="message" name="문의 내용" required placeholder="제품, 영상 목적, 판매 채널, 요청사항 등을 자유롭게 적어주세요."></textarea>
+                  </div>
+                  <div class="field full">
+                    <label for="source">유입 경로</label>
+                    <select id="source" name="유입 경로">
+                      <option value="">선택</option>
+                      <option>검색(구글·네이버)</option>
+                      <option>AI 추천(ChatGPT 등)</option>
+                      <option>유튜브</option>
+                      <option>지인 소개</option>
+                      <option>기타</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <div class="section-title">
+                  <h2>개인정보 수집·이용 동의</h2>
+                  <span>필수</span>
+                </div>
+
+                <div class="consent-box">
+                  <div class="consent-copy">
+                    <p><strong>수집 항목:</strong> 성함, 회사·브랜드명, 이메일, 휴대폰 번호, 문의 내용</p>
+                    <p><strong>수집·이용 목적:</strong> 견적 문의 접수 및 상담 답변</p>
+                    <p><strong>보유·이용 기간:</strong> 상담 완료 후 3년 또는 동의 철회 시까지</p>
+                    <p>동의를 거부할 권리가 있으며, 거부 시 견적 상담이 제한될 수 있습니다.</p>
+                  </div>
+                  <label class="consent-check">
+                    <input type="checkbox" name="개인정보 수집·이용 동의" value="동의" required>
+                    위 개인정보 수집·이용에 동의합니다.
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="submit-button" type="submit">견적 문의 보내기</button>
+                <p class="form-status" id="form-status" role="status">문의 내용이 정리되었습니다. 메일 작성 화면에서 내용을 확인한 뒤 전송해주세요.</p>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <address class="footer-addresses">
+          <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
+          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+        </address>
+        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const site = document.getElementById("site");
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("site-nav");
+    const projectForm = document.getElementById("project-form");
+    const formStatus = document.getElementById("form-status");
+
+    const savedTheme = localStorage.getItem("mc-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      site.dataset.theme = savedTheme;
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = site.dataset.theme === "light" ? "dark" : "light";
+      site.dataset.theme = next;
+      localStorage.setItem("mc-theme", next);
+    });
+
+    projectForm.addEventListener("submit", (event) => {
+      if (!projectForm.checkValidity()) return;
+      event.preventDefault();
+
+      const data = new FormData(projectForm);
+      const get = (key) => (data.get(key) || "").toString().trim();
+      const lines = [
+        "[마이다스 견적 문의]",
+        "",
+        `성함: ${get("성함")}`,
+        `회사·브랜드명: ${get("회사·브랜드명") || "-"}`,
+        `이메일: ${get("이메일")}`,
+        `휴대폰 번호: ${get("휴대폰 번호")}`,
+        `선호 연락 방법: ${get("선호 연락 방법")}`,
+        `문의 영상 종류: ${get("문의 영상 종류")}`,
+        `프로젝트명 또는 제품·브랜드: ${get("프로젝트명 또는 제품·브랜드") || "-"}`,
+        `예산 범위: ${get("예산 범위") || "-"}`,
+        `희망 일정: ${get("희망 일정") || "-"}`,
+        `유입 경로: ${get("유입 경로") || "-"}`,
+        "",
+        "[문의 내용]",
+        get("문의 내용"),
+        "",
+        `개인정보 수집·이용 동의: ${get("개인정보 수집·이용 동의") || "-"}`
+      ];
+
+      const projectName = get("프로젝트명 또는 제품·브랜드") || get("회사·브랜드명") || get("성함");
+      const subject = encodeURIComponent(`[마이다스 견적 문의] ${projectName}`);
+      const body = encodeURIComponent(lines.join("\n"));
+      formStatus.classList.add("show");
+      window.location.href = `mailto:8450d@hanmail.net?subject=${subject}&body=${body}`;
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      document.body.classList.toggle("nav-open", open);
+      menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        nav.classList.remove("open");
+        document.body.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      }
+    });
+  </script>
+</body>
+</html>
