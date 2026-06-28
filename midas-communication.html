@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIDAS COMMUNICATION</title>
+  <meta name="description" content="TVCF, 브랜드 홍보, 홈쇼핑 인서트, 라이브커머스, AI 영상까지 만드는 세일즈 영상 프로덕션">
+  <style>
+    @font-face {
+      font-family: "Pretendard Variable";
+      src: url("asset/pretendard-variable.woff2") format("woff2-variations");
+      font-weight: 45 920;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #080a0f;
+      --panel: #10131a;
+      --panel-2: #151922;
+      --ink: #ffffff;
+      --ink-soft: #d7dde7;
+      --muted: #9aa4b3;
+      --quiet: #6f7886;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --accent: #3fb6ff;
+      --accent-2: #22d3a8;
+      --danger: #ff3b30;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+      --radius: 8px;
+      --card-radius: 24px;
+      --showcase-card-ratio: 16 / 9;
+      --showcase-card-min-h: 235px;
+      --showcase-card-gap: 32px 30px;
+      --max: 1240px;
+      --header-h: 80px;
+      --header-bg: rgba(8, 12, 18, 0.9);
+      --header-border: rgba(255, 255, 255, 0.06);
+    }
+
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --panel: #f4f6fa;
+      --panel-2: #e9edf4;
+      --ink: #0a0e14;
+      --ink-soft: #303846;
+      --muted: #5d6674;
+      --quiet: #8993a1;
+      --line: rgba(10, 14, 20, 0.12);
+      --line-strong: rgba(10, 14, 20, 0.2);
+      --shadow: 0 18px 50px rgba(20, 30, 55, 0.12);
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --header-border: rgba(10, 14, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .site {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .wrap {
+      width: min(100% - 80px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--header-border);
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+
+    .site-header .wrap {
+      width: min(100% - 92px, 1820px);
+    }
+
+    [data-theme="light"] .site-header {
+      background: var(--header-bg);
+      border-bottom-color: var(--header-border);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
+      height: 58px;
+      padding: 0;
+      border-radius: 14px;
+      background: transparent;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 172px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    [data-theme="light"] .brand {
+      background: transparent;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      gap: 26px;
+    }
+
+    .nav a {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+
+    .theme-toggle {
+      width: 68px;
+      height: 34px;
+      padding: 3px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    [data-theme="light"] .theme-toggle {
+      background: #eef2f6;
+      border-color: rgba(10, 14, 20, 0.12);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .theme-option {
+      width: 30px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    [data-theme="light"] .theme-option.light,
+    [data-theme="dark"] .theme-option.dark {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 4px 14px rgba(63, 182, 255, 0.28);
+    }
+
+    .theme-option svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .icon-button,
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--card-radius);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .icon-button:hover,
+    .menu-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .youtube {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border-color: #ff0000;
+      background: #ff0000;
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.32);
+    }
+
+    .youtube:hover {
+      color: #ffffff;
+      background: #df0000;
+      border-color: #df0000;
+    }
+
+    .site-header .button-primary {
+      min-height: 40px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      box-shadow: 0 6px 22px rgba(63, 182, 255, 0.32);
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      font-size: 15px;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 10px 30px rgba(63, 182, 255, 0.28);
+    }
+
+    .button-secondary {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--header-h));
+      position: relative;
+      overflow: hidden;
+      background: #030407;
+    }
+
+    .hero-spacer {
+      height: var(--header-h);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--header-border);
+    }
+
+    .hero video {
+      width: 100%;
+      height: calc(100vh - var(--header-h));
+      object-fit: cover;
+      background: #030407;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.2));
+    }
+
+    .intro {
+      --intro-bg: #080c12;
+      --intro-radial: rgba(28, 40, 58, 0.16);
+      --intro-line: rgba(255, 255, 255, 0.06);
+      --intro-title: #ffffff;
+      --intro-copy: #cbd3df;
+      --intro-badge-bg: rgba(8, 12, 18, 0.48);
+      --intro-badge-border: rgba(255, 255, 255, 0.22);
+      --intro-badge-ink: #d6deeb;
+      --intro-secondary-bg: rgba(255, 255, 255, 0.035);
+      --intro-secondary-border: rgba(255, 255, 255, 0.26);
+      --intro-secondary-ink: #ffffff;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 126px 0 108px;
+      border-top: 1px solid var(--intro-line);
+      background:
+        radial-gradient(80% 70% at 42% 8%, var(--intro-radial), transparent 62%),
+        var(--intro-bg);
+      color: var(--intro-title);
+    }
+
+    [data-theme="light"] .intro {
+      --intro-bg: #ffffff;
+      --intro-radial: rgba(63, 182, 255, 0.06);
+      --intro-line: rgba(10, 14, 20, 0.08);
+      --intro-title: #080c12;
+      --intro-copy: #3d4654;
+      --intro-badge-bg: rgba(255, 255, 255, 0.72);
+      --intro-badge-border: rgba(10, 14, 20, 0.14);
+      --intro-badge-ink: #3d4654;
+      --intro-secondary-bg: rgba(255, 255, 255, 0.78);
+      --intro-secondary-border: rgba(10, 14, 20, 0.16);
+      --intro-secondary-ink: #080c12;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 44px;
+      padding: 8px 20px;
+      border: 1px solid var(--intro-badge-border);
+      border-radius: 999px;
+      color: var(--intro-badge-ink);
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: 0.22em;
+      background: var(--intro-badge-bg);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 10px 28px rgba(10, 14, 20, 0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px 4px rgba(63, 182, 255, 0.26);
+      flex: 0 0 auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .intro h1 {
+      max-width: 1460px;
+      color: var(--intro-title);
+      font-size: clamp(62px, 6.3vw, 118px);
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .intro h1 span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .intro p {
+      max-width: 860px;
+      margin-top: 42px;
+      color: var(--intro-copy);
+      font-size: clamp(18px, 1.55vw, 28px);
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .intro p span {
+      display: block;
+    }
+
+    .intro-actions {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-top: 70px;
+    }
+
+    .intro-actions .button {
+      min-height: 64px;
+      padding: 0 42px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .intro-actions .button-primary {
+      box-shadow: 0 16px 44px rgba(63, 182, 255, 0.26);
+    }
+
+    .intro-actions .button-secondary {
+      border-color: var(--intro-secondary-border);
+      background: var(--intro-secondary-bg);
+      color: var(--intro-secondary-ink);
+    }
+
+    .intro-actions .button-secondary svg {
+      width: 16px;
+      height: 16px;
+      padding: 6px;
+      box-sizing: content-box;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #06121c;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      padding: 18px 0;
+    }
+
+    .marquee-track {
+      width: max-content;
+      display: flex;
+      animation: marquee 32s linear infinite;
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      color: var(--quiet);
+      font-size: 24px;
+      font-weight: 900;
+      padding: 0 28px;
+    }
+
+    .marquee b {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1;
+      padding: 0 2px;
+      transform: translateY(-1px);
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .section {
+      padding: 116px 0;
+      background: var(--bg);
+    }
+
+    .section.panel {
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 46px;
+    }
+
+    .section-kicker {
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .section h2 {
+      color: var(--ink);
+      font-size: 46px;
+      line-height: 1.15;
+      font-weight: 900;
+    }
+
+    .section h2 span {
+      display: block;
+    }
+
+    .about-title {
+      font-size: clamp(52px, 5.2vw, 76px);
+      line-height: 1.08;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-copy .lead {
+      margin: 0 0 34px;
+      color: var(--ink);
+      font-size: clamp(30px, 2.7vw, 44px);
+      font-weight: 850;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .about-copy .lead strong {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .about-copy p:not(.lead) {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 2.08;
+      word-break: keep-all;
+    }
+
+    .about-copy p:not(.lead) + p:not(.lead) {
+      margin-top: 24px;
+    }
+
+    .about-copy strong {
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--showcase-card-gap);
+    }
+
+    .service-card {
+      min-height: var(--showcase-card-min-h);
+      aspect-ratio: var(--showcase-card-ratio);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      border: 1px solid rgba(63, 182, 255, 0.28);
+      border-radius: var(--card-radius);
+      background: var(--panel-2);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(4, 7, 12, 0.3), rgba(4, 7, 12, 0.78));
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .service-card:hover::after,
+    .service-card:focus-visible::after {
+      opacity: 1;
+    }
+
+    .service-video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 180ms ease, transform 360ms ease;
+      pointer-events: none;
+    }
+
+    .service-card:hover .service-video,
+    .service-card:focus-visible .service-video {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .service-card > :not(.service-video) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card .num {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      color: var(--quiet);
+      font-size: 13px;
+      font-weight: 850;
+      transition: opacity 160ms ease, transform 160ms ease, color 180ms ease;
+    }
+
+    .service-card h3 {
+      max-width: calc(100% - 52px);
+      margin-top: 0;
+      color: var(--ink);
+      font-size: clamp(28px, 2.1vw, 34px);
+      line-height: 1.16;
+      font-weight: 900;
+      word-break: keep-all;
+      transition: color 180ms ease, opacity 180ms ease, transform 180ms ease, text-shadow 180ms ease;
+    }
+
+    .service-card p {
+      max-width: 100%;
+      margin: 24px 0 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.75;
+      transition: opacity 160ms ease, transform 160ms ease, color 180ms ease;
+    }
+
+    .service-card:hover .num,
+    .service-card:focus-visible .num {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .service-card:hover p,
+    .service-card:focus-visible p {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .service-card:hover h3,
+    .service-card:focus-visible h3 {
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      top: 30px;
+      max-width: calc(100% - 60px);
+      margin-top: 0;
+      color: #ffffff;
+      opacity: 0.5;
+      font-size: clamp(30px, 2.3vw, 38px);
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.52);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--showcase-card-gap);
+    }
+
+    .work {
+      margin: 0;
+      min-height: var(--showcase-card-min-h);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--panel);
+      aspect-ratio: var(--showcase-card-ratio);
+    }
+
+    .work::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 7, 12, 0.5);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .work img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 220ms ease, transform 240ms ease;
+    }
+
+    .work:hover img,
+    .work:focus-visible img {
+      filter: blur(5px);
+      transform: scale(1.04);
+    }
+
+    .work:hover::after,
+    .work:focus-visible::after {
+      opacity: 1;
+    }
+
+    .work figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 46px 18px 18px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 850;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.82));
+      text-align: left;
+      transition: background 220ms ease, bottom 220ms ease, font-size 220ms ease, padding 220ms ease, transform 220ms ease;
+    }
+
+    .work:hover figcaption,
+    .work:focus-visible figcaption {
+      bottom: 50%;
+      padding: 0 24px;
+      background: transparent;
+      font-size: clamp(34px, 3.2vw, 56px);
+      font-weight: 900;
+      text-align: center;
+      transform: translateY(50%);
+    }
+
+    .work:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+      background: rgba(2, 5, 10, 0.82);
+      backdrop-filter: blur(10px);
+    }
+
+    .video-modal.open {
+      display: flex;
+    }
+
+    .video-dialog {
+      width: min(100%, 1080px);
+      position: relative;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      background: #000000;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      border: 0;
+    }
+
+    .video-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.58);
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-close:hover {
+      background: rgba(0, 0, 0, 0.82);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .studio-photo {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--panel-2);
+    }
+
+    .studio-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 260ms ease, transform 420ms ease;
+    }
+
+    .studio-photo .studio-image-hover {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
+    .studio-photo:hover .studio-image-default,
+    .studio-photo:focus-within .studio-image-default {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+
+    .studio-photo:hover .studio-image-hover,
+    .studio-photo:focus-within .studio-image-hover {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .studio-copy {
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--bg);
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 36px;
+    }
+
+    .studio-copy h3 {
+      font-size: 28px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .studio-copy p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      color: var(--ink-soft);
+      background: var(--panel);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .contact {
+      padding: 126px 0;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .contact h2 {
+      font-size: 58px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .contact p {
+      margin: 24px auto 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .contact-actions .button {
+      border-radius: var(--card-radius);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .social-link {
+      width: 48px;
+      height: 48px;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .social-link svg {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    .social-link.blog svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .social-link .blog-bubble {
+      fill: currentColor;
+    }
+
+    .social-link .blog-text {
+      fill: var(--bg);
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+      background: var(--bg);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      color: var(--quiet);
+      font-size: 13px;
+    }
+
+    .footer-addresses {
+      display: grid;
+      gap: 8px;
+      color: var(--ink-soft);
+      font-style: normal;
+      line-height: 1.6;
+    }
+
+    .footer-addresses div {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-addresses strong {
+      color: var(--ink);
+      font-weight: 850;
+    }
+
+    .footer-copy {
+      line-height: 1.6;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1220px) {
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .nav.open {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 0;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .nav.open a {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 1060px) {
+
+      .intro h1 {
+        font-size: 64px;
+      }
+
+      .intro h1 span {
+        white-space: normal;
+      }
+
+      .section h2,
+      .contact h2 {
+        font-size: 40px;
+      }
+
+      .about-grid,
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --header-h: 68px;
+      }
+
+      .wrap {
+        width: min(100% - 44px, var(--max));
+      }
+
+      .site-header .wrap {
+        width: min(100% - 44px, var(--max));
+      }
+
+      .brand img {
+        width: 118px;
+        height: 38px;
+      }
+
+      .brand-group {
+        gap: 8px;
+      }
+
+      .brand,
+      [data-theme="light"] .brand {
+        width: 134px;
+        min-width: 0;
+        height: 44px;
+        padding: 4px 8px;
+        border-radius: 10px;
+      }
+
+      .header-inner {
+        gap: 12px;
+      }
+
+      .header-actions {
+        gap: 8px;
+      }
+
+      .theme-toggle {
+        width: 62px;
+        height: 32px;
+        padding: 3px;
+        gap: 2px;
+      }
+
+      .theme-option {
+        width: 27px;
+        height: 24px;
+      }
+
+      .theme-option svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .youtube,
+      .menu-button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .nav.open {
+        top: var(--header-h);
+      }
+
+      .header-actions .button {
+        display: none;
+      }
+
+      .hero,
+      .hero video {
+        min-height: calc(100svh - var(--header-h));
+        height: calc(100svh - var(--header-h));
+      }
+
+      .intro,
+      .section,
+      .contact {
+        padding: 84px 0;
+      }
+
+      .eyebrow {
+        margin-bottom: 28px;
+        padding: 7px 14px;
+        font-size: 11px;
+      }
+
+      .intro h1 {
+        font-size: 44px;
+        line-height: 1.12;
+      }
+
+      .intro h1 span {
+        white-space: normal;
+      }
+
+      .intro p {
+        margin-top: 26px;
+        font-size: 15px;
+      }
+
+      .intro p span {
+        display: inline;
+      }
+
+      .intro-actions,
+      .contact-actions {
+        flex-direction: column;
+      }
+
+      .intro-actions {
+        gap: 12px;
+        margin-top: 42px;
+      }
+
+      .intro-actions .button {
+        min-height: 52px;
+        padding: 0 22px;
+        font-size: 15px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 18px;
+      }
+
+      .section h2,
+      .contact h2 {
+        font-size: 34px;
+      }
+
+      .about-title {
+        font-size: 42px;
+      }
+
+      .about-copy .lead {
+        font-size: 24px;
+      }
+
+      .service-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-photo {
+        min-height: 280px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-copy {
+        text-align: left;
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site" id="site" data-theme="dark">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand-group">
+          <a class="brand" href="#top" aria-label="MIDAS COMMUNICATION 홈">
+            <img src="asset/midas-logo.webp" alt="MIDAS COMMUNICATION">
+          </a>
+
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="라이트 / 다크 모드 전환">
+            <span class="theme-option light" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+              </svg>
+            </span>
+            <span class="theme-option dark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <nav class="nav" id="site-nav" aria-label="주요 메뉴">
+          <a href="midas-about.html">회사소개</a>
+          <a href="midas-services.html">서비스</a>
+          <a href="midas-portfolio.html">성공사례</a>
+          <a href="#studio">마이다스종합촬영센터</a>
+          <a href="midas-inquiry.html">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-button youtube" href="https://www.youtube.com/@midas_communication" target="_blank" rel="noopener" aria-label="YouTube 채널">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 7.2a2.75 2.75 0 0 0-1.93-1.95C17.96 4.8 12 4.8 12 4.8s-5.96 0-7.67.45A2.75 2.75 0 0 0 2.4 7.2 28.7 28.7 0 0 0 1.95 12c0 1.62.15 3.23.45 4.8a2.75 2.75 0 0 0 1.93 1.95c1.71.45 7.67.45 7.67.45s5.96 0 7.67-.45a2.75 2.75 0 0 0 1.93-1.95c.3-1.57.45-3.18.45-4.8 0-1.62-.15-3.23-.45-4.8ZM10.05 15V9l5.2 3-5.2 3Z"></path>
+            </svg>
+          </a>
+          <a class="button button-primary" href="midas-inquiry.html#inquiry">프로젝트 문의</a>
+          <button class="menu-button" id="menu-toggle" type="button" aria-label="메뉴 열기">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero-spacer" id="top" aria-hidden="true"></div>
+      <section class="hero" aria-label="마이다스 커뮤니케이션 대표 영상">
+        <video autoplay muted loop playsinline preload="auto" src="asset/hero-intro.mp4"></video>
+      </section>
+
+      <section class="intro" id="intro">
+        <div class="wrap">
+          <div class="eyebrow">COMMERCE VIDEO PRODUCTION</div>
+          <h1><span>잘 팔리는 제품 영상을</span><span>만드는 세일즈 영상 프로덕션</span></h1>
+          <p><span>TVCF · 브랜드 홍보 · 수출바우처 · 홈쇼핑 인서트 · 라이브커머스 ·</span><span>AI 영상까지.</span></p>
+          <div class="intro-actions">
+            <a class="button button-primary" href="midas-inquiry.html#inquiry">프로젝트 시작하기</a>
+            <a class="button button-secondary" href="midas-portfolio.html">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+              포트폴리오 보기
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span>TVCF</span><b>✦</b>
+            <span>브랜드 홍보</span><b>✦</b>
+            <span>수출바우처</span><b>✦</b>
+            <span>혁신바우처</span><b>✦</b>
+            <span>홈쇼핑 인서트</span><b>✦</b>
+            <span>라이브커머스</span><b>✦</b>
+            <span>AI 영상</span><b>✦</b>
+          </div>
+          <div class="marquee-group">
+            <span>TVCF</span><b>✦</b>
+            <span>브랜드 홍보</span><b>✦</b>
+            <span>수출바우처</span><b>✦</b>
+            <span>혁신바우처</span><b>✦</b>
+            <span>홈쇼핑 인서트</span><b>✦</b>
+            <span>라이브커머스</span><b>✦</b>
+            <span>AI 영상</span><b>✦</b>
+          </div>
+        </div>
+      </div>
+
+      <section class="section" id="about">
+        <div class="wrap">
+          <div class="about-grid">
+            <div>
+              <div class="section-kicker">ABOUT</div>
+              <h2 class="about-title"><span>제품의 구매 전환을</span><span>설계합니다</span></h2>
+            </div>
+            <div class="about-copy">
+              <p class="lead">소비자의 구매 포인트를 영상으로 설계하는 <strong>(주)마이다스 커뮤니케이션</strong></p>
+              <p>제품을 단순히 보기 좋게 촬영하는 것을 넘어, 상품의 강점과 사용 장면, 고객의 니즈, 판매 채널의 특성을 분석해 구매로 이어지는 설득력 있는 영상을 제작합니다.</p>
+              <p>기획, 촬영, 편집, 숏폼 재가공까지 원스톱으로 진행하며, <strong>수출바우처·혁신바우처 영상 제작과 라이브커머스 판매 방송까지</strong> 커머스 영상에 필요한 전 과정을 함께합니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section panel" id="services">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">SERVICES</div>
+              <h2>기획부터 제작까지,<br>세일즈 영상의 전 영역</h2>
+            </div>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-card" tabindex="0">
+              <video class="service-video" muted loop playsinline preload="metadata" src="asset/service-tvcf.mp4"></video>
+              <span class="num">01</span>
+              <h3>TVCF</h3>
+              <p>브랜드의 첫인상을 만드는 TV, 디지털 광고 영상을 기획하고 제작합니다.</p>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <video class="service-video" muted loop playsinline preload="metadata" src="asset/service-brand.mp4"></video>
+              <span class="num">02</span>
+              <h3>브랜드 홍보</h3>
+              <p>브랜드 스토리를 담은 홍보, 바이럴 영상으로 메시지를 효과적으로 전달합니다.</p>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <video class="service-video" muted loop playsinline preload="metadata" src="asset/service-voucher.mp4"></video>
+              <span class="num">03</span>
+              <h3>바우처</h3>
+              <p>수출, 혁신 바우처 목적에 맞춰 해외 진출과 판로 확대용 콘텐츠를 기획합니다.</p>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <video class="service-video" muted loop playsinline preload="metadata" src="asset/service-home-shopping.mp4"></video>
+              <span class="num">04</span>
+              <h3>홈쇼핑 인서트</h3>
+              <p>방송용 인서트 영상으로 제품의 강점을 짧고 강렬하게 보여줍니다.</p>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <video class="service-video" muted loop playsinline preload="metadata" src="asset/service-mobile-live.mp4"></video>
+              <span class="num">05</span>
+              <h3>라이브커머스</h3>
+              <p>실시간 판매를 이끄는 라이브커머스 연출과 영상으로 전환을 만들어냅니다.</p>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <video class="service-video" muted loop playsinline preload="metadata" src="asset/service-ai.mp4"></video>
+              <span class="num">06</span>
+              <h3>AI 영상</h3>
+              <p>AI 기반 제작과 후반 작업으로 더 빠르고 새로운 결과물을 만듭니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="portfolio">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">PORTFOLIO</div>
+              <h2>우리가 만든 영상들</h2>
+            </div>
+          </div>
+
+          <div class="portfolio-grid">
+            <figure class="work" data-youtube="G2PbFW4f110" role="button" tabindex="0" aria-label="다이슨 영상 보기">
+              <img src="asset/portfolio-dyson.webp" alt="다이슨 프로젝트">
+              <figcaption>다이슨</figcaption>
+            </figure>
+            <figure class="work" data-youtube="70TjI9-N_DI" role="button" tabindex="0" aria-label="코웨이 영상 보기">
+              <img src="asset/portfolio-coway.webp" alt="코웨이 프로젝트">
+              <figcaption>코웨이</figcaption>
+            </figure>
+            <figure class="work" data-youtube="g1VbbLwej2k" role="button" tabindex="0" aria-label="안방그릴 영상 보기">
+              <img src="asset/portfolio-anbang.webp" alt="안방그릴 프로젝트">
+              <figcaption>안방그릴</figcaption>
+            </figure>
+            <figure class="work" data-youtube="RRXb6wI9IQI" role="button" tabindex="0" aria-label="로보락 영상 보기">
+              <img src="asset/portfolio-roborock.webp" alt="로보락 프로젝트">
+              <figcaption>로보락</figcaption>
+            </figure>
+            <figure class="work" data-youtube="FVRKUZlJ7e4" role="button" tabindex="0" aria-label="고비 영상 보기">
+              <img src="asset/portfolio-gobi.webp" alt="고비 프로젝트">
+              <figcaption>고비</figcaption>
+            </figure>
+            <figure class="work" data-youtube="x9LuqfbR4MU" role="button" tabindex="0" aria-label="뉴트리원 영상 보기">
+              <img src="asset/portfolio-nutrione.webp" alt="뉴트리원 프로젝트">
+              <figcaption>뉴트리원</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section panel" id="studio">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">STUDIO</div>
+              <h2>마이다스종합촬영센터</h2>
+            </div>
+          </div>
+
+          <div class="studio-grid">
+            <div class="studio-photo">
+              <img class="studio-image-default" src="asset/메인페이지_수정 최종.jpg" alt="마이다스종합촬영센터 촬영 공간">
+              <img class="studio-image-hover" src="asset/메인페이지_수정_동 기재.jpg" alt="" aria-hidden="true">
+            </div>
+            <div class="studio-copy">
+              <div>
+                <h3>콘셉트별 세트를 상설로 갖춘<br>종합 촬영 스튜디오</h3>
+                <p>마이다스종합촬영센터는 일산 성석동 3,000평 부지에 콘셉트별 촬영 공간을 상설로 갖춘 종합 스튜디오입니다. 거실·주방·욕실·정원 같은 주거 세트, 무한대 호리존, 카페·오피스·루프탑을 갖춘 라이브 방송센터까지 — 목적에 맞는 공간을 골라 빠르게 세팅하고, 홈쇼핑 인서트부터 라이브커머스 송출까지 한 곳에서 진행합니다.</p>
+              </div>
+              <div class="chips">
+                <span class="chip">주거·주방 세트</span>
+                <span class="chip">호리존·이미지룸</span>
+                <span class="chip">라이브 방송센터</span>
+                <span class="chip">야외·부대시설</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="wrap">
+          <div class="section-kicker">CONTACT</div>
+          <h2>함께 만들 영상이<br>있으신가요?</h2>
+          <p>기획부터 제작까지, 마이다스 커뮤니케이션이 새로운 기준을 보여드리겠습니다.</p>
+          <div class="contact-actions">
+            <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
+            <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+          </div>
+          <div class="social-links" aria-label="마이다스 커뮤니케이션 소셜 채널">
+            <a class="social-link instagram" href="https://www.instagram.com/midas_communication/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5.1"></rect>
+                <circle cx="12" cy="12" r="4.1"></circle>
+                <circle cx="17.1" cy="6.9" r="0.7" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </a>
+            <a class="social-link blog" href="https://blog.naver.com/midas_communication" target="_blank" rel="noopener" aria-label="Naver Blog">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path class="blog-bubble" d="M8 8h32a5 5 0 0 1 5 5v22a5 5 0 0 1-5 5H25.5L20 45v-5H8a5 5 0 0 1-5-5V13a5 5 0 0 1 5-5Z"></path>
+                <text class="blog-text" x="24" y="29" text-anchor="middle" font-size="11" font-weight="900" font-family="Arial, sans-serif">blog</text>
+              </svg>
+            </a>
+            <a class="social-link youtube-social" href="https://www.youtube.com/@midas_communication" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M21.6 7.2a2.75 2.75 0 0 0-1.93-1.95C17.96 4.8 12 4.8 12 4.8s-5.96 0-7.67.45A2.75 2.75 0 0 0 2.4 7.2 28.7 28.7 0 0 0 1.95 12c0 1.62.15 3.23.45 4.8a2.75 2.75 0 0 0 1.93 1.95c1.71.45 7.67.45 7.67.45s5.96 0 7.67-.45a2.75 2.75 0 0 0 1.93-1.95c.3-1.57.45-3.18.45-4.8 0-1.62-.15-3.23-.45-4.8ZM10.05 15V9l5.2 3-5.2 3Z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <address class="footer-addresses">
+          <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
+          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+        </address>
+        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <div class="video-modal" id="portfolio-video-modal" aria-hidden="true">
+      <div class="video-dialog" role="dialog" aria-modal="true" aria-label="포트폴리오 영상">
+        <button class="video-close" id="portfolio-video-close" type="button" aria-label="영상 닫기">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18"></path>
+          </svg>
+        </button>
+        <iframe class="video-frame" id="portfolio-video-frame" title="포트폴리오 영상" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const site = document.getElementById("site");
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("site-nav");
+    const serviceCards = document.querySelectorAll(".service-card");
+    const portfolioCards = document.querySelectorAll(".work[data-youtube]");
+    const portfolioVideoModal = document.getElementById("portfolio-video-modal");
+    const portfolioVideoFrame = document.getElementById("portfolio-video-frame");
+    const portfolioVideoClose = document.getElementById("portfolio-video-close");
+
+    const savedTheme = localStorage.getItem("mc-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      site.dataset.theme = savedTheme;
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = site.dataset.theme === "light" ? "dark" : "light";
+      site.dataset.theme = next;
+      localStorage.setItem("mc-theme", next);
+    });
+
+    serviceCards.forEach((card) => {
+      const video = card.querySelector(".service-video");
+      if (!video) return;
+
+      const playVideo = () => {
+        try {
+          video.currentTime = 0;
+        } catch (error) {}
+        video.play().catch(() => {});
+      };
+
+      const stopVideo = () => {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch (error) {}
+      };
+
+      card.addEventListener("pointerenter", playVideo);
+      card.addEventListener("pointerleave", stopVideo);
+      card.addEventListener("focusin", playVideo);
+      card.addEventListener("focusout", stopVideo);
+    });
+
+    const openPortfolioVideo = (youtubeId) => {
+      if (!youtubeId) return;
+      portfolioVideoFrame.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&playsinline=1`;
+      portfolioVideoModal.classList.add("open");
+      portfolioVideoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      portfolioVideoClose.focus();
+    };
+
+    const closePortfolioVideo = () => {
+      portfolioVideoModal.classList.remove("open");
+      portfolioVideoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      portfolioVideoFrame.src = "";
+    };
+
+    portfolioCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        openPortfolioVideo(card.dataset.youtube);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openPortfolioVideo(card.dataset.youtube);
+        }
+      });
+    });
+
+    portfolioVideoClose.addEventListener("click", closePortfolioVideo);
+
+    portfolioVideoModal.addEventListener("click", (event) => {
+      if (event.target === portfolioVideoModal) {
+        closePortfolioVideo();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && portfolioVideoModal.classList.contains("open")) {
+        closePortfolioVideo();
+      }
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      document.body.classList.toggle("nav-open", open);
+      menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        nav.classList.remove("open");
+        document.body.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      }
+    });
+  </script>
+</body>
+</html>

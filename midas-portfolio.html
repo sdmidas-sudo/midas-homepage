@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>성공사례 | 마이다스커뮤니케이션</title>
+  <meta name="description" content="마이다스커뮤니케이션이 제작한 홈쇼핑 인서트 영상 성공사례. 다이슨, 안방그릴, 고비, 테팔, 코웨이, 로보락 등 판매를 위한 인서트 영상 포트폴리오">
+  <style>
+    @font-face {
+      font-family: "Pretendard Variable";
+      src: url("asset/pretendard-variable.woff2") format("woff2-variations");
+      font-weight: 45 920;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --accent: #3fb6ff;
+      --danger: #ff1d1d;
+      --radius: 8px;
+      --card-radius: 24px;
+      --showcase-card-ratio: 16 / 9;
+      --showcase-card-min-h: 235px;
+      --showcase-card-gap: 32px 30px;
+      --max: 1240px;
+      --header-h: 80px;
+    }
+
+    .site {
+      --bg: #080a0f;
+      --panel: #10131a;
+      --panel-2: #151922;
+      --ink: #ffffff;
+      --ink-soft: #d7dde7;
+      --muted: #9aa4b3;
+      --quiet: #6f7886;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+      --header-bg: rgba(8, 12, 18, 0.9);
+      --header-border: rgba(255, 255, 255, 0.06);
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .site[data-theme="light"] {
+      --bg: #ffffff;
+      --panel: #f4f6fa;
+      --panel-2: #e9edf4;
+      --ink: #0a0e14;
+      --ink-soft: #303846;
+      --muted: #5d6674;
+      --quiet: #8993a1;
+      --line: rgba(10, 14, 20, 0.12);
+      --line-strong: rgba(10, 14, 20, 0.2);
+      --shadow: 0 18px 50px rgba(20, 30, 55, 0.12);
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --header-border: rgba(10, 14, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080a0f;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.nav-open,
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .wrap {
+      width: min(100% - 80px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--header-border);
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header .wrap {
+      width: min(100% - 92px, 1820px);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 58px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 172px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .theme-toggle {
+      width: 68px;
+      height: 34px;
+      padding: 3px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .site[data-theme="light"] .theme-toggle {
+      background: #eef2f6;
+      border-color: rgba(10, 14, 20, 0.12);
+    }
+
+    .theme-option {
+      width: 30px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .site[data-theme="light"] .theme-option.light,
+    .site[data-theme="dark"] .theme-option.dark {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 4px 14px rgba(63, 182, 255, 0.28);
+    }
+
+    .theme-option svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      gap: 26px;
+    }
+
+    .nav a {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+
+    .button,
+    .icon-button,
+    .menu-button {
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button {
+      min-height: 44px;
+      padding: 0 22px;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
+    }
+
+    .icon-button,
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+    }
+
+    .youtube {
+      border-color: transparent;
+      border-radius: 999px;
+      background: var(--danger);
+      color: #ffffff;
+      box-shadow: 0 14px 34px rgba(255, 29, 29, 0.2);
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    main {
+      padding-top: var(--header-h);
+    }
+
+    .portfolio-hero {
+      padding: 112px 0 72px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+    }
+
+    .portfolio-hero h1 {
+      color: var(--ink);
+      font-size: clamp(56px, 6vw, 104px);
+      line-height: 1.02;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .portfolio-hero p {
+      max-width: 760px;
+      margin-top: 28px;
+      color: var(--ink-soft);
+      font-size: 24px;
+      line-height: 1.55;
+      font-weight: 850;
+      word-break: keep-all;
+    }
+
+    .portfolio-section {
+      padding: 84px 0 112px;
+      background: var(--bg);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--showcase-card-gap);
+    }
+
+    .case-card {
+      min-height: var(--showcase-card-min-h);
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      aspect-ratio: var(--showcase-card-ratio);
+    }
+
+    .case-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 7, 12, 0.62);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .case-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 220ms ease, transform 240ms ease;
+    }
+
+    .case-info {
+      --case-x: 26px;
+      --case-y: 24px;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 0;
+      color: #ffffff;
+      pointer-events: none;
+    }
+
+    .case-name {
+      position: absolute;
+      top: var(--case-y);
+      left: var(--case-x);
+      display: inline-block;
+      margin: 0;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.36);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1;
+      backdrop-filter: blur(12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .case-info h2 {
+      position: absolute;
+      top: 47.5%;
+      left: var(--case-x);
+      right: var(--case-x);
+      color: #ffffff;
+      font-size: clamp(26px, 2.2vw, 38px);
+      line-height: 1.14;
+      font-weight: 920;
+      word-break: keep-all;
+      opacity: 0;
+      transform: translateY(calc(-50% + 16px));
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .case-info p {
+      position: absolute;
+      left: var(--case-x);
+      right: var(--case-x);
+      bottom: var(--case-y);
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+      word-break: keep-all;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .case-card:hover img,
+    .case-card:focus-visible img {
+      filter: blur(5px);
+      transform: scale(1.04);
+    }
+
+    .case-card:hover::after,
+    .case-card:focus-visible::after {
+      opacity: 1;
+    }
+
+    .case-card:hover .case-name,
+    .case-card:focus-visible .case-name {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .case-card:hover .case-info h2,
+    .case-card:focus-visible .case-info h2 {
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+
+    .case-card:hover .case-info p,
+    .case-card:focus-visible .case-info p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .case-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+      background: rgba(2, 5, 10, 0.82);
+      backdrop-filter: blur(10px);
+    }
+
+    .video-modal.open {
+      display: flex;
+    }
+
+    .video-dialog {
+      width: min(100%, 1080px);
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--card-radius);
+      background: #000000;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      border: 0;
+    }
+
+    .video-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.58);
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-close:hover {
+      background: rgba(0, 0, 0, 0.82);
+    }
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 28px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-addresses {
+      display: grid;
+      gap: 4px;
+      font-style: normal;
+    }
+
+    .footer-addresses strong {
+      color: var(--ink-soft);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1220px) {
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        display: none;
+        gap: 0;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .nav.open {
+        display: grid;
+      }
+
+      .nav.open a {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 18px;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 1060px) {
+      .case-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --header-h: 68px;
+      }
+
+      .wrap,
+      .site-header .wrap {
+        width: min(100% - 44px, var(--max));
+      }
+
+      .brand img {
+        width: 118px;
+        height: 38px;
+      }
+
+      .brand {
+        height: 44px;
+      }
+
+      .brand-group {
+        gap: 8px;
+      }
+
+      .theme-toggle {
+        width: 62px;
+        height: 32px;
+      }
+
+      .theme-option {
+        width: 27px;
+        height: 24px;
+      }
+
+      .header-actions .button {
+        display: none;
+      }
+
+      .youtube,
+      .menu-button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .portfolio-hero {
+        padding: 78px 0 54px;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 44px;
+      }
+
+      .portfolio-hero p {
+        font-size: 18px;
+      }
+
+      .portfolio-section {
+        padding: 58px 0 86px;
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .case-card {
+        min-height: 250px;
+      }
+
+      .case-info {
+        --case-x: 20px;
+        --case-y: 20px;
+      }
+
+      .case-info h2 {
+        font-size: clamp(28px, 8vw, 38px);
+      }
+
+      .case-info p {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site" id="site" data-theme="dark">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand-group">
+          <a class="brand" href="midas-communication.html#top" aria-label="MIDAS COMMUNICATION 홈">
+            <img src="asset/midas-logo.webp" alt="MIDAS COMMUNICATION">
+          </a>
+
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="라이트 / 다크 모드 전환">
+            <span class="theme-option light" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+            </span>
+            <span class="theme-option dark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 14.6A8.8 8.8 0 0 1 9.4 3a7.2 7.2 0 1 0 11.6 11.6Z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <nav class="nav" id="site-nav" aria-label="주요 메뉴">
+          <a href="midas-about.html">회사소개</a>
+          <a href="midas-services.html">서비스</a>
+          <a class="active" href="midas-portfolio.html">성공사례</a>
+          <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
+          <a href="midas-inquiry.html">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-button youtube" href="https://www.youtube.com/@midas_communication" target="_blank" rel="noopener" aria-label="YouTube 채널">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 7.2a2.75 2.75 0 0 0-1.93-1.95C17.96 4.8 12 4.8 12 4.8s-5.96 0-7.67.45A2.75 2.75 0 0 0 2.4 7.2 28.7 28.7 0 0 0 1.95 12c0 1.62.15 3.23.45 4.8a2.75 2.75 0 0 0 1.93 1.95c1.71.45 7.67.45 7.67.45s5.96 0 7.67-.45a2.75 2.75 0 0 0 1.93-1.95c.3-1.57.45-3.18.45-4.8 0-1.62-.15-3.23-.45-4.8ZM10.05 15V9l5.2 3-5.2 3Z"></path>
+            </svg>
+          </a>
+          <a class="button button-primary" href="midas-inquiry.html#inquiry">프로젝트 문의</a>
+          <button class="menu-button" id="menu-toggle" type="button" aria-label="메뉴 열기">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="portfolio-hero">
+        <div class="wrap">
+          <div class="kicker">PORTFOLIO</div>
+          <h1>판매를 위한 인서트 영상</h1>
+          <p>마이다스가 만든 성공사례</p>
+        </div>
+      </section>
+
+      <section class="portfolio-section">
+        <div class="wrap">
+          <div class="case-grid">
+            <article class="case-card" data-youtube="G2PbFW4f110" role="button" tabindex="0" aria-label="다이슨 영상 보기">
+              <img src="asset/portfolio/01_dyson.png" alt="다이슨 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">다이슨</span>
+                <h2>16년의 다이슨 인서트</h2>
+                <p>2011년부터 현재까지 인서트를 제작한 다이슨. 16년간 바뀌지 않은 믿음의 신뢰</p>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="g1VbbLwej2k" role="button" tabindex="0" aria-label="안방그릴 영상 보기">
+              <img src="asset/portfolio/02_anbang.png" alt="안방그릴 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">안방그릴</span>
+                <h2>완판을 만든 안방그릴</h2>
+                <p>지난 5년간 매진열풍, 2500억 달성</p>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="FVRKUZlJ7e4" role="button" tabindex="0" aria-label="고비 영상 보기">
+              <img src="asset/portfolio/03_goby.png" alt="고비 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">고비</span>
+                <h2>패션 인서트 대작, 고비</h2>
+                <p>초대형 스케일과 로케이션으로 제작한 인서트의 대작</p>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="BTRh660N0Gg" role="button" tabindex="0" aria-label="테팔 영상 보기">
+              <img src="asset/portfolio/04_tefal.png" alt="테팔 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">테팔</span>
+                <h2>테팔 주방용품 & 생활가전</h2>
+                <p>사용 편의성을 빠르게 전달한 판매 영상</p>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="70TjI9-N_DI" role="button" tabindex="0" aria-label="코웨이 영상 보기">
+              <img src="asset/portfolio/05_coway.png" alt="코웨이 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">코웨이</span>
+                <h2>코웨이의 제품 경험 중심 인서트</h2>
+                <p>10년을 함께한 코웨이. 정수기부터 비데, 의류건조기, 매트리스, 안마의자까지 다양한 라인업들을 마이다스가 함께 했습니다.</p>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="RRXb6wI9IQI" role="button" tabindex="0" aria-label="로보락 영상 보기">
+              <img src="asset/portfolio/06_roborock.png" alt="로보락 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">로보락</span>
+                <h2>로보락, 청소 성능을 한눈에</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="GxN_BkqXtNw" role="button" tabindex="0" aria-label="휴롬 영상 보기">
+              <img src="asset/portfolio/07_hurom.png" alt="휴롬 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">휴롬</span>
+                <h2>휴롬, 건강한 브랜드 이미지</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="x9LuqfbR4MU" role="button" tabindex="0" aria-label="뉴트리원 비비랩 영상 보기">
+              <img src="asset/portfolio/08_nutri.png" alt="뉴트리원 비비랩 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">뉴트리원 비비랩</span>
+                <h2>짧고 강한 핵심 메시지</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="6z-DUTfkjpg" role="button" tabindex="0" aria-label="귀뚜라미 영상 보기">
+              <img src="asset/portfolio/09_kiturami.png" alt="귀뚜라미 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">귀뚜라미</span>
+                <h2>귀뚜라미의 신뢰를 담아</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="9bd-cKFMoJg" role="button" tabindex="0" aria-label="신일 영상 보기">
+              <img src="asset/portfolio/10_shinil.png" alt="신일 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">신일</span>
+                <h2>신일만의 계절가전 판매 전략</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="-eQnOwGTk7o" role="button" tabindex="0" aria-label="엠디 영상 보기">
+              <img src="asset/portfolio/11_MD.png" alt="엠디 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">엠디</span>
+                <h2>차이를 보여준 완판 인서트</h2>
+                <p>제품 사용 전후의 차이를 직관적으로 보여주는 판매 구성</p>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="Z0hi5ztHiDM" role="button" tabindex="0" aria-label="동국제약 센텔리안 영상 보기">
+              <img src="asset/portfolio/12_Centellian.png" alt="동국제약 센텔리안 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">동국제약 센텔리안</span>
+                <h2>신뢰를 더한 뷰티 영상, 센텔리안</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="N2UHQy3POWo" role="button" tabindex="0" aria-label="비쎌 영상 보기">
+              <img src="asset/portfolio/13_Bissell.png" alt="비쎌 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">비쎌</span>
+                <h2>문제를 해결하는 인서트</h2>
+              </div>
+            </article>
+
+            <article class="case-card" data-youtube="a8w3D-6zehs" role="button" tabindex="0" aria-label="오스템 영상 보기">
+              <img src="asset/portfolio/14_osstem.png" alt="오스템 인서트 영상 성공사례">
+              <div class="case-info">
+                <span class="case-name">오스템</span>
+                <h2>쉽게 이해되는 전문성</h2>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <address class="footer-addresses">
+          <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
+          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+        </address>
+        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <div class="video-modal" id="portfolio-video-modal" aria-hidden="true">
+      <div class="video-dialog" role="dialog" aria-modal="true" aria-label="포트폴리오 영상">
+        <button class="video-close" id="portfolio-video-close" type="button" aria-label="영상 닫기">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18"></path>
+          </svg>
+        </button>
+        <iframe class="video-frame" id="portfolio-video-frame" title="포트폴리오 영상" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const site = document.getElementById("site");
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("site-nav");
+    const portfolioCards = document.querySelectorAll(".case-card[data-youtube]");
+    const portfolioVideoModal = document.getElementById("portfolio-video-modal");
+    const portfolioVideoFrame = document.getElementById("portfolio-video-frame");
+    const portfolioVideoClose = document.getElementById("portfolio-video-close");
+
+    const savedTheme = localStorage.getItem("mc-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      site.dataset.theme = savedTheme;
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = site.dataset.theme === "light" ? "dark" : "light";
+      site.dataset.theme = next;
+      localStorage.setItem("mc-theme", next);
+    });
+
+    const openPortfolioVideo = (youtubeId) => {
+      if (!youtubeId) return;
+      portfolioVideoFrame.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&playsinline=1`;
+      portfolioVideoModal.classList.add("open");
+      portfolioVideoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      portfolioVideoClose.focus();
+    };
+
+    const closePortfolioVideo = () => {
+      portfolioVideoModal.classList.remove("open");
+      portfolioVideoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      portfolioVideoFrame.src = "";
+    };
+
+    portfolioCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        openPortfolioVideo(card.dataset.youtube);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openPortfolioVideo(card.dataset.youtube);
+        }
+      });
+    });
+
+    portfolioVideoClose.addEventListener("click", closePortfolioVideo);
+
+    portfolioVideoModal.addEventListener("click", (event) => {
+      if (event.target === portfolioVideoModal) {
+        closePortfolioVideo();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && portfolioVideoModal.classList.contains("open")) {
+        closePortfolioVideo();
+      }
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      document.body.classList.toggle("nav-open", open);
+      menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        nav.classList.remove("open");
+        document.body.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      }
+    });
+  </script>
+</body>
+</html>

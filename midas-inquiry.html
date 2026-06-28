@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>문의 · FAQ | MIDAS COMMUNICATION</title>
+  <meta name="description" content="마이다스 커뮤니케이션 영상 제작 문의와 FAQ. 홈쇼핑 인서트, 라이브커머스, 수출바우처, 기업 홍보영상 제작 상담">
+  <style>
+    @font-face {
+      font-family: "Pretendard Variable";
+      src: url("asset/pretendard-variable.woff2") format("woff2-variations");
+      font-weight: 45 920;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --accent: #3fb6ff;
+      --danger: #ff1d1d;
+      --radius: 8px;
+      --card-radius: 24px;
+      --max: 1240px;
+      --header-h: 80px;
+    }
+
+    .site {
+      --bg: #080a0f;
+      --panel: #10131a;
+      --panel-2: #151922;
+      --ink: #ffffff;
+      --ink-soft: #d7dde7;
+      --muted: #9aa4b3;
+      --quiet: #6f7886;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+      --header-bg: rgba(8, 12, 18, 0.9);
+      --header-border: rgba(255, 255, 255, 0.06);
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .site[data-theme="light"] {
+      --bg: #ffffff;
+      --panel: #f4f6fa;
+      --panel-2: #e9edf4;
+      --ink: #0a0e14;
+      --ink-soft: #303846;
+      --muted: #5d6674;
+      --quiet: #8993a1;
+      --line: rgba(10, 14, 20, 0.12);
+      --line-strong: rgba(10, 14, 20, 0.2);
+      --shadow: 0 18px 50px rgba(20, 30, 55, 0.12);
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --header-border: rgba(10, 14, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080a0f;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .wrap {
+      width: min(100% - 80px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--header-border);
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header .wrap {
+      width: min(100% - 92px, 1820px);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 58px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 172px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .theme-toggle {
+      width: 68px;
+      height: 34px;
+      padding: 3px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .site[data-theme="light"] .theme-toggle {
+      background: #eef2f6;
+      border-color: rgba(10, 14, 20, 0.12);
+    }
+
+    .theme-option {
+      width: 30px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .site[data-theme="light"] .theme-option.light,
+    .site[data-theme="dark"] .theme-option.dark {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 4px 14px rgba(63, 182, 255, 0.28);
+    }
+
+    .theme-option svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      gap: 26px;
+    }
+
+    .nav a {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+
+    .button,
+    .icon-button,
+    .menu-button {
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button {
+      min-height: 44px;
+      padding: 0 22px;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .icon-button,
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+    }
+
+    .youtube {
+      border-color: transparent;
+      border-radius: 999px;
+      background: var(--danger);
+      color: #ffffff;
+      box-shadow: 0 14px 34px rgba(255, 29, 29, 0.2);
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    main {
+      padding-top: var(--header-h);
+    }
+
+    .faq-hero {
+      padding: 118px 0 82px;
+      background:
+        radial-gradient(72% 70% at 50% 0%, rgba(63, 182, 255, 0.12), transparent 62%),
+        var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+    }
+
+    .faq-hero h1 {
+      max-width: 980px;
+      color: var(--ink);
+      font-size: clamp(56px, 6vw, 104px);
+      line-height: 1.04;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .faq-hero p {
+      max-width: 760px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.85;
+      word-break: keep-all;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 42px;
+    }
+
+    .hero-actions .button {
+      border-radius: var(--card-radius);
+    }
+
+    .fact-strip {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .fact {
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--bg);
+      padding: 18px;
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .fact span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .faq-section {
+      padding: 98px 0;
+      background: var(--bg);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+
+    .faq-nav {
+      position: sticky;
+      top: calc(var(--header-h) + 26px);
+      display: grid;
+      gap: 8px;
+    }
+
+    .faq-nav a {
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      padding: 13px 15px;
+      color: var(--ink-soft);
+      background: var(--panel);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .faq-nav a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .faq-group + .faq-group {
+      margin-top: 62px;
+    }
+
+    .faq-group h2 {
+      margin-bottom: 20px;
+      color: var(--ink);
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item summary {
+      min-height: 76px;
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 18px;
+      color: var(--ink);
+      font-size: 20px;
+      font-weight: 850;
+      word-break: keep-all;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::before {
+      content: "Q";
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(63, 182, 255, 0.12);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .faq-item[open] summary::after {
+      content: "-";
+    }
+
+    .faq-item p {
+      max-width: 840px;
+      padding: 0 0 28px 52px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.95;
+      word-break: keep-all;
+    }
+
+    .inquiry-panel {
+      padding: 86px 0 110px;
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+    }
+
+    .inquiry-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--bg);
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .inquiry-box h2 {
+      color: var(--ink);
+      font-size: 38px;
+      line-height: 1.18;
+      font-weight: 900;
+    }
+
+    .inquiry-box p {
+      max-width: 680px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .inquiry-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .inquiry-actions .button {
+      border-radius: var(--card-radius);
+    }
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 28px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-addresses {
+      display: grid;
+      gap: 4px;
+      font-style: normal;
+    }
+
+    .footer-addresses strong {
+      color: var(--ink-soft);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1220px) {
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        display: none;
+        gap: 0;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .nav.open {
+        display: grid;
+      }
+
+      .nav.open a {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 18px;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .facts,
+      .faq-layout,
+      .inquiry-box {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-nav {
+        position: static;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .inquiry-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --header-h: 68px;
+      }
+
+      .wrap,
+      .site-header .wrap {
+        width: min(100% - 44px, var(--max));
+      }
+
+      .brand img {
+        width: 118px;
+        height: 38px;
+      }
+
+      .brand {
+        height: 44px;
+      }
+
+      .brand-group {
+        gap: 8px;
+      }
+
+      .theme-toggle {
+        width: 62px;
+        height: 32px;
+      }
+
+      .theme-option {
+        width: 27px;
+        height: 24px;
+      }
+
+      .header-actions .button {
+        display: none;
+      }
+
+      .youtube,
+      .menu-button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .faq-hero {
+        padding: 78px 0 58px;
+      }
+
+      .faq-hero h1 {
+        font-size: 46px;
+      }
+
+      .faq-hero p {
+        font-size: 16px;
+      }
+
+      .hero-actions,
+      .inquiry-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .facts,
+      .faq-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-section {
+        padding: 72px 0;
+      }
+
+      .faq-group h2 {
+        font-size: 28px;
+      }
+
+      .faq-item summary {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        min-height: 68px;
+        font-size: 17px;
+      }
+
+      .faq-item p {
+        padding-left: 0;
+        font-size: 15px;
+      }
+
+      .inquiry-panel {
+        padding: 72px 0 86px;
+      }
+
+      .inquiry-box {
+        padding: 26px;
+      }
+
+      .inquiry-box h2 {
+        font-size: 30px;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site" id="site" data-theme="dark">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand-group">
+          <a class="brand" href="midas-communication.html#top" aria-label="MIDAS COMMUNICATION 홈">
+            <img src="asset/midas-logo.webp" alt="MIDAS COMMUNICATION">
+          </a>
+
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="라이트 / 다크 모드 전환">
+            <span class="theme-option light" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+            </span>
+            <span class="theme-option dark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 14.6A8.8 8.8 0 0 1 9.4 3a7.2 7.2 0 1 0 11.6 11.6Z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <nav class="nav" id="site-nav" aria-label="주요 메뉴">
+          <a href="midas-about.html">회사소개</a>
+          <a href="midas-services.html">서비스</a>
+          <a href="midas-portfolio.html">성공사례</a>
+          <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
+          <a class="active" href="midas-inquiry.html">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-button youtube" href="https://www.youtube.com/@midas_communication" target="_blank" rel="noopener" aria-label="YouTube 채널">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 7.2a2.75 2.75 0 0 0-1.93-1.95C17.96 4.8 12 4.8 12 4.8s-5.96 0-7.67.45A2.75 2.75 0 0 0 2.4 7.2 28.7 28.7 0 0 0 1.95 12c0 1.62.15 3.23.45 4.8a2.75 2.75 0 0 0 1.93 1.95c1.71.45 7.67.45 7.67.45s5.96 0 7.67-.45a2.75 2.75 0 0 0 1.93-1.95c.3-1.57.45-3.18.45-4.8 0-1.62-.15-3.23-.45-4.8ZM10.05 15V9l5.2 3-5.2 3Z"></path>
+            </svg>
+          </a>
+          <a class="button button-primary" href="#inquiry">프로젝트 문의</a>
+          <button class="menu-button" id="menu-toggle" type="button" aria-label="메뉴 열기">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="faq-hero">
+        <div class="wrap">
+          <div class="kicker">FAQ & CONTACT</div>
+          <h1>자주 묻는 질문</h1>
+          <p>홈쇼핑 인서트, 라이브커머스, 수출바우처 영상 제작까지. 프로젝트를 시작하기 전에 가장 많이 묻는 내용을 정리했습니다.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
+            <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="fact-strip" aria-label="마이다스 커뮤니케이션 핵심 정보">
+        <div class="wrap facts">
+          <div class="fact">
+            <strong>2002년 설립</strong>
+            <span>20년 이상 제품 판매 영상 제작을 이어온 제작사</span>
+          </div>
+          <div class="fact">
+            <strong>원스톱 제작</strong>
+            <span>기획, 촬영, 편집, 그래픽, 후반 작업, 납품까지!</span>
+          </div>
+          <div class="fact">
+            <strong>종합촬영센터</strong>
+            <span>자체 스튜디오에서 촬영과 송출 지원</span>
+          </div>
+          <div class="fact">
+            <strong>수출바우처 수행기관</strong>
+            <span>수출 기업의 제품·기업 홍보 영상 제작 지원</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="wrap faq-layout">
+          <aside class="faq-nav" aria-label="FAQ 카테고리">
+            <a href="#faq-company">회사·업체 선택</a>
+            <a href="#faq-home-shopping">홈쇼핑 인서트</a>
+            <a href="#faq-live">라이브커머스</a>
+            <a href="#faq-voucher">수출바우처</a>
+            <a href="#faq-process">제작 진행·실무</a>
+          </aside>
+
+          <div class="faq-content">
+            <section class="faq-group" id="faq-company">
+              <h2>회사·업체 선택</h2>
+              <details class="faq-item" open>
+                <summary>홈쇼핑 영상 제작 업체를 선택할 때 무엇을 봐야 하나요?</summary>
+                <p>제품의 셀링포인트를 이해하는 능력, 촬영·편집·그래픽 후반작업 역량, 홈쇼핑 채널 납품 경험, 판매전환을 고려한 구성 경험, 자체 스튜디오 보유 여부를 확인하는 것이 좋습니다. 마이다스 커뮤니케이션은 2002년부터 홈쇼핑 인서트 영상과 제품 판매영상을 제작해 왔으며, 기획부터 촬영·편집·납품까지 한 곳에서 원스톱으로 진행합니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>마이다스 커뮤니케이션은 어떤 영상 제작에 강한가요?</summary>
+                <p>홈쇼핑 인서트 영상 제작, 라이브커머스 영상 제작과 송출 대행, 수출바우처 영상 제작에 강점을 가지고 있습니다. 제품의 장점을 구매로 연결하는 판매전환형 영상이 핵심 영역이며, 기업 홍보영상과 숏폼 콘텐츠도 함께 제작합니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>회사의 주요 인증이나 자격이 있나요?</summary>
+                <p>마이다스 커뮤니케이션은 이노비즈 인증 기업이자 산업디자인전문회사이며, 수출바우처 영상 제작을 수행하는 수행기관입니다. 2002년 설립 이후 20년 이상 영상 제작을 이어온 전문 제작사입니다.</p>
+              </details>
+            </section>
+
+            <section class="faq-group" id="faq-home-shopping">
+              <h2>홈쇼핑 인서트 영상 제작</h2>
+              <details class="faq-item">
+                <summary>홈쇼핑 인서트 영상이 무엇인가요?</summary>
+                <p>홈쇼핑 인서트 영상은 방송 중간에 삽입되어 제품의 장점을 짧은 시간에 각인시키고 구매를 끌어내는 영상입니다. 제품의 기능·사용 장면·차별점을 압축적으로 보여주기 때문에, 셀링포인트를 얼마나 정확히 영상으로 풀어내느냐가 구매전환을 좌우합니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>홈쇼핑 인서트 영상 제작은 어떤 순서로 진행되나요?</summary>
+                <p>일반적으로 셀링포인트 분석, 콘티·기획, 촬영, 편집·그래픽, 채널 규격 납품의 순서로 진행됩니다. 마이다스 커뮤니케이션은 이 전 과정을 자체 종합촬영센터에서 원스톱으로 처리해 단계마다 업체가 바뀌며 생기는 품질 편차와 일정 지연을 줄입니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>기존 인서트 영상의 반응이 약한데 리뉴얼도 가능한가요?</summary>
+                <p>가능합니다. 기존 영상의 구성과 소구점을 분석해 제품의 강점이 더 잘 드러나고 구매로 이어지도록 재구성합니다. 촬영 소스 재활용 여부와 전면 재촬영 여부는 상태를 보고 함께 정합니다.</p>
+              </details>
+            </section>
+
+            <section class="faq-group" id="faq-live">
+              <h2>라이브커머스 제작·송출</h2>
+              <details class="faq-item">
+                <summary>라이브커머스 영상 제작은 어떤 작업을 포함하나요?</summary>
+                <p>라이브 방송에 사용되는 제품 소개·시연 영상, 오프닝·하이라이트 인서트, 방송용 자막·그래픽 등을 기획·촬영·편집하는 작업을 포함합니다. 마이다스 커뮤니케이션은 방송 전체 흐름에 맞춰 콘텐츠를 설계해 몰입도와 구매전환을 함께 끌어올립니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>라이브커머스 송출 대행은 무엇을 해주나요?</summary>
+                <p>라이브커머스 방송의 세팅과 운영, 실시간 송출을 대행하는 서비스입니다. 방송을 하고 싶지만 운영·송출 인력이나 장비가 없는 경우, 촬영 환경과 송출 환경을 갖춘 자체 종합촬영센터에서 방송 운영부터 송출까지 맡길 수 있습니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>라이브커머스 영상 제작과 송출 대행을 함께 맡길 수 있나요?</summary>
+                <p>네. 영상 제작과 라이브 운영·송출을 한 곳에서 연계해 진행할 수 있어, 제작과 방송을 따로 발주할 때보다 일정과 품질을 일관되게 관리할 수 있습니다.</p>
+              </details>
+            </section>
+
+            <section class="faq-group" id="faq-voucher">
+              <h2>수출바우처 영상 제작</h2>
+              <details class="faq-item">
+                <summary>수출바우처로 영상을 제작할 수 있나요?</summary>
+                <p>가능합니다. 마이다스 커뮤니케이션은 수출바우처 영상 제작을 수행하는 수행기관으로서, 수출 기업이 해외 시장에 바로 활용할 수 있는 제품·기업 홍보 영상을 제작합니다. 수출바우처 사업의 절차에 맞춰 진행하므로 영상 품질과 사업 처리를 함께 챙길 수 있습니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>수출바우처 영상 수행기관을 고를 때 무엇을 봐야 하나요?</summary>
+                <p>영상 제작 역량은 물론, 수출바우처 사업의 절차와 정산 요건을 이해하고 진행할 수 있는지를 확인하는 것이 중요합니다. 사업 처리 경험이 없는 제작사와 진행하면 영상은 나와도 바우처 정산 단계에서 문제가 생길 수 있기 때문입니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>어떤 종류의 수출용 영상을 만들 수 있나요?</summary>
+                <p>해외 마케팅용 제품 소개 영상, 브랜드 필름, 해외 채널용 숏폼 등 수출 마케팅에 바로 쓸 수 있는 형태로 제작합니다. 제품의 강점을 해외 바이어와 소비자 관점에서 풀어내는 데 중점을 둡니다.</p>
+              </details>
+            </section>
+
+            <section class="faq-group" id="faq-process">
+              <h2>제작 진행·실무</h2>
+              <details class="faq-item">
+                <summary>제작 기간은 얼마나 걸리나요?</summary>
+                <p>영상의 종류와 분량, 촬영 규모에 따라 달라집니다. 인서트 영상처럼 짧은 단위부터 브랜드 필름까지 범위가 넓어, 기획 단계에서 일정을 함께 확정합니다. 정확한 일정은 문의 시 프로젝트 내용을 보고 안내해 드립니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>제작 비용은 어떻게 책정되나요?</summary>
+                <p>촬영 일수, 출연·세트·그래픽 범위, 후반작업 난이도 등에 따라 결정되므로 프로젝트별 견적으로 안내합니다. 제품과 목적을 알려주시면 그에 맞는 구성과 견적을 제안해 드립니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>자체 스튜디오가 있나요?</summary>
+                <p>네. 경기도 고양시 일산동구 성석동에 마이다스 종합촬영센터를 운영합니다. 제품 촬영, 대형 제품 촬영, 라이브커머스 송출, 후반작업을 한 곳에서 진행할 수 있는 자체 제작 환경을 갖추고 있습니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>지방이나 원격에서도 의뢰할 수 있나요?</summary>
+                <p>가능합니다. 제품 발송과 화상 회의를 통해 기획·검수를 진행할 수 있어, 직접 방문이 어려운 경우에도 의뢰하실 수 있습니다. 촬영이 필요한 경우 일정과 방식은 협의해 정합니다.</p>
+              </details>
+              <details class="faq-item">
+                <summary>어떻게 문의하면 되나요?</summary>
+                <p>전화 또는 이메일로 연락 주시면 됩니다. 제품과 제작 목적을 함께 알려주시면 더 빠르게 상담을 진행할 수 있습니다.</p>
+              </details>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="inquiry-panel" id="inquiry">
+        <div class="wrap">
+          <div class="inquiry-box">
+            <div>
+              <div class="kicker">PROJECT INQUIRY</div>
+              <h2>제품과 목표를 알려주시면<br>가장 적합한 영상 구성을 제안드립니다.</h2>
+              <p>제품명, 판매 채널, 제작 목적, 희망 일정이 정리되어 있으면 상담이 더 빠르게 진행됩니다.</p>
+            </div>
+            <div class="inquiry-actions">
+              <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
+              <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <address class="footer-addresses">
+          <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
+          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+        </address>
+        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const site = document.getElementById("site");
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("site-nav");
+
+    const savedTheme = localStorage.getItem("mc-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      site.dataset.theme = savedTheme;
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = site.dataset.theme === "light" ? "dark" : "light";
+      site.dataset.theme = next;
+      localStorage.setItem("mc-theme", next);
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      document.body.classList.toggle("nav-open", open);
+      menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        nav.classList.remove("open");
+        document.body.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      }
+    });
+  </script>
+</body>
+</html>

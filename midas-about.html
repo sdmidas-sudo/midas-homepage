@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>회사소개 | 마이다스커뮤니케이션 - 홈쇼핑·라이브커머스·수출바우처 영상 제작</title>
+  <meta name="description" content="2002년 설립, 20년 이상 홈쇼핑 영상을 제작해 온 마이다스커뮤니케이션. 일산 성석동 마이다스종합촬영센터 기반으로 홈쇼핑 인서트·라이브커머스·수출바우처 영상을 원스톱 제작합니다.">
+  <style>
+    @font-face {
+      font-family: "Pretendard Variable";
+      src: url("asset/pretendard-variable.woff2") format("woff2-variations");
+      font-weight: 45 920;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --accent: #3fb6ff;
+      --danger: #ff1d1d;
+      --radius: 8px;
+      --card-radius: 24px;
+      --max: 1240px;
+      --header-h: 80px;
+    }
+
+    .site {
+      --bg: #080a0f;
+      --panel: #10131a;
+      --panel-2: #151922;
+      --ink: #ffffff;
+      --ink-soft: #d7dde7;
+      --muted: #9aa4b3;
+      --quiet: #6f7886;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+      --header-bg: rgba(8, 12, 18, 0.9);
+      --header-border: rgba(255, 255, 255, 0.06);
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .site[data-theme="light"] {
+      --bg: #ffffff;
+      --panel: #f4f6fa;
+      --panel-2: #e9edf4;
+      --ink: #0a0e14;
+      --ink-soft: #303846;
+      --muted: #5d6674;
+      --quiet: #8993a1;
+      --line: rgba(10, 14, 20, 0.12);
+      --line-strong: rgba(10, 14, 20, 0.2);
+      --shadow: 0 18px 50px rgba(20, 30, 55, 0.12);
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --header-border: rgba(10, 14, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080a0f;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .wrap {
+      width: min(100% - 80px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--header-border);
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header .wrap {
+      width: min(100% - 92px, 1820px);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 58px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 172px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .theme-toggle {
+      width: 68px;
+      height: 34px;
+      padding: 3px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .site[data-theme="light"] .theme-toggle {
+      background: #eef2f6;
+      border-color: rgba(10, 14, 20, 0.12);
+    }
+
+    .theme-option {
+      width: 30px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .site[data-theme="light"] .theme-option.light,
+    .site[data-theme="dark"] .theme-option.dark {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 4px 14px rgba(63, 182, 255, 0.28);
+    }
+
+    .theme-option svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      gap: 26px;
+    }
+
+    .nav a {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+
+    .button,
+    .icon-button,
+    .menu-button {
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button {
+      min-height: 44px;
+      padding: 0 22px;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .icon-button,
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+    }
+
+    .youtube {
+      border-color: transparent;
+      border-radius: 999px;
+      background: var(--danger);
+      color: #ffffff;
+      box-shadow: 0 14px 34px rgba(255, 29, 29, 0.2);
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    main {
+      padding-top: var(--header-h);
+    }
+
+    .hero {
+      padding: 112px 0 90px;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.8fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+    }
+
+    .hero h1 {
+      max-width: 980px;
+      color: var(--ink);
+      font-size: clamp(48px, 5vw, 82px);
+      line-height: 1.04;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .hero .subhead {
+      max-width: 840px;
+      margin-top: 30px;
+      color: var(--ink-soft);
+      font-size: 24px;
+      line-height: 1.65;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .hero .intro-copy {
+      max-width: 860px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.95;
+      word-break: keep-all;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 42px;
+    }
+
+    .hero-actions .button {
+      border-radius: var(--card-radius);
+    }
+
+    .hero-photo {
+      --split-line-x: 50%;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--card-radius);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      min-height: 460px;
+      isolation: isolate;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      top: -14%;
+      bottom: -14%;
+      left: var(--split-line-x);
+      z-index: 3;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 0 18px rgba(255, 255, 255, 0.22);
+      transform: translateX(-50%) rotate(10deg);
+      transform-origin: center;
+      transition: left 360ms ease, opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .split-panel {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      transition: clip-path 360ms ease;
+      will-change: clip-path;
+    }
+
+    .split-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 460px;
+      object-fit: cover;
+      transition: transform 360ms ease, filter 360ms ease;
+      will-change: transform, filter;
+    }
+
+    .split-panel.seoul {
+      clip-path: polygon(0 0, 58% 0, 42% 100%, 0 100%);
+      z-index: 2;
+    }
+
+    .split-panel.studio {
+      clip-path: polygon(58% 0, 100% 0, 100% 100%, 42% 100%);
+      z-index: 1;
+    }
+
+    .split-panel.seoul img {
+      transform: scale(1.06);
+      transform-origin: center left;
+    }
+
+    .split-panel.studio img {
+      object-position: center center;
+      transform: translateX(28%) translateY(-4%) scale(1.5);
+      transform-origin: center right;
+    }
+
+    .split-label {
+      position: absolute;
+      left: 28px;
+      bottom: 26px;
+      z-index: 4;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.38);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 220ms ease, transform 220ms ease;
+      pointer-events: none;
+      backdrop-filter: blur(12px);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .split-label.studio-label {
+      left: auto;
+      right: 28px;
+    }
+
+    .hero-photo[data-focus="seoul"] .seoul-label,
+    .hero-photo[data-focus="studio"] .studio-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-photo[data-focus="seoul"] .split-panel.seoul {
+      clip-path: polygon(0 0, 78% 0, 62% 100%, 0 100%);
+    }
+
+    .hero-photo[data-focus="seoul"] {
+      --split-line-x: 70%;
+    }
+
+    .hero-photo[data-focus="seoul"] .split-panel.studio {
+      clip-path: polygon(78% 0, 100% 0, 100% 100%, 62% 100%);
+    }
+
+    .hero-photo[data-focus="studio"] .split-panel.seoul {
+      clip-path: polygon(0 0, 38% 0, 22% 100%, 0 100%);
+    }
+
+    .hero-photo[data-focus="studio"] {
+      --split-line-x: 30%;
+    }
+
+    .hero-photo[data-focus="studio"] .split-panel.studio {
+      clip-path: polygon(38% 0, 100% 0, 100% 100%, 22% 100%);
+    }
+
+    .hero-photo[data-focus="seoul"] .split-panel.seoul img {
+      transform: scale(1.14);
+      filter: brightness(1.08);
+    }
+
+    .hero-photo[data-focus="seoul"] .split-panel.studio img {
+      transform: translateX(24%) translateY(-4%) scale(1.36);
+      filter: brightness(0.58) saturate(0.82);
+    }
+
+    .hero-photo[data-focus="studio"] .split-panel.seoul img {
+      transform: scale(0.98);
+      filter: brightness(0.58) saturate(0.82);
+    }
+
+    .hero-photo[data-focus="studio"] .split-panel.studio img {
+      transform: translateX(28%) translateY(-4%) scale(1.62);
+      filter: brightness(1.08);
+    }
+
+    .section {
+      padding: 96px 0;
+      background: var(--bg);
+    }
+
+    .section.panel {
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 42px;
+    }
+
+    .section h2 {
+      color: var(--ink);
+      font-size: clamp(38px, 4vw, 58px);
+      line-height: 1.12;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat,
+    .strength-card {
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 24px;
+      min-height: 150px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--ink);
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .identity-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .identity-copy p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 2;
+      word-break: keep-all;
+    }
+
+    .identity-copy p + p {
+      margin-top: 24px;
+    }
+
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .strength-card {
+      padding: 26px;
+    }
+
+    .strength-card h3 {
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .strength-card p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .history {
+      display: grid;
+      gap: 14px;
+    }
+
+    .history-item {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 28px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .history-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .history-year {
+      color: var(--accent);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .history-item ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .history-item li {
+      color: var(--ink-soft);
+      font-size: 17px;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .history-item li strong {
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .history-item li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      margin: 0 10px 3px 0;
+      border-radius: 999px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .cta-panel {
+      padding: 90px 0 110px;
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--bg);
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      color: var(--ink);
+      font-size: 38px;
+      line-height: 1.18;
+      font-weight: 900;
+    }
+
+    .cta-box p {
+      max-width: 680px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .cta-actions .button {
+      border-radius: var(--card-radius);
+    }
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 28px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-addresses {
+      display: grid;
+      gap: 4px;
+      font-style: normal;
+    }
+
+    .footer-addresses strong {
+      color: var(--ink-soft);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1220px) {
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        display: none;
+        gap: 0;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .nav.open {
+        display: grid;
+      }
+
+      .nav.open a {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 18px;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .identity-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --header-h: 68px;
+      }
+
+      .wrap,
+      .site-header .wrap {
+        width: min(100% - 44px, var(--max));
+      }
+
+      .brand img {
+        width: 118px;
+        height: 38px;
+      }
+
+      .brand {
+        height: 44px;
+      }
+
+      .brand-group {
+        gap: 8px;
+      }
+
+      .theme-toggle {
+        width: 62px;
+        height: 32px;
+      }
+
+      .theme-option {
+        width: 27px;
+        height: 24px;
+      }
+
+      .header-actions .button {
+        display: none;
+      }
+
+      .youtube,
+      .menu-button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hero {
+        padding: 78px 0 64px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .hero .subhead {
+        font-size: 18px;
+      }
+
+      .hero .intro-copy,
+      .identity-copy p {
+        font-size: 16px;
+      }
+
+      .hero-photo,
+      .split-panel img {
+        min-height: 280px;
+      }
+
+      .split-label {
+        left: 18px;
+        bottom: 18px;
+        font-size: 13px;
+      }
+
+      .split-label.studio-label {
+        right: 18px;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 18px;
+      }
+
+      .stats,
+      .strength-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .history-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .history-year {
+        font-size: 26px;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .cta-panel {
+        padding: 72px 0 86px;
+      }
+
+      .cta-box {
+        padding: 26px;
+      }
+
+      .cta-box h2 {
+        font-size: 30px;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site" id="site" data-theme="dark">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand-group">
+          <a class="brand" href="midas-communication.html#top" aria-label="MIDAS COMMUNICATION 홈">
+            <img src="asset/midas-logo.webp" alt="MIDAS COMMUNICATION">
+          </a>
+
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="라이트 / 다크 모드 전환">
+            <span class="theme-option light" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+            </span>
+            <span class="theme-option dark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 14.6A8.8 8.8 0 0 1 9.4 3a7.2 7.2 0 1 0 11.6 11.6Z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <nav class="nav" id="site-nav" aria-label="주요 메뉴">
+          <a class="active" href="midas-about.html">회사소개</a>
+          <a href="midas-services.html">서비스</a>
+          <a href="midas-portfolio.html">성공사례</a>
+          <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
+          <a href="midas-inquiry.html">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-button youtube" href="https://www.youtube.com/@midas_communication" target="_blank" rel="noopener" aria-label="YouTube 채널">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 7.2a2.75 2.75 0 0 0-1.93-1.95C17.96 4.8 12 4.8 12 4.8s-5.96 0-7.67.45A2.75 2.75 0 0 0 2.4 7.2 28.7 28.7 0 0 0 1.95 12c0 1.62.15 3.23.45 4.8a2.75 2.75 0 0 0 1.93 1.95c1.71.45 7.67.45 7.67.45s5.96 0 7.67-.45a2.75 2.75 0 0 0 1.93-1.95c.3-1.57.45-3.18.45-4.8 0-1.62-.15-3.23-.45-4.8ZM10.05 15V9l5.2 3-5.2 3Z"></path>
+            </svg>
+          </a>
+          <a class="button button-primary" href="midas-inquiry.html#inquiry">프로젝트 문의</a>
+          <button class="menu-button" id="menu-toggle" type="button" aria-label="메뉴 열기">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="kicker">ABOUT MIDAS</div>
+            <h1>20년의 역사와 전통,<br>대한민국 종합 영상 시스템의 중심</h1>
+            <p class="intro-copy">마이다스커뮤니케이션은 2002년 설립 이후 20년 이상 홈쇼핑 영상을 제작해 온 종합 영상 제작사입니다. 서울 문래 디자인랩 센터와 일산의 대규모 자체 스튜디오 마이다스종합촬영센터를 기반으로 기획·촬영·편집·그래픽·후반작업·납품까지 원스톱으로 수행합니다.</p>
+          </div>
+          <div class="hero-photo" data-split-photo aria-label="서울 문래 디자인랩 센터와 마이다스종합촬영센터">
+            <div class="split-panel seoul" aria-hidden="true">
+              <img src="asset/seoul.png" alt="">
+            </div>
+            <div class="split-panel studio" aria-hidden="true">
+              <img src="asset/main09.jpg" alt="">
+            </div>
+            <div class="split-label seoul-label" aria-hidden="true">서울 문래 디자인랩</div>
+            <div class="split-label studio-label" aria-hidden="true">마이다스종합촬영센터</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section panel" id="identity">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="kicker">WHO WE ARE</div>
+              <h2>(주)마이다스커뮤니케이션</h2>
+            </div>
+            <p>제품 디자인과 그래픽 노하우에서 출발해 영상 제작과 종합촬영센터 영역으로 확장한 커머스 영상 제작 파트너입니다.</p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>20년 이상의 노하우</strong>
+              <span>2002년 설립</span>
+            </div>
+            <div class="stat">
+              <strong>3,200여 편</strong>
+              <span>국내 TV홈쇼핑 방송 영상 누적 제작</span>
+            </div>
+            <div class="stat">
+              <strong>3,000평 규모</strong>
+              <span>일산 성석동 마이다스종합촬영센터</span>
+            </div>
+            <div class="stat">
+              <strong>공식 인증</strong>
+              <span>이노비즈·산업디자인전문회사·수출바우처 수행기관</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap identity-grid">
+          <div>
+            <div class="kicker">OUR STANDARD</div>
+            <h2>기획부터 납품까지<br>한 곳에서 설계합니다</h2>
+          </div>
+          <div class="identity-copy">
+            <p>2002년 (주)성하디자인월드로 출발한 마이다스커뮤니케이션은 제품 디자인과 그래픽 노하우를 바탕으로 영상 제작과 종합촬영센터 영역으로 사업을 확장하며, 온·오프라인을 아우르는 원스톱 토탈 솔루션을 갖추었습니다.</p>
+            <p>홈쇼핑 영상 제작을 기반으로 시대 트렌드를 반영한 다양한 영상 프로젝트를 수행하며, 전문 인력과 첨단 장비, 대규모 제작 공간을 보유한 종합촬영센터로 성장했습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section panel">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="kicker">WHY MIDAS</div>
+              <h2>마이다스의 강점</h2>
+            </div>
+          </div>
+
+          <div class="strength-grid">
+            <article class="strength-card">
+              <h3>원스톱 제작</h3>
+              <p>기획부터 촬영, 편집, 그래픽, 후반작업, 납품까지 한 곳에서 일관되게 진행합니다.</p>
+            </article>
+            <article class="strength-card">
+              <h3>자체 대규모 스튜디오</h3>
+              <p>일산 성석동 마이다스종합촬영센터에서 제품·대형 제품 촬영, 라이브커머스 송출, 후반작업까지 수용합니다.</p>
+            </article>
+            <article class="strength-card">
+              <h3>검증된 홈쇼핑 경험</h3>
+              <p>GS·현대·CJ·롯데·NS·홈앤쇼핑 등 국내 TV홈쇼핑 채널 납품과 해외 홈쇼핑 영상 제작 경험을 갖추었습니다.</p>
+            </article>
+            <article class="strength-card">
+              <h3>수출바우처 수행기관</h3>
+              <p>수출바우처 사업의 수행기관으로서 해외 마케팅 영상을 제작하고, 사업 절차와 정산까지 함께 처리해 영상과 사업을 한 번에 해결합니다.</p>
+            </article>
+            <article class="strength-card">
+              <h3>공식 인증</h3>
+              <p>이노비즈 인증 기업, 산업디자인전문회사, 수출바우처 영상 제작 수행기관으로 활동하고 있습니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="history">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="kicker">HISTORY</div>
+              <h2>우리의 역사</h2>
+            </div>
+          </div>
+
+          <div class="history">
+            <div class="history-item">
+              <div class="history-year">2002</div>
+              <ul>
+                <li>(주)성하디자인월드로 설립</li>
+                <li>한국도자기·리빙아트·셰프라인 디자인 및 촬영 부문 연간계약 체결</li>
+                <li>멀티미디어 영상 촬영·편집 시스템 구축</li>
+              </ul>
+            </div>
+            <div class="history-item">
+              <div class="history-year">2003</div>
+              <ul>
+                <li>국내 홈쇼핑 영상물 사업 시작</li>
+                <li>홈쇼핑 원스탑 시스템 구축</li>
+              </ul>
+            </div>
+            <div class="history-item">
+              <div class="history-year">2004-2005</div>
+              <ul>
+                <li>국내 TV홈쇼핑 방송 런칭 370여 편 진행</li>
+                <li><strong>중소기업유통센터 최우수 협력사상 수상</strong></li>
+              </ul>
+            </div>
+            <div class="history-item">
+              <div class="history-year">2006-2013</div>
+              <ul>
+                <li>영상·사진 스튜디오 오픈 및 일산 M스튜디오 확장</li>
+                <li>국내 TV홈쇼핑 방송 런칭 누적 1,400여 편 진행</li>
+                <li>중국 등 해외 홈쇼핑 영상 제작 진출</li>
+              </ul>
+            </div>
+            <div class="history-item">
+              <div class="history-year">2014-2019</div>
+              <ul>
+                <li>일산 성석동 MMC 스튜디오 오픈</li>
+                <li><strong>일산 성석동 스튜디오 3,000평 규모로 확장 오픈</strong></li>
+                <li>국내 TV홈쇼핑 방송 런칭 누적 2,600여 편</li>
+              </ul>
+            </div>
+            <div class="history-item">
+              <div class="history-year">2021-2022</div>
+              <ul>
+                <li>국내 TV홈쇼핑 방송 런칭 누적 3,000여 편</li>
+                <li>XR 제작팀 도입 및 대형 LED WALL 도입</li>
+                <li><strong>서울 문래 디자인랩 센터 사옥 건립</strong></li>
+              </ul>
+            </div>
+            <div class="history-item">
+              <div class="history-year">2025</div>
+              <ul>
+                <li>국내 TV홈쇼핑 방송 런칭 누적 3,200여 편</li>
+                <li>라이브커머스 팀 계약 체결</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-panel">
+        <div class="wrap">
+          <div class="cta-box">
+            <div>
+              <div class="kicker">PROJECT INQUIRY</div>
+              <h2>제품의 구매 전환을 위한<br>영상 제작을 함께 설계합니다.</h2>
+              <p>홈쇼핑 인서트, 라이브커머스, 수출바우처 영상 제작까지 목적에 맞는 구성을 제안드립니다.</p>
+            </div>
+            <div class="cta-actions">
+              <a class="button button-primary" href="midas-portfolio.html">제작 사례 보기</a>
+              <a class="button button-secondary" href="midas-inquiry.html#inquiry">견적·상담 문의하기</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <address class="footer-addresses">
+          <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
+          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+        </address>
+        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const site = document.getElementById("site");
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("site-nav");
+    const splitPhoto = document.querySelector("[data-split-photo]");
+
+    const savedTheme = localStorage.getItem("mc-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      site.dataset.theme = savedTheme;
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = site.dataset.theme === "light" ? "dark" : "light";
+      site.dataset.theme = next;
+      localStorage.setItem("mc-theme", next);
+    });
+
+    if (splitPhoto) {
+      splitPhoto.addEventListener("pointermove", (event) => {
+        const rect = splitPhoto.getBoundingClientRect();
+        const focus = event.clientX - rect.left < rect.width / 2 ? "seoul" : "studio";
+        splitPhoto.dataset.focus = focus;
+      });
+
+      splitPhoto.addEventListener("pointerleave", () => {
+        delete splitPhoto.dataset.focus;
+      });
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      document.body.classList.toggle("nav-open", open);
+      menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        nav.classList.remove("open");
+        document.body.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      }
+    });
+  </script>
+</body>
+</html>
