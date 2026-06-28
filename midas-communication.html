@@ -643,13 +643,15 @@
     }
 
     .service-card:hover,
-    .service-card:focus-visible {
+    .service-card:focus-visible,
+    .service-card.touch-preview {
       transform: translateY(-4px);
       border-color: var(--accent);
     }
 
     .service-card:hover::after,
-    .service-card:focus-visible::after {
+    .service-card:focus-visible::after,
+    .service-card.touch-preview::after {
       opacity: 1;
     }
 
@@ -667,7 +669,8 @@
     }
 
     .service-card:hover .service-video,
-    .service-card:focus-visible .service-video {
+    .service-card:focus-visible .service-video,
+    .service-card.touch-preview .service-video {
       opacity: 1;
       transform: scale(1);
     }
@@ -708,19 +711,22 @@
     }
 
     .service-card:hover .num,
-    .service-card:focus-visible .num {
+    .service-card:focus-visible .num,
+    .service-card.touch-preview .num {
       opacity: 0;
       transform: translateY(-8px);
     }
 
     .service-card:hover p,
-    .service-card:focus-visible p {
+    .service-card:focus-visible p,
+    .service-card.touch-preview p {
       opacity: 0;
       transform: translateY(-8px);
     }
 
     .service-card:hover h3,
-    .service-card:focus-visible h3 {
+    .service-card:focus-visible h3,
+    .service-card.touch-preview h3 {
       position: absolute;
       left: 30px;
       right: 30px;
@@ -769,13 +775,15 @@
     }
 
     .work:hover img,
-    .work:focus-visible img {
+    .work:focus-visible img,
+    .work.touch-preview img {
       filter: blur(5px);
       transform: scale(1.04);
     }
 
     .work:hover::after,
-    .work:focus-visible::after {
+    .work:focus-visible::after,
+    .work.touch-preview::after {
       opacity: 1;
     }
 
@@ -795,7 +803,8 @@
     }
 
     .work:hover figcaption,
-    .work:focus-visible figcaption {
+    .work:focus-visible figcaption,
+    .work.touch-preview figcaption {
       bottom: 50%;
       padding: 0 24px;
       background: transparent;
@@ -1192,10 +1201,18 @@
         display: none;
       }
 
-      .hero,
+      .hero {
+        min-height: auto;
+        height: auto;
+      }
+
       .hero video {
-        min-height: calc(100svh - var(--header-h));
-        height: calc(100svh - var(--header-h));
+        display: block;
+        width: 100%;
+        min-height: 0;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: contain;
       }
 
       .intro,
@@ -1588,6 +1605,8 @@
     const portfolioVideoModal = document.getElementById("portfolio-video-modal");
     const portfolioVideoFrame = document.getElementById("portfolio-video-frame");
     const portfolioVideoClose = document.getElementById("portfolio-video-close");
+    const hoverQuery = window.matchMedia ? window.matchMedia("(hover: hover) and (pointer: fine)") : { matches: true };
+    const hasHoverPointer = () => hoverQuery.matches;
 
     const savedTheme = localStorage.getItem("mc-theme");
     if (savedTheme === "light" || savedTheme === "dark") {
@@ -1600,28 +1619,57 @@
       localStorage.setItem("mc-theme", next);
     });
 
-    serviceCards.forEach((card) => {
+    const playServiceCardVideo = (card) => {
       const video = card.querySelector(".service-video");
       if (!video) return;
 
-      const playVideo = () => {
-        try {
-          video.currentTime = 0;
-        } catch (error) {}
-        video.play().catch(() => {});
-      };
+      try {
+        video.currentTime = 0;
+      } catch (error) {}
+      video.play().catch(() => {});
+    };
 
-      const stopVideo = () => {
-        video.pause();
-        try {
-          video.currentTime = 0;
-        } catch (error) {}
-      };
+    const stopServiceCardVideo = (card) => {
+      const video = card.querySelector(".service-video");
+      if (!video) return;
 
-      card.addEventListener("pointerenter", playVideo);
-      card.addEventListener("pointerleave", stopVideo);
-      card.addEventListener("focusin", playVideo);
-      card.addEventListener("focusout", stopVideo);
+      video.pause();
+      try {
+        video.currentTime = 0;
+      } catch (error) {}
+    };
+
+    const clearTouchPreviews = (except = null) => {
+      document.querySelectorAll(".touch-preview").forEach((item) => {
+        if (item === except) return;
+        item.classList.remove("touch-preview");
+        if (item.classList.contains("service-card")) {
+          stopServiceCardVideo(item);
+        }
+      });
+    };
+
+    serviceCards.forEach((card) => {
+      if (!card.querySelector(".service-video")) return;
+
+      card.addEventListener("pointerenter", () => playServiceCardVideo(card));
+      card.addEventListener("pointerleave", () => {
+        if (!card.classList.contains("touch-preview")) {
+          stopServiceCardVideo(card);
+        }
+      });
+      card.addEventListener("focusin", () => playServiceCardVideo(card));
+      card.addEventListener("focusout", () => stopServiceCardVideo(card));
+
+      card.addEventListener("click", (event) => {
+        if (hasHoverPointer()) return;
+        if (card.classList.contains("touch-preview")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        clearTouchPreviews(card);
+        card.classList.add("touch-preview");
+        playServiceCardVideo(card);
+      });
     });
 
     const openPortfolioVideo = (youtubeId) => {
@@ -1638,16 +1686,26 @@
       portfolioVideoModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
       portfolioVideoFrame.src = "";
+      clearTouchPreviews();
     };
 
     portfolioCards.forEach((card) => {
-      card.addEventListener("click", () => {
+      card.addEventListener("click", (event) => {
+        if (!hasHoverPointer() && !card.classList.contains("touch-preview")) {
+          event.preventDefault();
+          event.stopPropagation();
+          clearTouchPreviews(card);
+          card.classList.add("touch-preview");
+          return;
+        }
+        clearTouchPreviews();
         openPortfolioVideo(card.dataset.youtube);
       });
 
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
+          clearTouchPreviews();
           openPortfolioVideo(card.dataset.youtube);
         }
       });
@@ -1664,6 +1722,13 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && portfolioVideoModal.classList.contains("open")) {
         closePortfolioVideo();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (hasHoverPointer()) return;
+      if (!event.target.closest(".service-card, .work[data-youtube]")) {
+        clearTouchPreviews();
       }
     });
 

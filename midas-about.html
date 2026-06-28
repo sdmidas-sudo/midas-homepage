@@ -1151,13 +1151,23 @@
     });
 
     if (splitPhoto) {
-      splitPhoto.addEventListener("pointermove", (event) => {
+      const updateSplitFocus = (event) => {
         const rect = splitPhoto.getBoundingClientRect();
         const focus = event.clientX - rect.left < rect.width / 2 ? "seoul" : "studio";
         splitPhoto.dataset.focus = focus;
+      };
+
+      splitPhoto.addEventListener("pointermove", updateSplitFocus);
+      splitPhoto.addEventListener("pointerdown", updateSplitFocus);
+
+      document.addEventListener("pointerdown", (event) => {
+        if (!splitPhoto.contains(event.target)) {
+          delete splitPhoto.dataset.focus;
+        }
       });
 
-      splitPhoto.addEventListener("pointerleave", () => {
+      splitPhoto.addEventListener("pointerleave", (event) => {
+        if (event.pointerType === "touch") return;
         delete splitPhoto.dataset.focus;
       });
     }

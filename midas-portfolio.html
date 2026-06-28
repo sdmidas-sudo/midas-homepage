@@ -402,30 +402,35 @@
     }
 
     .case-card:hover img,
-    .case-card:focus-visible img {
+    .case-card:focus-visible img,
+    .case-card.touch-preview img {
       filter: blur(5px);
       transform: scale(1.04);
     }
 
     .case-card:hover::after,
-    .case-card:focus-visible::after {
+    .case-card:focus-visible::after,
+    .case-card.touch-preview::after {
       opacity: 1;
     }
 
     .case-card:hover .case-name,
-    .case-card:focus-visible .case-name {
+    .case-card:focus-visible .case-name,
+    .case-card.touch-preview .case-name {
       opacity: 0;
       transform: translateY(-8px);
     }
 
     .case-card:hover .case-info h2,
-    .case-card:focus-visible .case-info h2 {
+    .case-card:focus-visible .case-info h2,
+    .case-card.touch-preview .case-info h2 {
       opacity: 1;
       transform: translateY(-50%);
     }
 
     .case-card:hover .case-info p,
-    .case-card:focus-visible .case-info p {
+    .case-card:focus-visible .case-info p,
+    .case-card.touch-preview .case-info p {
       opacity: 1;
       transform: translateY(0);
     }
@@ -855,6 +860,8 @@
     const portfolioVideoModal = document.getElementById("portfolio-video-modal");
     const portfolioVideoFrame = document.getElementById("portfolio-video-frame");
     const portfolioVideoClose = document.getElementById("portfolio-video-close");
+    const hoverQuery = window.matchMedia ? window.matchMedia("(hover: hover) and (pointer: fine)") : { matches: true };
+    const hasHoverPointer = () => hoverQuery.matches;
 
     const savedTheme = localStorage.getItem("mc-theme");
     if (savedTheme === "light" || savedTheme === "dark") {
@@ -876,21 +883,38 @@
       portfolioVideoClose.focus();
     };
 
+    const clearTouchPreviews = (except = null) => {
+      portfolioCards.forEach((card) => {
+        if (card === except) return;
+        card.classList.remove("touch-preview");
+      });
+    };
+
     const closePortfolioVideo = () => {
       portfolioVideoModal.classList.remove("open");
       portfolioVideoModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
       portfolioVideoFrame.src = "";
+      clearTouchPreviews();
     };
 
     portfolioCards.forEach((card) => {
-      card.addEventListener("click", () => {
+      card.addEventListener("click", (event) => {
+        if (!hasHoverPointer() && !card.classList.contains("touch-preview")) {
+          event.preventDefault();
+          event.stopPropagation();
+          clearTouchPreviews(card);
+          card.classList.add("touch-preview");
+          return;
+        }
+        clearTouchPreviews();
         openPortfolioVideo(card.dataset.youtube);
       });
 
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
+          clearTouchPreviews();
           openPortfolioVideo(card.dataset.youtube);
         }
       });
@@ -907,6 +931,13 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && portfolioVideoModal.classList.contains("open")) {
         closePortfolioVideo();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (hasHoverPointer()) return;
+      if (!event.target.closest(".case-card[data-youtube]")) {
+        clearTouchPreviews();
       }
     });
 
