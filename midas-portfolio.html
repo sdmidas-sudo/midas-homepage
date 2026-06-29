@@ -21,6 +21,7 @@
       --card-radius: 24px;
       --showcase-card-ratio: 16 / 9;
       --showcase-card-min-h: 235px;
+      --showcase-card-min-w: 360px;
       --showcase-card-gap: 32px 30px;
       --max: 1240px;
       --header-h: 80px;
@@ -321,11 +322,15 @@
 
     .case-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--showcase-card-min-w)), 1fr));
       gap: var(--showcase-card-gap);
+      grid-auto-flow: row;
+      align-items: stretch;
     }
 
     .case-card {
+      width: 100%;
+      min-width: 0;
       min-height: var(--showcase-card-min-h);
       position: relative;
       overflow: hidden;
@@ -573,7 +578,7 @@
 
     @media (max-width: 1060px) {
       .case-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--showcase-card-min-w)), 1fr));
       }
     }
 
