@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MIDAS COMMUNICATION</title>
-  <meta name="description" content="TVCF, 브랜드 홍보, 홈쇼핑 인서트, 라이브커머스, AI 영상까지 만드는 세일즈 영상 프로덕션">
+  <title>마이다스커뮤니케이션 | 홈쇼핑 인서트·라이브커머스·수출바우처 영상 제작</title>
+  <meta name="description" content="마이다스커뮤니케이션은 TVCF, 브랜드 홍보, 홈쇼핑 인서트, 라이브커머스, 수출바우처, AI 영상까지 제작하는 세일즈 영상 프로덕션입니다.">
   <style>
     @font-face {
       font-family: "Pretendard Variable";
@@ -198,6 +198,10 @@
 
     .nav a:hover {
       color: var(--accent);
+    }
+
+    .nav-project-link {
+      display: none;
     }
 
     .header-actions {
@@ -600,6 +604,11 @@
       word-break: keep-all;
     }
 
+    .about-copy .lead span {
+      display: block;
+      white-space: nowrap;
+    }
+
     .about-copy .lead strong {
       color: var(--accent);
       font-weight: 900;
@@ -945,6 +954,11 @@
       font-weight: 900;
     }
 
+    .studio-copy h3 span {
+      display: block;
+      white-space: nowrap;
+    }
+
     .studio-copy p {
       margin-top: 18px;
       color: var(--muted);
@@ -1001,6 +1015,21 @@
 
     .contact-actions .button {
       border-radius: var(--card-radius);
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .contact-actions:has(.button-secondary:is(:hover, :focus, :focus-visible, :active)) .button-primary {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .contact-actions .button-secondary:is(:hover, :focus, :focus-visible, :active) {
+      border-color: transparent;
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 10px 30px rgba(63, 182, 255, 0.28);
     }
 
     .social-links {
@@ -1117,16 +1146,20 @@
         border-bottom: 1px solid var(--line);
         font-size: 18px;
       }
+
+      .nav.open .nav-project-link {
+        display: block;
+      }
     }
 
     @media (max-width: 1060px) {
 
       .intro h1 {
-        font-size: 64px;
+        font-size: clamp(40px, 6vw, 64px);
       }
 
       .intro h1 span {
-        white-space: normal;
+        white-space: nowrap;
       }
 
       .section h2,
@@ -1242,21 +1275,23 @@
       }
 
       .intro h1 {
-        font-size: 44px;
+        font-size: clamp(21px, 6.1vw, 44px);
         line-height: 1.12;
       }
 
       .intro h1 span {
-        white-space: normal;
+        white-space: nowrap;
       }
 
       .intro p {
         margin-top: 26px;
-        font-size: 15px;
+        max-width: none;
+        font-size: clamp(9.5px, 2.9vw, 18px);
       }
 
       .intro p span {
-        display: inline;
+        display: block;
+        white-space: nowrap;
       }
 
       .intro-actions,
@@ -1301,7 +1336,7 @@
       }
 
       .about-copy .lead {
-        font-size: 24px;
+        font-size: clamp(16px, 4.55vw, 24px);
       }
 
       .service-grid,
@@ -1330,6 +1365,15 @@
 
       .studio-copy {
         padding: 26px;
+      }
+
+      .studio-copy h3 {
+        font-size: clamp(20px, 5.7vw, 28px);
+      }
+
+      .studio-copy h3 span {
+        display: block;
+        white-space: nowrap;
       }
 
       .chip {
@@ -1380,6 +1424,7 @@
           <a href="midas-portfolio.html">성공사례</a>
           <a href="#studio">마이다스종합촬영센터</a>
           <a href="midas-inquiry.html">FAQ</a>
+          <a class="nav-project-link" href="midas-project.html">프로젝트 문의</a>
         </nav>
 
         <div class="header-actions">
@@ -1400,7 +1445,7 @@
 
     <main>
       <div class="hero-spacer" id="top" aria-hidden="true"></div>
-      <section class="hero" aria-label="마이다스 커뮤니케이션 대표 영상">
+      <section class="hero" aria-label="마이다스커뮤니케이션 대표 영상">
         <video autoplay muted loop playsinline preload="auto" src="asset/hero-intro.mp4"></video>
       </section>
 
@@ -1452,7 +1497,7 @@
               <h2 class="about-title"><span>제품의 구매 전환을</span><span>설계합니다</span></h2>
             </div>
             <div class="about-copy">
-              <p class="lead">소비자의 구매 포인트를 영상으로 설계하는 <strong>(주)마이다스 커뮤니케이션</strong></p>
+              <p class="lead"><span>소비자의 구매 포인트를 영상으로 설계하는</span><span><strong>(주)마이다스커뮤니케이션</strong></span></p>
               <p>제품을 단순히 보기 좋게 촬영하는 것을 넘어, 상품의 강점과 사용 장면, 고객의 니즈, 판매 채널의 특성을 분석해 구매로 이어지는 설득력 있는 영상을 제작합니다.</p>
               <p>기획, 촬영, 편집, 숏폼 재가공까지 원스톱으로 진행하며, <strong>수출바우처·혁신바우처 영상 제작과 라이브커머스 판매 방송까지</strong> 커머스 영상에 필요한 전 과정을 함께합니다.</p>
             </div>
@@ -1565,11 +1610,11 @@
           <div class="studio-grid">
             <div class="studio-photo">
               <img class="studio-image-default" src="asset/studio-main-default.jpg" alt="마이다스종합촬영센터 촬영 공간">
-              <img class="studio-image-hover" src="asset/studio-main-hover.jpg" alt="" aria-hidden="true">
+              <img class="studio-image-hover" src="asset/studio-main-hover.jpg" alt="마이다스종합촬영센터 세트 촬영 공간" aria-hidden="true">
             </div>
             <div class="studio-copy">
               <div>
-                <h3>콘셉트별 세트를 상설로 갖춘<br>종합 촬영 스튜디오</h3>
+                <h3><span>콘셉트별 세트를 상설로 갖춘</span><span>종합 촬영 스튜디오</span></h3>
                 <p>마이다스종합촬영센터는 일산 성석동 3,000평 부지에 콘셉트별 촬영 공간을 상설로 갖춘 종합 스튜디오입니다. 거실·주방·욕실·정원 같은 주거 세트, 무한대 호리존, 카페·오피스·루프탑을 갖춘 라이브 방송센터까지 — 목적에 맞는 공간을 골라 빠르게 세팅하고, 홈쇼핑 인서트부터 라이브커머스 송출까지 한 곳에서 진행합니다.</p>
               </div>
               <div class="chips">
@@ -1587,12 +1632,13 @@
         <div class="wrap">
           <div class="section-kicker">CONTACT</div>
           <h2>함께 만들 영상이<br>있으신가요?</h2>
-          <p>기획부터 제작까지, 마이다스 커뮤니케이션이 새로운 기준을 보여드리겠습니다.</p>
+          <p>기획부터 제작까지, 마이다스커뮤니케이션이 새로운 기준을 보여드리겠습니다.</p>
           <div class="contact-actions">
-            <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
-            <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+            <a class="button button-primary" href="tel:0226758012">대표전화 02-2675-8012</a>
+            <a class="button button-secondary" href="tel:01053565509">모바일 010-5356-5509</a>
+            <a class="button button-secondary" href="mailto:sdmidas@gmail.com">sdmidas@gmail.com</a>
           </div>
-          <div class="social-links" aria-label="마이다스 커뮤니케이션 소셜 채널">
+          <div class="social-links" aria-label="마이다스커뮤니케이션 소셜 채널">
             <a class="social-link instagram" href="https://www.instagram.com/midas_communication/" target="_blank" rel="noopener" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5.1"></rect>
@@ -1620,9 +1666,11 @@
       <div class="wrap footer-inner">
         <address class="footer-addresses">
           <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
-          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>마이다스종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>사업자등록번호 :</strong> <span>117-81-38410</span></div>
+          <div><strong>대표자명 :</strong> <span>이하용</span></div>
         </address>
-        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+        <div class="footer-copy">© 2026 (주)마이다스커뮤니케이션. All rights reserved.</div>
       </div>
     </footer>
 
@@ -1775,6 +1823,12 @@
       }
     });
 
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-label", "메뉴 열기");
+    };
+
     menuToggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       document.body.classList.toggle("nav-open", open);
@@ -1783,10 +1837,14 @@
 
     nav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
-        nav.classList.remove("open");
-        document.body.classList.remove("nav-open");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("open")) return;
+      if (event.target.closest("#site-nav, #menu-toggle")) return;
+      closeMenu();
     });
   </script>
 </body>

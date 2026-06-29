@@ -218,6 +218,10 @@
       color: var(--accent);
     }
 
+    .nav-project-link {
+      display: none;
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
@@ -297,6 +301,7 @@
       line-height: 1.02;
       font-weight: 900;
       word-break: keep-all;
+      white-space: nowrap;
     }
 
     .portfolio-hero p {
@@ -557,6 +562,10 @@
         font-size: 18px;
       }
 
+      .nav.open .nav-project-link {
+        display: block;
+      }
+
       .menu-button {
         display: inline-flex;
       }
@@ -616,7 +625,7 @@
       }
 
       .portfolio-hero h1 {
-        font-size: 44px;
+        font-size: clamp(30px, 8.6vw, 44px);
       }
 
       .portfolio-hero p {
@@ -689,6 +698,7 @@
           <a class="active" href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a href="midas-inquiry.html">FAQ</a>
+          <a class="nav-project-link" href="midas-project.html">프로젝트 문의</a>
         </nav>
 
         <div class="header-actions">
@@ -723,8 +733,8 @@
               <img src="asset/portfolio/01_dyson.png" alt="다이슨 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">다이슨</span>
-                <h2>16년의 다이슨 인서트</h2>
-                <p>2011년부터 현재까지 인서트를 제작한 다이슨. 16년간 바뀌지 않은 믿음의 신뢰</p>
+                <h2>15년의 다이슨 인서트</h2>
+                <p>2011년부터 현재까지 인서트를 제작한 다이슨. 15년간 이어온 믿음의 신뢰</p>
               </div>
             </article>
 
@@ -780,10 +790,10 @@
               </div>
             </article>
 
-            <article class="case-card" data-youtube="x9LuqfbR4MU" role="button" tabindex="0" aria-label="뉴트리원 비비랩 영상 보기">
-              <img src="asset/portfolio/08_nutri.png" alt="뉴트리원 비비랩 인서트 영상 성공사례">
+            <article class="case-card" data-youtube="x9LuqfbR4MU" role="button" tabindex="0" aria-label="뉴트리원 영상 보기">
+              <img src="asset/portfolio/08_nutri.png" alt="뉴트리원 인서트 영상 성공사례">
               <div class="case-info">
-                <span class="case-name">뉴트리원 비비랩</span>
+                <span class="case-name">뉴트리원</span>
                 <h2>짧고 강한 핵심 메시지</h2>
               </div>
             </article>
@@ -804,10 +814,10 @@
               </div>
             </article>
 
-            <article class="case-card" data-youtube="-eQnOwGTk7o" role="button" tabindex="0" aria-label="엠디 영상 보기">
-              <img src="asset/portfolio/11_MD.png" alt="엠디 인서트 영상 성공사례">
+            <article class="case-card" data-youtube="-eQnOwGTk7o" role="button" tabindex="0" aria-label="MD팩터 영상 보기">
+              <img src="asset/portfolio/11_MD.png" alt="MD팩터 인서트 영상 성공사례">
               <div class="case-info">
-                <span class="case-name">엠디</span>
+                <span class="case-name">MD팩터</span>
                 <h2>차이를 보여준 완판 인서트</h2>
                 <p>제품 사용 전후의 차이를 직관적으로 보여주는 판매 구성</p>
               </div>
@@ -845,9 +855,11 @@
       <div class="wrap footer-inner">
         <address class="footer-addresses">
           <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
-          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>마이다스종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>사업자등록번호 :</strong> <span>117-81-38410</span></div>
+          <div><strong>대표자명 :</strong> <span>이하용</span></div>
         </address>
-        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+        <div class="footer-copy">© 2026 (주)마이다스커뮤니케이션. All rights reserved.</div>
       </div>
     </footer>
 
@@ -953,6 +965,12 @@
       }
     });
 
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-label", "메뉴 열기");
+    };
+
     menuToggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       document.body.classList.toggle("nav-open", open);
@@ -961,10 +979,14 @@
 
     nav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
-        nav.classList.remove("open");
-        document.body.classList.remove("nav-open");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("open")) return;
+      if (event.target.closest("#site-nav, #menu-toggle")) return;
+      closeMenu();
     });
   </script>
 </body>

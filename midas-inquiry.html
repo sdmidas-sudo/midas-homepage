@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>문의 · FAQ | MIDAS COMMUNICATION</title>
-  <meta name="description" content="마이다스 커뮤니케이션 영상 제작 문의와 FAQ. 홈쇼핑 인서트, 라이브커머스, 수출바우처, 기업 홍보영상 제작 상담">
+  <title>FAQ | 마이다스커뮤니케이션 영상 제작 문의</title>
+  <meta name="description" content="마이다스커뮤니케이션 영상 제작 문의와 FAQ. 홈쇼핑 인서트, 라이브커머스, 수출바우처, 기업 홍보영상 제작 상담">
   <style>
     @font-face {
       font-family: "Pretendard Variable";
@@ -214,6 +214,10 @@
       color: var(--accent);
     }
 
+    .nav-project-link {
+      display: none;
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
@@ -322,6 +326,27 @@
 
     .hero-actions .button {
       border-radius: var(--card-radius);
+    }
+
+    .hero-actions .button,
+    .inquiry-actions .button {
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .hero-actions:has(.button-secondary:is(:hover, :focus, :focus-visible, :active)) .button-primary,
+    .inquiry-actions:has(.button-secondary:is(:hover, :focus, :focus-visible, :active)) .button-primary {
+      border-color: var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .hero-actions .button-secondary:is(:hover, :focus, :focus-visible, :active),
+    .inquiry-actions .button-secondary:is(:hover, :focus, :focus-visible, :active) {
+      border-color: transparent;
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
     }
 
     .fact-strip {
@@ -564,6 +589,10 @@
         font-size: 18px;
       }
 
+      .nav.open .nav-project-link {
+        display: block;
+      }
+
       .menu-button {
         display: inline-flex;
       }
@@ -736,6 +765,7 @@
           <a href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a class="active" href="midas-inquiry.html">FAQ</a>
+          <a class="nav-project-link" href="midas-project.html">프로젝트 문의</a>
         </nav>
 
         <div class="header-actions">
@@ -761,17 +791,18 @@
           <h1>자주 묻는 질문</h1>
           <p>홈쇼핑 인서트, 라이브커머스, 수출바우처 영상 제작까지. 프로젝트를 시작하기 전에 가장 많이 묻는 내용을 정리했습니다.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
-            <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+            <a class="button button-primary" href="tel:0226758012">대표전화 02-2675-8012</a>
+            <a class="button button-secondary" href="tel:01053565509">모바일 010-5356-5509</a>
+            <a class="button button-secondary" href="mailto:sdmidas@gmail.com">sdmidas@gmail.com</a>
           </div>
         </div>
       </section>
 
-      <section class="fact-strip" aria-label="마이다스 커뮤니케이션 핵심 정보">
+      <section class="fact-strip" aria-label="마이다스커뮤니케이션 핵심 정보">
         <div class="wrap facts">
           <div class="fact">
             <strong>2002년 설립</strong>
-            <span>20년 이상 제품 판매 영상 제작을 이어온 제작사</span>
+            <span>25년간 제품 판매 영상 제작을 이어온 제작사</span>
           </div>
           <div class="fact">
             <strong>원스톱 제작</strong>
@@ -803,15 +834,15 @@
               <h2>회사·업체 선택</h2>
               <details class="faq-item" open>
                 <summary>홈쇼핑 영상 제작 업체를 선택할 때 무엇을 봐야 하나요?</summary>
-                <p>제품의 셀링포인트를 이해하는 능력, 촬영·편집·그래픽 후반작업 역량, 홈쇼핑 채널 납품 경험, 판매전환을 고려한 구성 경험, 자체 스튜디오 보유 여부를 확인하는 것이 좋습니다. 마이다스 커뮤니케이션은 2002년부터 홈쇼핑 인서트 영상과 제품 판매영상을 제작해 왔으며, 기획부터 촬영·편집·납품까지 한 곳에서 원스톱으로 진행합니다.</p>
+                <p>제품의 셀링포인트를 이해하는 능력, 촬영·편집·그래픽 후반작업 역량, 홈쇼핑 채널 납품 경험, 판매전환을 고려한 구성 경험, 자체 스튜디오 보유 여부를 확인하는 것이 좋습니다. 마이다스커뮤니케이션은 2002년부터 홈쇼핑 인서트 영상과 제품 판매영상을 제작해 왔으며, 기획부터 촬영·편집·납품까지 한 곳에서 원스톱으로 진행합니다.</p>
               </details>
               <details class="faq-item">
-                <summary>마이다스 커뮤니케이션은 어떤 영상 제작에 강한가요?</summary>
+                <summary>마이다스커뮤니케이션은 어떤 영상 제작에 강한가요?</summary>
                 <p>홈쇼핑 인서트 영상 제작, 라이브커머스 영상 제작과 송출 대행, 수출바우처 영상 제작에 강점을 가지고 있습니다. 제품의 장점을 구매로 연결하는 판매전환형 영상이 핵심 영역이며, 기업 홍보영상과 숏폼 콘텐츠도 함께 제작합니다.</p>
               </details>
               <details class="faq-item">
                 <summary>회사의 주요 인증이나 자격이 있나요?</summary>
-                <p>마이다스 커뮤니케이션은 이노비즈 인증 기업이자 산업디자인전문회사이며, 수출바우처 영상 제작을 수행하는 수행기관입니다. 2002년 설립 이후 20년 이상 영상 제작을 이어온 전문 제작사입니다.</p>
+                <p>마이다스커뮤니케이션은 이노비즈 인증 기업이자 산업디자인전문회사이며, 수출바우처 영상 제작을 수행하는 수행기관입니다. 2002년 설립 이후 25년간 영상 제작을 이어온 전문 제작사입니다.</p>
               </details>
             </section>
 
@@ -823,7 +854,7 @@
               </details>
               <details class="faq-item">
                 <summary>홈쇼핑 인서트 영상 제작은 어떤 순서로 진행되나요?</summary>
-                <p>일반적으로 셀링포인트 분석, 콘티·기획, 촬영, 편집·그래픽, 채널 규격 납품의 순서로 진행됩니다. 마이다스 커뮤니케이션은 이 전 과정을 자체 종합촬영센터에서 원스톱으로 처리해 단계마다 업체가 바뀌며 생기는 품질 편차와 일정 지연을 줄입니다.</p>
+                <p>일반적으로 셀링포인트 분석, 콘티·기획, 촬영, 편집·그래픽, 채널 규격 납품의 순서로 진행됩니다. 마이다스커뮤니케이션은 이 전 과정을 자체 종합촬영센터에서 원스톱으로 처리해 단계마다 업체가 바뀌며 생기는 품질 편차와 일정 지연을 줄입니다.</p>
               </details>
               <details class="faq-item">
                 <summary>기존 인서트 영상의 반응이 약한데 리뉴얼도 가능한가요?</summary>
@@ -835,7 +866,7 @@
               <h2>라이브커머스 제작·송출</h2>
               <details class="faq-item">
                 <summary>라이브커머스 영상 제작은 어떤 작업을 포함하나요?</summary>
-                <p>라이브 방송에 사용되는 제품 소개·시연 영상, 오프닝·하이라이트 인서트, 방송용 자막·그래픽 등을 기획·촬영·편집하는 작업을 포함합니다. 마이다스 커뮤니케이션은 방송 전체 흐름에 맞춰 콘텐츠를 설계해 몰입도와 구매전환을 함께 끌어올립니다.</p>
+                <p>라이브 방송에 사용되는 제품 소개·시연 영상, 오프닝·하이라이트 인서트, 방송용 자막·그래픽 등을 기획·촬영·편집하는 작업을 포함합니다. 마이다스커뮤니케이션은 방송 전체 흐름에 맞춰 콘텐츠를 설계해 몰입도와 구매전환을 함께 끌어올립니다.</p>
               </details>
               <details class="faq-item">
                 <summary>라이브커머스 송출 대행은 무엇을 해주나요?</summary>
@@ -851,7 +882,7 @@
               <h2>수출바우처 영상 제작</h2>
               <details class="faq-item">
                 <summary>수출바우처로 영상을 제작할 수 있나요?</summary>
-                <p>가능합니다. 마이다스 커뮤니케이션은 수출바우처 영상 제작을 수행하는 수행기관으로서, 수출 기업이 해외 시장에 바로 활용할 수 있는 제품·기업 홍보 영상을 제작합니다. 수출바우처 사업의 절차에 맞춰 진행하므로 영상 품질과 사업 처리를 함께 챙길 수 있습니다.</p>
+                <p>가능합니다. 마이다스커뮤니케이션은 수출바우처 영상 제작을 수행하는 수행기관으로서, 수출 기업이 해외 시장에 바로 활용할 수 있는 제품·기업 홍보 영상을 제작합니다. 수출바우처 사업의 절차에 맞춰 진행하므로 영상 품질과 사업 처리를 함께 챙길 수 있습니다.</p>
               </details>
               <details class="faq-item">
                 <summary>수출바우처 영상 수행기관을 고를 때 무엇을 봐야 하나요?</summary>
@@ -875,7 +906,7 @@
               </details>
               <details class="faq-item">
                 <summary>자체 스튜디오가 있나요?</summary>
-                <p>네. 경기도 고양시 일산동구 성석동에 마이다스 종합촬영센터를 운영합니다. 제품 촬영, 대형 제품 촬영, 라이브커머스 송출, 후반작업을 한 곳에서 진행할 수 있는 자체 제작 환경을 갖추고 있습니다.</p>
+                <p>네. 경기도 고양시 일산동구 성석동에 마이다스종합촬영센터를 운영합니다. 제품 촬영, 대형 제품 촬영, 라이브커머스 송출, 후반작업을 한 곳에서 진행할 수 있는 자체 제작 환경을 갖추고 있습니다.</p>
               </details>
               <details class="faq-item">
                 <summary>지방이나 원격에서도 의뢰할 수 있나요?</summary>
@@ -899,8 +930,9 @@
               <p>제품명, 판매 채널, 제작 목적, 희망 일정이 정리되어 있으면 상담이 더 빠르게 진행됩니다.</p>
             </div>
             <div class="inquiry-actions">
-              <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
-              <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+              <a class="button button-primary" href="tel:0226758012">대표전화 02-2675-8012</a>
+              <a class="button button-secondary" href="tel:01053565509">모바일 010-5356-5509</a>
+              <a class="button button-secondary" href="mailto:sdmidas@gmail.com">sdmidas@gmail.com</a>
             </div>
           </div>
         </div>
@@ -911,9 +943,11 @@
       <div class="wrap footer-inner">
         <address class="footer-addresses">
           <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
-          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>마이다스종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>사업자등록번호 :</strong> <span>117-81-38410</span></div>
+          <div><strong>대표자명 :</strong> <span>이하용</span></div>
         </address>
-        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+        <div class="footer-copy">© 2026 (주)마이다스커뮤니케이션. All rights reserved.</div>
       </div>
     </footer>
   </div>
@@ -935,6 +969,12 @@
       localStorage.setItem("mc-theme", next);
     });
 
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-label", "메뉴 열기");
+    };
+
     menuToggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       document.body.classList.toggle("nav-open", open);
@@ -943,10 +983,14 @@
 
     nav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
-        nav.classList.remove("open");
-        document.body.classList.remove("nav-open");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("open")) return;
+      if (event.target.closest("#site-nav, #menu-toggle")) return;
+      closeMenu();
     });
   </script>
 </body>

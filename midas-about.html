@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>회사소개 | 마이다스커뮤니케이션 - 홈쇼핑·라이브커머스·수출바우처 영상 제작</title>
-  <meta name="description" content="2002년 설립, 20년 이상 홈쇼핑 영상을 제작해 온 마이다스커뮤니케이션. 일산 성석동 마이다스종합촬영센터 기반으로 홈쇼핑 인서트·라이브커머스·수출바우처 영상을 원스톱 제작합니다.">
+  <meta name="description" content="2002년 설립, 25년간 홈쇼핑 영상을 제작해 온 마이다스커뮤니케이션. 일산 성석동 마이다스종합촬영센터 기반으로 홈쇼핑 인서트·라이브커머스·수출바우처 영상을 원스톱 제작합니다.">
   <style>
     @font-face {
       font-family: "Pretendard Variable";
@@ -220,6 +220,10 @@
       color: var(--accent);
     }
 
+    .nav-project-link {
+      display: none;
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
@@ -313,6 +317,11 @@
       line-height: 1.04;
       font-weight: 900;
       word-break: keep-all;
+    }
+
+    .hero h1 span {
+      display: block;
+      white-space: nowrap;
     }
 
     .hero .subhead {
@@ -756,6 +765,10 @@
         font-size: 18px;
       }
 
+      .nav.open .nav-project-link {
+        display: block;
+      }
+
       .menu-button {
         display: inline-flex;
       }
@@ -825,7 +838,17 @@
       }
 
       .hero h1 {
-        font-size: 44px;
+        font-size: clamp(20px, 5.8vw, 42px);
+      }
+
+      .hero h1 span {
+        display: block;
+        white-space: nowrap;
+      }
+
+      #identity .section-head h2 {
+        font-size: clamp(20px, 6vw, 38px);
+        white-space: nowrap;
       }
 
       .hero .subhead {
@@ -949,6 +972,7 @@
           <a href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a href="midas-inquiry.html">FAQ</a>
+          <a class="nav-project-link" href="midas-project.html">프로젝트 문의</a>
         </nav>
 
         <div class="header-actions">
@@ -972,15 +996,15 @@
         <div class="wrap hero-grid">
           <div>
             <div class="kicker">ABOUT MIDAS</div>
-            <h1>20년의 역사와 전통,<br>대한민국 종합 영상 시스템의 중심</h1>
-            <p class="intro-copy">마이다스커뮤니케이션은 2002년 설립 이후 20년 이상 홈쇼핑 영상을 제작해 온 종합 영상 제작사입니다. 서울 문래 디자인랩 센터와 일산의 대규모 자체 스튜디오 마이다스종합촬영센터를 기반으로 기획·촬영·편집·그래픽·후반작업·납품까지 원스톱으로 수행합니다.</p>
+            <h1><span>25년의 역사와 전통,</span><span>대한민국 종합 영상 시스템의 중심</span></h1>
+            <p class="intro-copy">마이다스커뮤니케이션은 2002년 설립 이후 25년간 홈쇼핑 영상을 제작해 온 종합 영상 제작사입니다. 서울 문래 디자인랩 센터와 일산의 대규모 자체 스튜디오 마이다스종합촬영센터를 기반으로 기획·촬영·편집·그래픽·후반작업·납품까지 원스톱으로 수행합니다.</p>
           </div>
           <div class="hero-photo" data-split-photo aria-label="서울 문래 디자인랩 센터와 마이다스종합촬영센터">
             <div class="split-panel seoul" aria-hidden="true">
-              <img src="asset/seoul.png" alt="">
+              <img src="asset/seoul.png" alt="서울 문래 디자인랩 사옥">
             </div>
             <div class="split-panel studio" aria-hidden="true">
-              <img src="asset/main09.jpg" alt="">
+              <img src="asset/main09.jpg" alt="일산 성석동 마이다스종합촬영센터">
             </div>
             <div class="split-label seoul-label" aria-hidden="true">서울 문래 디자인랩</div>
             <div class="split-label studio-label" aria-hidden="true">마이다스종합촬영센터</div>
@@ -1000,7 +1024,7 @@
 
           <div class="stats">
             <div class="stat">
-              <strong>20년 이상의 노하우</strong>
+              <strong>25년의 노하우</strong>
               <span>2002년 설립</span>
             </div>
             <div class="stat">
@@ -1154,9 +1178,11 @@
       <div class="wrap footer-inner">
         <address class="footer-addresses">
           <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
-          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>마이다스종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>사업자등록번호 :</strong> <span>117-81-38410</span></div>
+          <div><strong>대표자명 :</strong> <span>이하용</span></div>
         </address>
-        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+        <div class="footer-copy">© 2026 (주)마이다스커뮤니케이션. All rights reserved.</div>
       </div>
     </footer>
   </div>
@@ -1201,6 +1227,12 @@
       });
     }
 
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-label", "메뉴 열기");
+    };
+
     menuToggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       document.body.classList.toggle("nav-open", open);
@@ -1209,10 +1241,14 @@
 
     nav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
-        nav.classList.remove("open");
-        document.body.classList.remove("nav-open");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("open")) return;
+      if (event.target.closest("#site-nav, #menu-toggle")) return;
+      closeMenu();
     });
   </script>
 </body>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>프로젝트 문의 | MIDAS COMMUNICATION</title>
-  <meta name="description" content="마이다스 커뮤니케이션 영상 제작 견적 문의. 홈쇼핑 인서트, 바우처 영상, 라이브커머스 판매 방송 상담">
+  <title>프로젝트 문의 | 마이다스커뮤니케이션 영상 제작 상담</title>
+  <meta name="description" content="마이다스커뮤니케이션 영상 제작 견적 문의. 홈쇼핑 인서트, 바우처 영상, 라이브커머스 판매 방송 상담">
   <style>
     @font-face {
       font-family: "Pretendard Variable";
@@ -223,6 +223,10 @@
       color: var(--accent);
     }
 
+    .nav-project-link {
+      display: none;
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
@@ -415,7 +419,22 @@
 
     .direct-contact .button {
       width: 100%;
-      border-radius: var(--radius);
+      border-radius: var(--card-radius);
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .direct-contact:has(.button-secondary:is(:hover, :focus, :focus-visible, :active)) .button-primary {
+      border-color: var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .direct-contact .button-secondary:is(:hover, :focus, :focus-visible, :active) {
+      border-color: transparent;
+      background: var(--accent);
+      color: #06121c;
+      box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
     }
 
     .form-panel {
@@ -635,7 +654,7 @@
       min-height: 56px;
       padding: 0 30px;
       border: 0;
-      border-radius: var(--radius);
+      border-radius: var(--card-radius);
       background: var(--accent);
       color: #06121c;
       cursor: pointer;
@@ -708,6 +727,10 @@
         padding: 17px 0;
         border-bottom: 1px solid var(--line);
         font-size: 18px;
+      }
+
+      .nav.open .nav-project-link {
+        display: block;
       }
 
       .menu-button {
@@ -855,6 +878,7 @@
           <a href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a href="midas-inquiry.html">FAQ</a>
+          <a class="active nav-project-link" href="midas-project.html">프로젝트 문의</a>
         </nav>
 
         <div class="header-actions">
@@ -920,15 +944,16 @@
                   </svg>
                 </span>
                 <div>
-                  <strong>알림 메일</strong>
-                  <span>문의 내용은 담당 메일로 정리해 전달됩니다.</span>
+                  <strong>메일 문의</strong>
+                  <span>정식 호스팅 전까지 작성 내용은 메일 작성 화면으로 연결됩니다.</span>
                 </div>
               </div>
             </div>
 
             <div class="direct-contact">
-              <a class="button button-primary" href="tel:01053565509">010-5356-5509</a>
-              <a class="button button-secondary" href="mailto:8450d@hanmail.net">8450d@hanmail.net</a>
+              <a class="button button-primary" href="tel:0226758012">대표전화 02-2675-8012</a>
+              <a class="button button-secondary" href="tel:01053565509">모바일 010-5356-5509</a>
+              <a class="button button-secondary" href="mailto:sdmidas@gmail.com">sdmidas@gmail.com</a>
             </div>
           </aside>
 
@@ -1087,9 +1112,11 @@
       <div class="wrap footer-inner">
         <address class="footer-addresses">
           <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
-          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>마이다스종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>사업자등록번호 :</strong> <span>117-81-38410</span></div>
+          <div><strong>대표자명 :</strong> <span>이하용</span></div>
         </address>
-        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+        <div class="footer-copy">© 2026 (주)마이다스커뮤니케이션. All rights reserved.</div>
       </div>
     </footer>
   </div>
@@ -1143,8 +1170,14 @@
       const subject = encodeURIComponent(`[마이다스 견적 문의] ${projectName}`);
       const body = encodeURIComponent(lines.join("\n"));
       formStatus.classList.add("show");
-      window.location.href = `mailto:8450d@hanmail.net?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:sdmidas@gmail.com?subject=${subject}&body=${body}`;
     });
+
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-label", "메뉴 열기");
+    };
 
     menuToggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
@@ -1154,10 +1187,14 @@
 
     nav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
-        nav.classList.remove("open");
-        document.body.classList.remove("nav-open");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("open")) return;
+      if (event.target.closest("#site-nav, #menu-toggle")) return;
+      closeMenu();
     });
   </script>
 </body>

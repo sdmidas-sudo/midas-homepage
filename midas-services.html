@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>서비스 | 마이다스커뮤니케이션 - 홈쇼핑 인서트·바우처·라이브커머스 영상 제작</title>
-  <meta name="description" content="마이다스커뮤니케이션의 핵심 영상 제작 서비스. 홈쇼핑 인서트 영상, 수출·혁신바우처 영상, 라이브커머스 판매 방송을 기획부터 촬영·편집·송출·숏폼 재가공까지 원스톱으로 진행합니다.">
+  <title>서비스 | 마이다스커뮤니케이션 - 홈쇼핑 인서트·TVCF·라이브커머스·AI 영상 제작</title>
+  <meta name="description" content="마이다스커뮤니케이션의 핵심 영상 제작 서비스. 홈쇼핑 인서트, TVCF·브랜드 홍보, 수출·혁신바우처, 라이브커머스, AI 영상을 기획부터 촬영·편집·송출·숏폼 재가공까지 원스톱으로 진행합니다.">
   <style>
     @font-face {
       font-family: "Pretendard Variable";
@@ -216,6 +216,10 @@
       color: var(--accent);
     }
 
+    .nav-project-link {
+      display: none;
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
@@ -306,6 +310,11 @@
       line-height: 1.04;
       font-weight: 920;
       word-break: keep-all;
+    }
+
+    .service-hero h1 span {
+      display: block;
+      white-space: nowrap;
     }
 
     .service-hero p {
@@ -707,6 +716,10 @@
         border-bottom: 1px solid var(--line);
         font-size: 18px;
       }
+
+      .nav.open .nav-project-link {
+        display: block;
+      }
     }
 
     @media (max-width: 980px) {
@@ -788,7 +801,7 @@
       }
 
       .service-hero h1 {
-        font-size: 44px;
+        font-size: clamp(28px, 8vw, 44px);
       }
 
       .service-hero p,
@@ -895,6 +908,7 @@
           <a href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a href="midas-inquiry.html">FAQ</a>
+          <a class="nav-project-link" href="midas-project.html">프로젝트 문의</a>
         </nav>
 
         <div class="header-actions">
@@ -918,8 +932,8 @@
         <div class="wrap hero-grid">
           <div>
             <div class="kicker">SERVICES</div>
-            <h1>제품이 팔리는 영상을 만드는 세 가지 서비스</h1>
-            <p>마이다스커뮤니케이션은 홈쇼핑 인서트 영상, 수출·혁신바우처 영상, 라이브커머스 판매 방송을 세 축으로<br>기획부터 촬영·편집·송출·숏폼 재가공까지 원스톱으로 진행합니다. 제품의 셀링포인트를 분석하고,<br>채널 목적에 맞는 촬영 공간과 제작 방식을 빠르게 설계합니다.</p>
+            <h1><span>제품이 팔리는 영상을</span><span>만드는 다섯 가지 서비스</span></h1>
+            <p>마이다스커뮤니케이션은 홈쇼핑 인서트, TVCF, 수출·혁신바우처, 라이브커머스, AI 영상을<br>기획부터 촬영·편집·송출·숏폼 재가공까지 원스톱으로 진행합니다. 제품의 셀링포인트를 분석하고,<br>채널 목적에 맞는 촬영 공간과 제작 방식을 빠르게 설계합니다.</p>
           </div>
         </div>
       </section>
@@ -930,13 +944,21 @@
             <span>01</span>
             <strong>인서트 영상 제작</strong>
           </a>
-          <a class="index-card" href="#voucher">
+          <a class="index-card" href="#tvcf">
             <span>02</span>
+            <strong>TVCF·브랜드 홍보</strong>
+          </a>
+          <a class="index-card" href="#voucher">
+            <span>03</span>
             <strong>바우처 영상 제작</strong>
           </a>
           <a class="index-card" href="#live">
-            <span>03</span>
+            <span>04</span>
             <strong>라이브커머스 판매 방송</strong>
+          </a>
+          <a class="index-card" href="#ai">
+            <span>05</span>
+            <strong>AI 영상 제작</strong>
           </a>
         </div>
       </section>
@@ -976,7 +998,6 @@
               <span class="ref-chip">다이슨</span>
               <span class="ref-chip">로보락</span>
               <span class="ref-chip">MD팩터</span>
-              <span class="ref-chip">일렉트로룩스</span>
               <span class="ref-chip">뉴트리원</span>
               <span class="ref-chip">코웨이</span>
             </div>
@@ -989,14 +1010,53 @@
         </div>
       </section>
 
-      <section class="service-section alt" id="voucher">
+      <section class="service-section alt" id="tvcf">
+        <div class="wrap service-block">
+          <div class="service-media">
+            <video src="asset/service-tvcf.mp4" autoplay muted loop playsinline></video>
+            <div class="media-caption">브랜드의 첫인상을 명확하게 만드는 TVCF와 브랜드 홍보 영상</div>
+          </div>
+          <div class="service-copy">
+            <div class="service-number">02 TVCF & BRAND</div>
+            <h2>TVCF·브랜드 홍보</h2>
+            <p class="lead">브랜드 메시지를 광고 문법에 맞춰 압축하는 영상</p>
+            <p class="body">제품과 브랜드의 핵심 메시지를 짧은 시간 안에 전달할 수 있도록 콘셉트, 촬영, 편집, 그래픽을 설계합니다. TV 광고, 디지털 광고, 브랜드 홍보 채널에 맞춰 소재를 구성하고, 판매 영상 제작 경험을 바탕으로 인지도와 구매 전환을 함께 고려합니다.</p>
+
+            <div class="info-grid">
+              <div class="info-box">
+                <h3>제작 영역</h3>
+                <ul>
+                  <li>TVCF 제작</li>
+                  <li>브랜드 홍보영상 제작</li>
+                  <li>디지털 광고 영상 제작</li>
+                  <li>브랜드 캠페인 영상 제작</li>
+                </ul>
+              </div>
+              <div class="info-box">
+                <h3>특징</h3>
+                <ul>
+                  <li>브랜드 메시지와 판매 포인트를 함께 반영</li>
+                  <li>촬영부터 후반 그래픽까지 일관된 톤으로 제작</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="service-actions">
+              <a class="button button-primary" href="midas-project.html">TVCF·브랜드 홍보 문의하기</a>
+              <a class="button button-secondary" href="midas-portfolio.html">제작 사례 보기</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section" id="voucher">
         <div class="wrap service-block">
           <div class="service-media">
             <video src="asset/service-voucher.mp4" autoplay muted loop playsinline></video>
             <div class="media-caption">기업의 제품과 기술력을 사업 목적에 맞춰 설득력 있게 전달하는 바우처 영상</div>
           </div>
           <div class="service-copy">
-            <div class="service-number">02 VOUCHER VIDEO</div>
+            <div class="service-number">03 VOUCHER VIDEO</div>
             <h2>바우처 영상 제작</h2>
             <p class="lead">기업의 제품과 기술력을 효과적으로 보여주는 바우처 영상</p>
             <p class="body">단순 홍보영상 제작이 아니라, 기업의 제품과 기술력을 설득력 있게 전달하는 바우처 영상을 제작합니다. 수출바우처·혁신바우처 사업에 맞춰 진행하며, 기존 수행 레퍼런스를 바탕으로 기획부터 촬영·편집, 사업 절차와 납품까지 안정적으로 처리합니다.</p>
@@ -1030,14 +1090,14 @@
         </div>
       </section>
 
-      <section class="service-section" id="live">
+      <section class="service-section alt" id="live">
         <div class="wrap service-block">
           <div class="service-media">
             <video src="asset/service-mobile-live.mp4" autoplay muted loop playsinline></video>
             <div class="media-caption">기획, 큐시트, 촬영, 송출, 쇼호스트 운영까지 연결하는 라이브커머스 판매 방송</div>
           </div>
           <div class="service-copy">
-            <div class="service-number">03 LIVE COMMERCE</div>
+            <div class="service-number">04 LIVE COMMERCE</div>
             <h2>라이브커머스 판매 방송</h2>
             <p class="lead">기획부터 송출, 숏폼 재가공까지 원스톱 라이브커머스 판매 방송</p>
             <p class="body">단순 송출 대행이 아니라, 판매 방송의 기획과 큐시트 구성부터 촬영, 송출, 쇼호스트 운영, 방송 후 숏폼 재가공까지 한 번에 진행합니다. 대형 스튜디오와 안정적인 방송 환경을 갖춰, 침대·대형가전처럼 큰 제품도 라이브로 시연할 수 있습니다.</p>
@@ -1076,11 +1136,49 @@
         </div>
       </section>
 
+      <section class="service-section" id="ai">
+        <div class="wrap service-block">
+          <div class="service-media">
+            <video src="asset/service-ai.mp4" autoplay muted loop playsinline></video>
+            <div class="media-caption">기존 제작 공정에 생성형 AI를 결합해 더 빠르게 확장하는 AI 영상</div>
+          </div>
+          <div class="service-copy">
+            <div class="service-number">05 AI VIDEO</div>
+            <h2>AI 영상 제작</h2>
+            <p class="lead">제품 영상의 표현과 제작 속도를 확장하는 AI 영상</p>
+            <p class="body">제품 소개, 콘셉트 시각화, 숏폼 재가공 등 목적에 맞춰 생성형 AI 제작 방식을 활용합니다. 기존 촬영·편집 역량과 AI 기반 후반 작업을 결합해 새로운 표현이 필요한 프로젝트를 빠르게 실험하고 제작합니다.</p>
+
+            <div class="info-grid">
+              <div class="info-box">
+                <h3>제작 영역</h3>
+                <ul>
+                  <li>AI 기반 제품 영상 제작</li>
+                  <li>콘셉트 이미지·영상 시안 제작</li>
+                  <li>숏폼 콘텐츠 재가공</li>
+                  <li>후반 그래픽 보강</li>
+                </ul>
+              </div>
+              <div class="info-box">
+                <h3>특징</h3>
+                <ul>
+                  <li>촬영 기반 제작과 AI 제작 방식을 프로젝트별로 조합</li>
+                  <li>빠른 시안화와 다양한 콘셉트 테스트에 적합</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="service-actions">
+              <a class="button button-primary" href="midas-project.html">AI 영상 제작 문의하기</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="process-section" id="process">
         <div class="wrap process-card">
           <div>
             <div class="kicker">PRODUCTION FLOW</div>
-            <h2>바우처 영상 제작 절차</h2>
+            <h2>영상 제작 절차</h2>
           </div>
           <ol class="process-list">
             <li>상담</li>
@@ -1099,7 +1197,7 @@
           <div>
             <div class="kicker">PROJECT INQUIRY</div>
             <h2>어떤 서비스가 맞을지<br>함께 정리해드립니다.</h2>
-            <p>제품, 채널, 예산, 일정에 맞춰 인서트·바우처·라이브커머스 중 가장 적합한 제작 방식을 제안드립니다.</p>
+            <p>제품, 채널, 예산, 일정에 맞춰 인서트·TVCF·바우처·라이브커머스·AI 영상 중 가장 적합한 제작 방식을 제안드립니다.</p>
           </div>
           <a class="button button-primary" href="midas-project.html">프로젝트 문의하기</a>
         </div>
@@ -1110,9 +1208,11 @@
       <div class="wrap footer-inner">
         <address class="footer-addresses">
           <div><strong>문래 디자인랩 :</strong> <span>서울특별시 영등포구 선유로 85-3 마이다스 미디어타워</span></div>
-          <div><strong>마이다스 종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>마이다스종합촬영센터 :</strong> <span>경기도 고양시 일산동구 고봉로 578번길 9-26 (성석동)</span></div>
+          <div><strong>사업자등록번호 :</strong> <span>117-81-38410</span></div>
+          <div><strong>대표자명 :</strong> <span>이하용</span></div>
         </address>
-        <div class="footer-copy">© 2026 (주)마이다스 커뮤니케이션. All rights reserved.</div>
+        <div class="footer-copy">© 2026 (주)마이다스커뮤니케이션. All rights reserved.</div>
       </div>
     </footer>
   </div>
@@ -1134,6 +1234,12 @@
       localStorage.setItem("mc-theme", next);
     });
 
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-label", "메뉴 열기");
+    };
+
     menuToggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       document.body.classList.toggle("nav-open", open);
@@ -1142,10 +1248,14 @@
 
     nav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
-        nav.classList.remove("open");
-        document.body.classList.remove("nav-open");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("open")) return;
+      if (event.target.closest("#site-nav, #menu-toggle")) return;
+      closeMenu();
     });
   </script>
 </body>
