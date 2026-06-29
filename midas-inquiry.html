@@ -527,7 +527,7 @@
 
     .inquiry-box {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(520px, 1fr) minmax(320px, 0.9fr);
       gap: 32px;
       align-items: center;
       border: 1px solid var(--line);
@@ -538,10 +538,12 @@
     }
 
     .inquiry-box h2 {
+      max-width: 720px;
       color: var(--ink);
       font-size: 38px;
       line-height: 1.18;
       font-weight: 900;
+      word-break: keep-all;
     }
 
     .inquiry-box p {
@@ -553,13 +555,14 @@
     }
 
     .inquiry-actions {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      justify-content: stretch;
     }
 
     .inquiry-actions .button {
+      width: 100%;
       border-radius: var(--card-radius);
     }
 
@@ -627,6 +630,16 @@
       }
     }
 
+    @media (max-width: 1100px) {
+      .inquiry-box {
+        grid-template-columns: 1fr;
+      }
+
+      .inquiry-actions {
+        justify-content: stretch;
+      }
+    }
+
     @media (max-width: 920px) {
       .facts,
       .faq-layout,
@@ -640,7 +653,7 @@
       }
 
       .inquiry-actions {
-        justify-content: flex-start;
+        justify-content: stretch;
       }
     }
 
@@ -699,9 +712,12 @@
         font-size: 16px;
       }
 
-      .hero-actions,
-      .inquiry-actions {
+      .hero-actions {
         flex-direction: column;
+      }
+
+      .inquiry-actions {
+        grid-template-columns: 1fr;
       }
 
       .button {
@@ -847,9 +863,9 @@
         <div class="wrap faq-layout">
           <aside class="faq-nav" aria-label="FAQ 카테고리">
             <a href="#faq-company">회사·업체 선택</a>
-            <a href="#faq-home-shopping">홈쇼핑 인서트</a>
-            <a href="#faq-live">라이브커머스</a>
             <a href="#faq-voucher">수출바우처</a>
+            <a href="#faq-live">라이브커머스</a>
+            <a href="#faq-home-shopping">홈쇼핑 인서트</a>
             <a href="#faq-process">제작 진행·실무</a>
           </aside>
 
@@ -870,19 +886,19 @@
               </details>
             </section>
 
-            <section class="faq-group" id="faq-home-shopping">
-              <h2>홈쇼핑 인서트 영상 제작</h2>
+            <section class="faq-group" id="faq-voucher">
+              <h2>수출바우처 영상 제작</h2>
               <details class="faq-item">
-                <summary>홈쇼핑 인서트 영상이 무엇인가요?</summary>
-                <p>홈쇼핑 인서트 영상은 방송 중간에 삽입되어 제품의 장점을 짧은 시간에 각인시키고 구매를 끌어내는 영상입니다. 제품의 기능·사용 장면·차별점을 압축적으로 보여주기 때문에, 셀링포인트를 얼마나 정확히 영상으로 풀어내느냐가 구매전환을 좌우합니다.</p>
+                <summary>수출바우처로 영상을 제작할 수 있나요?</summary>
+                <p>가능합니다. 마이다스커뮤니케이션은 수출바우처 영상 제작을 수행하는 수행기관으로서, 수출 기업이 해외 시장에 바로 활용할 수 있는 제품·기업 홍보 영상을 제작합니다. 수출바우처 사업의 절차에 맞춰 진행하므로 영상 품질과 사업 처리를 함께 챙길 수 있습니다.</p>
               </details>
               <details class="faq-item">
-                <summary>홈쇼핑 인서트 영상 제작은 어떤 순서로 진행되나요?</summary>
-                <p>일반적으로 셀링포인트 분석, 콘티·기획, 촬영, 편집·그래픽, 채널 규격 납품의 순서로 진행됩니다. 마이다스커뮤니케이션은 이 전 과정을 자체 종합촬영센터에서 원스톱으로 처리해 단계마다 업체가 바뀌며 생기는 품질 편차와 일정 지연을 줄입니다.</p>
+                <summary>수출바우처 영상 수행기관을 고를 때 무엇을 봐야 하나요?</summary>
+                <p>영상 제작 역량은 물론, 수출바우처 사업의 절차와 정산 요건을 이해하고 진행할 수 있는지를 확인하는 것이 중요합니다. 사업 처리 경험이 없는 제작사와 진행하면 영상은 나와도 바우처 정산 단계에서 문제가 생길 수 있기 때문입니다.</p>
               </details>
               <details class="faq-item">
-                <summary>기존 인서트 영상의 반응이 약한데 리뉴얼도 가능한가요?</summary>
-                <p>가능합니다. 기존 영상의 구성과 소구점을 분석해 제품의 강점이 더 잘 드러나고 구매로 이어지도록 재구성합니다. 촬영 소스 재활용 여부와 전면 재촬영 여부는 상태를 보고 함께 정합니다.</p>
+                <summary>어떤 종류의 수출용 영상을 만들 수 있나요?</summary>
+                <p>해외 마케팅용 제품 소개 영상, 브랜드 필름, 해외 채널용 숏폼 등 수출 마케팅에 바로 쓸 수 있는 형태로 제작합니다. 제품의 강점을 해외 바이어와 소비자 관점에서 풀어내는 데 중점을 둡니다.</p>
               </details>
             </section>
 
@@ -902,19 +918,19 @@
               </details>
             </section>
 
-            <section class="faq-group" id="faq-voucher">
-              <h2>수출바우처 영상 제작</h2>
+            <section class="faq-group" id="faq-home-shopping">
+              <h2>홈쇼핑 인서트 영상 제작</h2>
               <details class="faq-item">
-                <summary>수출바우처로 영상을 제작할 수 있나요?</summary>
-                <p>가능합니다. 마이다스커뮤니케이션은 수출바우처 영상 제작을 수행하는 수행기관으로서, 수출 기업이 해외 시장에 바로 활용할 수 있는 제품·기업 홍보 영상을 제작합니다. 수출바우처 사업의 절차에 맞춰 진행하므로 영상 품질과 사업 처리를 함께 챙길 수 있습니다.</p>
+                <summary>홈쇼핑 인서트 영상이 무엇인가요?</summary>
+                <p>홈쇼핑 인서트 영상은 방송 중간에 삽입되어 제품의 장점을 짧은 시간에 각인시키고 구매를 끌어내는 영상입니다. 제품의 기능·사용 장면·차별점을 압축적으로 보여주기 때문에, 셀링포인트를 얼마나 정확히 영상으로 풀어내느냐가 구매전환을 좌우합니다.</p>
               </details>
               <details class="faq-item">
-                <summary>수출바우처 영상 수행기관을 고를 때 무엇을 봐야 하나요?</summary>
-                <p>영상 제작 역량은 물론, 수출바우처 사업의 절차와 정산 요건을 이해하고 진행할 수 있는지를 확인하는 것이 중요합니다. 사업 처리 경험이 없는 제작사와 진행하면 영상은 나와도 바우처 정산 단계에서 문제가 생길 수 있기 때문입니다.</p>
+                <summary>홈쇼핑 인서트 영상 제작은 어떤 순서로 진행되나요?</summary>
+                <p>일반적으로 셀링포인트 분석, 콘티·기획, 촬영, 편집·그래픽, 채널 규격 납품의 순서로 진행됩니다. 마이다스커뮤니케이션은 이 전 과정을 자체 종합촬영센터에서 원스톱으로 처리해 단계마다 업체가 바뀌며 생기는 품질 편차와 일정 지연을 줄입니다.</p>
               </details>
               <details class="faq-item">
-                <summary>어떤 종류의 수출용 영상을 만들 수 있나요?</summary>
-                <p>해외 마케팅용 제품 소개 영상, 브랜드 필름, 해외 채널용 숏폼 등 수출 마케팅에 바로 쓸 수 있는 형태로 제작합니다. 제품의 강점을 해외 바이어와 소비자 관점에서 풀어내는 데 중점을 둡니다.</p>
+                <summary>기존 인서트 영상의 반응이 약한데 리뉴얼도 가능한가요?</summary>
+                <p>가능합니다. 기존 영상의 구성과 소구점을 분석해 제품의 강점이 더 잘 드러나고 구매로 이어지도록 재구성합니다. 촬영 소스 재활용 여부와 전면 재촬영 여부는 상태를 보고 함께 정합니다.</p>
               </details>
             </section>
 
