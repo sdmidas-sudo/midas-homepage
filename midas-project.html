@@ -289,11 +289,28 @@
     }
 
     .youtube {
-      border-color: transparent;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      padding: 0;
+      border: 1px solid #ff0000;
       border-radius: 999px;
-      background: var(--danger);
+      background: #ff0000;
       color: #ffffff;
-      box-shadow: 0 14px 34px rgba(255, 29, 29, 0.2);
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.32);
+    }
+
+    .youtube svg {
+      width: 21px;
+      height: 21px;
+      flex: 0 0 auto;
+    }
+
+    .youtube:hover {
+      color: #ffffff;
+      background: #df0000;
+      border-color: #df0000;
     }
 
     .menu-button {
