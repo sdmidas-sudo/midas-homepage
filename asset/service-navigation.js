@@ -16,7 +16,7 @@
   panel.setAttribute("aria-label", "드롭다운 메뉴");
 
   Array.from(nav.children)
-    .filter((child) => child.classList.contains("nav-dropdown-only"))
+    .filter((child) => !child.classList.contains("nav-project-link"))
     .forEach((child) => {
       const clone = child.cloneNode(true);
       clone.classList.remove("nav-dropdown-only");
