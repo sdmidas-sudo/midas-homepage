@@ -238,25 +238,6 @@ p {
   color: var(--ink);
 }
 
-.site[data-theme="light"] .button-secondary,
-.site[data-theme="light"] .button-video {
-  border-color: #0a0e14;
-  background: #0a0e14;
-  color: #ffffff;
-  box-shadow: 0 14px 32px rgba(10, 14, 20, 0.18);
-  backdrop-filter: none;
-}
-
-.site[data-theme="light"] .button-secondary:hover,
-.site[data-theme="light"] .button-secondary:focus-visible,
-.site[data-theme="light"] .button-video:hover,
-.site[data-theme="light"] .button-video:focus-visible {
-  border-color: #111827;
-  background: #111827;
-  color: #ffffff;
-  outline: 0;
-}
-
 .button-video {
   gap: 9px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -277,6 +258,24 @@ p {
   width: 18px;
   height: 18px;
   flex: 0 0 auto;
+}
+
+.site[data-theme="light"] .detail-hero .button-secondary,
+.site[data-theme="light"] .detail-hero .button-video {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.site[data-theme="light"] .detail-hero .button-secondary:hover,
+.site[data-theme="light"] .detail-hero .button-secondary:focus-visible,
+.site[data-theme="light"] .detail-hero .button-video:hover,
+.site[data-theme="light"] .detail-hero .button-video:focus-visible {
+  border-color: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.22);
+  outline: 0;
 }
 
 .site-header .button-primary {
