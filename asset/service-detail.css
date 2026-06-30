@@ -1122,6 +1122,11 @@ body.video-modal-open {
   scroll-margin-top: var(--header-h);
 }
 
+.voucher-section strong {
+  color: var(--accent);
+  font-weight: 900;
+}
+
 .voucher-stack {
   display: grid;
   gap: 22px;
