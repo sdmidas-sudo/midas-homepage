@@ -29,7 +29,9 @@
   const setPanelOpen = (open) => {
     panel.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
-    nav.classList.remove("open");
+    if (nav.classList.contains("open")) {
+      nav.classList.remove("open");
+    }
     menuToggle?.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
     menuToggle?.setAttribute("aria-expanded", String(open));
   };
@@ -52,7 +54,9 @@
 
   const syncMenuState = () => {
     const open = isMobileMenuOpen();
-    nav.classList.remove("open");
+    if (nav.classList.contains("open")) {
+      nav.classList.remove("open");
+    }
     if (menuToggle) {
       menuToggle.setAttribute("aria-expanded", String(open));
     }
