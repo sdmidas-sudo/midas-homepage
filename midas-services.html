@@ -1191,31 +1191,31 @@
       <section class="service-index" aria-label="서비스 바로가기">
         <div class="wrap index-grid">
           <a class="index-card" href="midas-service-voucher.html" aria-label="수출•혁신바우처 영상 상세 페이지로 이동">
-            <video class="index-video" muted loop playsinline preload="none" data-src="asset/service-voucher.mp4"></video>
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-voucher.mp4"></video>
             <span>01</span>
             <strong>수출•혁신바우처 영상</strong>
             <p class="index-card-caption">수출·혁신바우처 목적에 맞춘 제품·기업 홍보 영상</p>
           </a>
           <a class="index-card" href="midas-service-live-commerce.html" aria-label="라이브커머스 판매 방송 상세 페이지로 이동">
-            <video class="index-video" muted loop playsinline preload="none" data-src="asset/service-mobile-live.mp4"></video>
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-mobile-live.mp4"></video>
             <span>02</span>
             <strong>라이브커머스 판매 방송</strong>
             <p class="index-card-caption">기획, 큐시트, 촬영, 송출까지 연결하는 판매 방송</p>
           </a>
           <a class="index-card" href="midas-service-home-shopping.html" aria-label="홈쇼핑 인서트 상세 페이지로 이동">
-            <video class="index-video" muted loop playsinline preload="none" data-src="asset/insert.mp4"></video>
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/insert.mp4"></video>
             <span>03</span>
             <strong>홈쇼핑 인서트</strong>
             <p class="index-card-caption">제품의 셀링포인트를 구매로 연결하는 인서트 영상</p>
           </a>
           <a class="index-card" href="midas-service-ai.html" aria-label="AI 영상 상세 페이지로 이동">
-            <video class="index-video" muted loop playsinline preload="none" data-src="asset/service-ai.mp4"></video>
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-ai.mp4"></video>
             <span>04</span>
             <strong>AI 영상</strong>
             <p class="index-card-caption">표현과 제작 속도를 확장하는 생성형 AI 영상</p>
           </a>
           <a class="index-card" href="midas-service-tvcf.html" aria-label="TVCF·브랜드 홍보 상세 페이지로 이동">
-            <video class="index-video" muted loop playsinline preload="none" data-src="asset/service-tvcf.mp4"></video>
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-tvcf.mp4"></video>
             <span>05</span>
             <strong>TVCF·브랜드 홍보</strong>
             <p class="index-card-caption">브랜드 메시지를 광고 문법에 맞춰 압축하는 영상</p>
@@ -1499,17 +1499,9 @@
       localStorage.setItem("mc-theme", next);
     });
 
-    const ensureIndexCardVideoSource = (video) => {
-      const source = video.dataset.src;
-      if (!source || video.getAttribute("src")) return;
-      video.setAttribute("src", source);
-      video.load();
-    };
-
     const playIndexCardVideo = (card) => {
       const video = card.querySelector(".index-video");
       if (!video) return;
-      ensureIndexCardVideoSource(video);
       try {
         video.currentTime = 0;
       } catch (error) {}
