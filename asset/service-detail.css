@@ -1482,10 +1482,11 @@ body.video-modal-open {
 .studio-metric strong {
   display: block;
   color: var(--ink);
-  font-size: clamp(27px, 3.1vw, 42px);
+  font-size: clamp(25px, 2.8vw, 40px);
   line-height: 1.06;
   font-weight: 920;
   word-break: keep-all;
+  white-space: nowrap;
 }
 
 .studio-metric span {
@@ -1595,6 +1596,10 @@ body.video-modal-open {
 .studio-space-media:not(.double):not(.triple) img,
 .studio-space-media.video video {
   aspect-ratio: 16 / 10;
+}
+
+.studio-image-wall-shot {
+  object-position: 60% center;
 }
 
 .studio-space-copy {
@@ -1800,11 +1805,15 @@ body.video-modal-open {
 }
 
 .studio-showreel-video {
-  aspect-ratio: 16 / 9;
+  width: min(100%, 390px);
+  height: auto;
+  aspect-ratio: 9 / 16;
+  justify-self: center;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #000000;
+  object-fit: cover;
 }
 
 .studio-cta-box p {
