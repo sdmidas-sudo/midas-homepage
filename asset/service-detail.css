@@ -1334,8 +1334,11 @@ body.video-modal-open {
 }
 
 .voucher-platform-shot img {
-  aspect-ratio: 4 / 3;
-  object-position: top;
+  aspect-ratio: auto;
+  height: auto;
+  background: #ffffff;
+  object-fit: contain;
+  object-position: center;
 }
 
 .voucher-badge-row {
@@ -1345,8 +1348,7 @@ body.video-modal-open {
   margin-top: 22px;
 }
 
-.voucher-badge-row span,
-.voucher-contact {
+.voucher-badge-row span {
   display: inline-flex;
   align-items: center;
   min-height: 38px;
@@ -1427,11 +1429,6 @@ body.video-modal-open {
 
 .voucher-faq-list details p {
   padding: 0 22px 20px;
-}
-
-.voucher-contact {
-  width: fit-content;
-  margin-top: 18px;
 }
 
 .related-services {
