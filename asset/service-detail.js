@@ -28,18 +28,29 @@
     const nextSrc = trigger?.dataset.videoSrc;
     const nextTitle = trigger?.dataset.videoTitle;
     const nextEyebrow = trigger?.dataset.videoEyebrow;
+    const isMinimal = trigger?.dataset.videoMinimal === "true";
+    const accessibleLabel = trigger?.dataset.videoLabel || nextTitle || "영상";
 
     if (video && nextSrc && !video.currentSrc.endsWith(nextSrc)) {
       video.pause();
       video.src = nextSrc;
       video.load();
     }
-    if (videoTitle && nextTitle) {
-      videoTitle.textContent = nextTitle;
+    videoModal.classList.toggle("video-modal-minimal", isMinimal);
+    if (isMinimal) {
+      videoModal.removeAttribute("aria-labelledby");
+      videoModal.setAttribute("aria-label", accessibleLabel);
+    } else {
+      videoModal.setAttribute("aria-labelledby", "live-short-title");
+      videoModal.removeAttribute("aria-label");
+    }
+    if (videoTitle) {
+      videoTitle.textContent = nextTitle || accessibleLabel;
+      videoTitle.hidden = isMinimal;
     }
     if (videoEyebrow) {
       videoEyebrow.textContent = nextEyebrow || "";
-      videoEyebrow.hidden = !nextEyebrow;
+      videoEyebrow.hidden = isMinimal || !nextEyebrow;
     }
 
     videoModal.hidden = false;
@@ -57,6 +68,9 @@
       video.currentTime = 0;
     }
     videoModal.hidden = true;
+    videoModal.classList.remove("video-modal-minimal");
+    videoModal.setAttribute("aria-labelledby", "live-short-title");
+    videoModal.removeAttribute("aria-label");
     document.body.classList.remove("video-modal-open");
     activeVideoTrigger?.focus();
     activeVideoTrigger = null;
