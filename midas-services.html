@@ -6,6 +6,7 @@
   <title>서비스 | 마이다스커뮤니케이션 - 바우처·라이브커머스·홈쇼핑 인서트 영상 제작</title>
   <meta name="description" content="마이다스커뮤니케이션의 핵심 영상 제작 서비스. 수출·혁신바우처, 라이브커머스, 홈쇼핑 인서트, AI 영상, TVCF·브랜드 홍보를 기획부터 촬영·편집·송출·숏폼 재가공까지 원스톱으로 진행합니다.">
   <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.midasonair.co.kr/midas-services.html">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,7 +74,7 @@
         "@type": "Service",
         "name": "바우처 영상",
         "serviceType": "수출바우처·혁신바우처 영상 제작",
-        "url": "https://www.midasonair.co.kr/midas-services.html#voucher",
+        "url": "https://www.midasonair.co.kr/midas-service-voucher.html",
         "description": "수출·혁신바우처 목적에 맞춰 해외 진출과 판로 확대를 위한 기업·제품 영상을 기획·제작합니다.",
         "provider": { "@id": "https://www.midasonair.co.kr/#organization" },
         "areaServed": { "@type": "Country", "name": "대한민국" }
@@ -82,7 +83,7 @@
         "@type": "Service",
         "name": "라이브커머스 판매 방송",
         "serviceType": "라이브커머스 영상 제작 및 송출",
-        "url": "https://www.midasonair.co.kr/midas-services.html#live",
+        "url": "https://www.midasonair.co.kr/midas-service-live-commerce.html",
         "description": "실시간 판매를 이끄는 라이브커머스 방송의 기획·연출·촬영·송출과 숏폼 재가공을 원스톱으로 진행합니다.",
         "provider": { "@id": "https://www.midasonair.co.kr/#organization" },
         "areaServed": { "@type": "Country", "name": "대한민국" }
@@ -91,7 +92,7 @@
         "@type": "Service",
         "name": "홈쇼핑 인서트",
         "serviceType": "홈쇼핑 인서트 영상 제작",
-        "url": "https://www.midasonair.co.kr/midas-services.html#insert",
+        "url": "https://www.midasonair.co.kr/midas-service-home-shopping.html",
         "description": "방송용 인서트 영상으로 제품의 셀링포인트를 짧고 강렬하게 보여주는 구매 전환형 영상을 제작합니다.",
         "provider": { "@id": "https://www.midasonair.co.kr/#organization" },
         "areaServed": { "@type": "Country", "name": "대한민국" }
@@ -100,7 +101,7 @@
         "@type": "Service",
         "name": "AI 영상",
         "serviceType": "생성형 AI 영상 제작",
-        "url": "https://www.midasonair.co.kr/midas-services.html#ai",
+        "url": "https://www.midasonair.co.kr/midas-service-ai.html",
         "description": "생성형 AI 기반 제작과 후반 작업으로 더 빠르고 새로운 형태의 영상 콘텐츠를 제작합니다.",
         "provider": { "@id": "https://www.midasonair.co.kr/#organization" },
         "areaServed": { "@type": "Country", "name": "대한민국" }
@@ -109,7 +110,7 @@
         "@type": "Service",
         "name": "TVCF·브랜드 홍보",
         "serviceType": "TVCF·브랜드 홍보 영상 제작",
-        "url": "https://www.midasonair.co.kr/midas-services.html#tvcf",
+        "url": "https://www.midasonair.co.kr/midas-service-tvcf.html",
         "description": "TVCF와 브랜드 홍보 영상을 하나의 흐름으로 기획하고 제작합니다.",
         "provider": { "@id": "https://www.midasonair.co.kr/#organization" },
         "areaServed": { "@type": "Country", "name": "대한민국" }
@@ -1114,6 +1115,8 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="asset/service-navigation.css">
+  <script src="asset/service-navigation.js" defer></script>
 </head>
 <body>
   <div class="site" id="site" data-theme="dark">
@@ -1141,7 +1144,17 @@
 
         <nav class="nav" id="site-nav" aria-label="주요 메뉴">
           <a href="midas-about.html">회사소개</a>
-          <a class="active" href="midas-services.html">서비스</a>
+          <div class="nav-service active">
+            <a class="nav-service-link active" href="midas-services.html" aria-haspopup="true" aria-expanded="false">서비스</a>
+            <div class="service-dropdown" aria-label="서비스 하위 메뉴">
+            <a class="service-dropdown-all" href="midas-services.html">전체 서비스 보기</a>
+            <a href="midas-service-home-shopping.html">홈쇼핑 인서트 영상</a>
+            <a href="midas-service-live-commerce.html">라이브커머스 제작·송출</a>
+            <a href="midas-service-voucher.html">수출·혁신바우처 홍보영상</a>
+            <a href="midas-service-tvcf.html">TVCF·브랜드 홍보영상</a>
+            <a href="midas-service-ai.html">AI 영상·숏폼 재가공</a>
+            </div>
+          </div>
           <a href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a href="midas-inquiry.html">FAQ</a>
@@ -1177,31 +1190,31 @@
 
       <section class="service-index" aria-label="서비스 바로가기">
         <div class="wrap index-grid">
-          <a class="index-card" href="#voucher" aria-label="바우처 영상 설명으로 이동">
+          <a class="index-card" href="midas-service-voucher.html" aria-label="수출·혁신바우처 홍보영상 상세 페이지로 이동">
             <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-voucher.mp4"></video>
             <span>01</span>
             <strong>바우처 영상</strong>
             <p class="index-card-caption">수출·혁신바우처 목적에 맞춘 제품·기업 홍보 영상</p>
           </a>
-          <a class="index-card" href="#live" aria-label="라이브커머스 판매 방송 설명으로 이동">
+          <a class="index-card" href="midas-service-live-commerce.html" aria-label="라이브커머스 제작·송출 상세 페이지로 이동">
             <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-mobile-live.mp4"></video>
             <span>02</span>
             <strong>라이브커머스 판매 방송</strong>
             <p class="index-card-caption">기획, 큐시트, 촬영, 송출까지 연결하는 판매 방송</p>
           </a>
-          <a class="index-card" href="#insert" aria-label="홈쇼핑 인서트 설명으로 이동">
+          <a class="index-card" href="midas-service-home-shopping.html" aria-label="홈쇼핑 인서트 영상 상세 페이지로 이동">
             <video class="index-video" muted loop playsinline preload="metadata" src="asset/insert.mp4"></video>
             <span>03</span>
             <strong>홈쇼핑 인서트</strong>
             <p class="index-card-caption">제품의 셀링포인트를 구매로 연결하는 인서트 영상</p>
           </a>
-          <a class="index-card" href="#ai" aria-label="AI 영상 설명으로 이동">
+          <a class="index-card" href="midas-service-ai.html" aria-label="AI 영상·숏폼 재가공 상세 페이지로 이동">
             <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-ai.mp4"></video>
             <span>04</span>
             <strong>AI 영상</strong>
             <p class="index-card-caption">표현과 제작 속도를 확장하는 생성형 AI 영상</p>
           </a>
-          <a class="index-card" href="#tvcf" aria-label="TVCF·브랜드 홍보 설명으로 이동">
+          <a class="index-card" href="midas-service-tvcf.html" aria-label="TVCF·브랜드 홍보영상 상세 페이지로 이동">
             <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-tvcf.mp4"></video>
             <span>05</span>
             <strong>TVCF·브랜드 홍보</strong>
@@ -1245,7 +1258,7 @@
 
             <div class="service-actions">
               <a class="button button-primary" href="midas-project.html">바우처 영상 상담하기</a>
-              <a class="button button-secondary" href="#process">절차 보기</a>
+              <a class="button button-secondary" href="midas-service-voucher.html">자세히 보기</a>
             </div>
           </div>
         </div>
@@ -1292,6 +1305,7 @@
 
             <div class="service-actions">
               <a class="button button-primary" href="midas-project.html">라이브커머스 판매 방송 문의하기</a>
+              <a class="button button-secondary" href="midas-service-live-commerce.html">자세히 보기</a>
             </div>
           </div>
         </div>
@@ -1338,7 +1352,7 @@
 
             <div class="service-actions">
               <a class="button button-primary" href="midas-project.html">홈쇼핑 인서트 문의하기</a>
-              <a class="button button-secondary" href="midas-portfolio.html">사례 보기</a>
+              <a class="button button-secondary" href="midas-service-home-shopping.html">자세히 보기</a>
             </div>
           </div>
         </div>
@@ -1377,6 +1391,7 @@
 
             <div class="service-actions">
               <a class="button button-primary" href="midas-project.html">AI 영상 문의하기</a>
+              <a class="button button-secondary" href="midas-service-ai.html">자세히 보기</a>
             </div>
           </div>
         </div>
@@ -1415,7 +1430,7 @@
 
             <div class="service-actions">
               <a class="button button-primary" href="midas-project.html">TVCF·브랜드 홍보 문의하기</a>
-              <a class="button button-secondary" href="midas-portfolio.html">사례 보기</a>
+              <a class="button button-secondary" href="midas-service-tvcf.html">자세히 보기</a>
             </div>
           </div>
         </div>

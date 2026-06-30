@@ -1,0 +1,155 @@
+.nav-service {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-service-link::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.nav-service:hover .nav-service-link::after,
+.nav-service:focus-within .nav-service-link::after,
+.nav-service.is-open .nav-service-link::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
+.service-dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  z-index: 40;
+  width: 288px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(16, 19, 26, 0.96);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -8px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.site[data-theme="light"] .service-dropdown,
+[data-theme="light"] .service-dropdown {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.service-dropdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -18px;
+  height: 18px;
+}
+
+.nav-service:hover .service-dropdown,
+.nav-service:focus-within .service-dropdown,
+.nav-service.is-open .service-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.service-dropdown a {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.service-dropdown a:hover,
+.service-dropdown a:focus-visible {
+  background: rgba(63, 182, 255, 0.13);
+  color: var(--accent);
+  outline: 0;
+}
+
+.service-dropdown .service-dropdown-all {
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 8px 8px 4px 4px;
+  color: var(--ink);
+}
+
+@media (max-width: 1220px) {
+  .nav.open .nav-service {
+    display: block;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav.open .nav-service-link {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 17px 0;
+    border-bottom: 0;
+    font-size: 18px;
+  }
+
+  .nav.open .service-dropdown {
+    position: static;
+    display: none;
+    width: 100%;
+    padding: 0 0 12px 14px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: none;
+  }
+
+  .nav.open .service-dropdown::before {
+    display: none;
+  }
+
+  .nav.open .nav-service.mobile-open .service-dropdown {
+    display: grid;
+    gap: 2px;
+  }
+
+  .nav.open .service-dropdown a {
+    min-height: auto;
+    padding: 12px 0 12px 16px;
+    border-bottom: 0;
+    border-left: 1px solid var(--line);
+    border-radius: 0;
+    font-size: 15.5px;
+    line-height: 1.45;
+  }
+
+  .nav.open .service-dropdown .service-dropdown-all {
+    margin-bottom: 0;
+    border-bottom: 0;
+    color: var(--accent);
+  }
+}

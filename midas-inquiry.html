@@ -943,6 +943,8 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="asset/service-navigation.css">
+  <script src="asset/service-navigation.js" defer></script>
 </head>
 <body>
   <div class="site" id="site" data-theme="dark">
@@ -970,7 +972,17 @@
 
         <nav class="nav" id="site-nav" aria-label="주요 메뉴">
           <a href="midas-about.html">회사소개</a>
-          <a href="midas-services.html">서비스</a>
+          <div class="nav-service">
+            <a class="nav-service-link" href="midas-services.html" aria-haspopup="true" aria-expanded="false">서비스</a>
+            <div class="service-dropdown" aria-label="서비스 하위 메뉴">
+            <a class="service-dropdown-all" href="midas-services.html">전체 서비스 보기</a>
+            <a href="midas-service-home-shopping.html">홈쇼핑 인서트 영상</a>
+            <a href="midas-service-live-commerce.html">라이브커머스 제작·송출</a>
+            <a href="midas-service-voucher.html">수출·혁신바우처 홍보영상</a>
+            <a href="midas-service-tvcf.html">TVCF·브랜드 홍보영상</a>
+            <a href="midas-service-ai.html">AI 영상·숏폼 재가공</a>
+            </div>
+          </div>
           <a href="midas-portfolio.html">성공사례</a>
           <a href="midas-communication.html#studio">마이다스종합촬영센터</a>
           <a class="active" href="midas-inquiry.html">FAQ</a>
