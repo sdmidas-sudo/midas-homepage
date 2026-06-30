@@ -1077,26 +1077,69 @@ body.video-modal-open {
   margin-top: 32px;
 }
 
-.related-services a {
-  min-height: 92px;
-  padding: 18px;
+.related-service-card {
+  position: relative;
+  min-height: 156px;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
-  color: var(--ink-soft);
+  color: #ffffff;
   text-decoration: none;
-  font-size: 15px;
-  line-height: 1.35;
-  font-weight: 850;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.related-service-card video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+.related-service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 13, 0.72);
+  transition: background 180ms ease;
+}
+
+.related-service-card span {
+  position: relative;
+  z-index: 1;
+  max-width: 86%;
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(18px, 1.8vw, 25px);
+  line-height: 1.2;
+  font-weight: 920;
   word-break: keep-all;
 }
 
-.related-services a:hover,
-.related-services a:focus-visible,
-.related-services a.active {
+.related-service-card:hover,
+.related-service-card:focus-visible,
+.related-service-card.active {
   border-color: var(--accent);
-  color: var(--accent);
   outline: 0;
+}
+
+.related-service-card:hover video,
+.related-service-card:focus-visible video,
+.related-service-card.is-playing video {
+  opacity: 0.72;
+  transform: scale(1);
+}
+
+.related-service-card:hover::after,
+.related-service-card:focus-visible::after,
+.related-service-card.is-playing::after {
+  background: rgba(5, 8, 13, 0.42);
 }
 
 .cta-panel {

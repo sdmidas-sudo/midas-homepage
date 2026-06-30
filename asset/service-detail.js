@@ -15,14 +15,33 @@
 
   const videoModal = document.getElementById("live-short-modal");
   const video = document.getElementById("live-short-video");
+  const videoTitle = document.getElementById("live-short-title");
+  const videoEyebrow = document.getElementById("live-short-eyebrow");
   const videoOpenButtons = document.querySelectorAll("[data-video-open='live-short']");
   const videoCloseButtons = videoModal?.querySelectorAll("[data-video-close]");
   let activeVideoTrigger = null;
 
-  const openVideoModal = () => {
+  const openVideoModal = (trigger) => {
     if (!videoModal) return;
 
     activeVideoTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const nextSrc = trigger?.dataset.videoSrc;
+    const nextTitle = trigger?.dataset.videoTitle;
+    const nextEyebrow = trigger?.dataset.videoEyebrow;
+
+    if (video && nextSrc && !video.currentSrc.endsWith(nextSrc)) {
+      video.pause();
+      video.src = nextSrc;
+      video.load();
+    }
+    if (videoTitle && nextTitle) {
+      videoTitle.textContent = nextTitle;
+    }
+    if (videoEyebrow) {
+      videoEyebrow.textContent = nextEyebrow || "";
+      videoEyebrow.hidden = !nextEyebrow;
+    }
+
     videoModal.hidden = false;
     document.body.classList.add("video-modal-open");
     videoModal.querySelector(".video-modal-close")?.focus();
@@ -44,7 +63,7 @@
   };
 
   videoOpenButtons.forEach((button) => {
-    button.addEventListener("click", openVideoModal);
+    button.addEventListener("click", () => openVideoModal(button));
   });
 
   videoCloseButtons?.forEach((button) => {
@@ -55,5 +74,52 @@
     if (event.key === "Escape") {
       closeVideoModal();
     }
+  });
+
+  const relatedCards = document.querySelectorAll(".related-service-card");
+
+  relatedCards.forEach((card) => {
+    const cardVideo = card.querySelector("video");
+    if (!cardVideo) return;
+
+    const playCardVideo = () => {
+      relatedCards.forEach((otherCard) => {
+        if (otherCard !== card) {
+          const otherVideo = otherCard.querySelector("video");
+          otherCard.classList.remove("is-playing");
+          otherVideo?.pause();
+        }
+      });
+      card.classList.add("is-playing");
+      cardVideo.currentTime = 0;
+      cardVideo.play().catch(() => {});
+    };
+
+    const stopCardVideo = () => {
+      card.classList.remove("is-playing");
+      cardVideo.pause();
+      cardVideo.currentTime = 0;
+    };
+
+    const canHover = () => window.matchMedia("(hover: hover)").matches;
+
+    card.addEventListener("pointerenter", () => {
+      if (canHover()) {
+        playCardVideo();
+      }
+    });
+    card.addEventListener("focus", playCardVideo);
+    card.addEventListener("click", (event) => {
+      if (!canHover() && !card.classList.contains("is-playing")) {
+        event.preventDefault();
+        playCardVideo();
+      }
+    });
+    card.addEventListener("pointerleave", () => {
+      if (canHover()) {
+        stopCardVideo();
+      }
+    });
+    card.addEventListener("blur", stopCardVideo);
   });
 })();

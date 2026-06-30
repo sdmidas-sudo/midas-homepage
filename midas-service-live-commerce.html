@@ -138,11 +138,11 @@
           <div class="hero-actions">
             <a class="button button-primary" href="midas-project.html">라이브커머스 문의하기</a>
             <a class="button button-secondary" href="midas-communication.html#studio">촬영센터 둘러보기</a>
-            <button class="button button-video" type="button" data-video-open="live-short">
+            <button class="button button-video" type="button" data-video-open="live-short" data-video-src="asset/live-short.mp4" data-video-title="마이다스와 함께하세요" data-video-eyebrow="">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M9 7.6v8.8c0 .8.88 1.28 1.55.84l6.7-4.4a1 1 0 0 0 0-1.68l-6.7-4.4A1 1 0 0 0 9 7.6Z"></path>
               </svg>
-              숏폼 영상 보기
+              홍보 영상 보기
             </button>
           </div>
         </div>
@@ -153,8 +153,8 @@
         <div class="video-modal-panel" role="document">
           <div class="video-modal-header">
             <div>
-              <p class="video-modal-eyebrow">AFTER LIVE · SHORT FORM</p>
-              <h2 id="live-short-title">라이브커머스 숏폼 샘플</h2>
+              <p class="video-modal-eyebrow" id="live-short-eyebrow" hidden></p>
+              <h2 id="live-short-title">마이다스와 함께하세요</h2>
             </div>
             <button class="video-modal-close" type="button" data-video-close aria-label="영상 닫기">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
@@ -247,7 +247,7 @@
                 <figcaption>전문 송출 시스템</figcaption>
               </figure>
               <figure>
-                <video src="asset/live-commerce-studio-scene.mp4" controls playsinline preload="metadata"></video>
+                <video src="asset/live-commerce-studio-scene.mp4" autoplay muted loop playsinline preload="metadata"></video>
                 <figcaption>라이브 스튜디오 현장</figcaption>
               </figure>
             </div>
@@ -266,7 +266,6 @@
           <div class="feature-stack">
             <article class="feature-block">
               <div class="feature-copy">
-                <span>5-1</span>
                 <h3>방송국급 송출 시스템</h3>
                 <p>노트북 한 대로 송출하는 제작사가 아닙니다. 제대로 된 방송 송출 시스템과 장비로 홈쇼핑 본방송 수준의 안정성을 구현합니다.</p>
                 <ul class="feature-list">
@@ -283,7 +282,6 @@
 
             <article class="feature-block reverse">
               <div class="feature-copy">
-                <span>5-2</span>
                 <h3>XR · LED WALL</h3>
                 <p>11m 대형 LED WALL과 리얼타임 그래픽으로, 실제 촬영이 불가능한 배경을 라이브 무대 위에 구현합니다.</p>
                 <ul class="feature-list">
@@ -301,7 +299,6 @@
 
             <article class="feature-block">
               <div class="feature-copy">
-                <span>5-3</span>
                 <h3>지미집 크레인 자체 운용</h3>
                 <p>고정 캠 두세 대로 찍는 라이브와는 화면의 차원이 다릅니다. 방송국 예능·홈쇼핑에서 쓰는 지미집 크레인을, 모바일 라이브에서는 보기 드물게 자체 운용합니다.</p>
                 <ul class="feature-list">
@@ -317,7 +314,6 @@
 
             <article class="feature-block install-block reverse">
               <div class="feature-copy">
-                <span>5-4</span>
                 <h3>설치상품 라이브에 강한 구조</h3>
                 <p>시스템에어컨·환기청정기·인덕션·주방후드·보일러 등 설치상품을 실제로 시공할 수 있는 컨셉별 리빙·주방 스튜디오를 보유하고 있습니다.</p>
                 <div class="comparison-table" role="table" aria-label="일반 설치상품 방송과 마이다스 다회차 계약 비교">
@@ -352,7 +348,6 @@
 
             <article class="feature-block">
               <div class="feature-copy">
-                <span>5-5</span>
                 <h3>쇼호스트 매칭</h3>
                 <p>현직 방송사 쇼호스트부터 모바일 전문 쇼호스트까지 100여 명 규모의 쇼호스트 풀을 보유. 예산·컨셉·상품군에 맞춰 가장 적합한 진행자를 제안합니다.</p>
                 <div class="metric-chip">100+ 쇼호스트 풀</div>
@@ -366,13 +361,12 @@
 
             <article class="infra-block">
               <div class="feature-copy">
-                <span>5-6</span>
                 <h3>서울 문래와 일산, 2거점 인프라</h3>
                 <p>도심 방송센터와 3,000평 종합촬영센터를 함께 운용해 기획 회의부터 라이브 송출, 대형 설치상품 촬영까지 한 프로젝트 안에서 연결합니다.</p>
               </div>
               <div class="infra-grid">
                 <a class="infra-card" href="midas-communication.html#top">
-                  <img src="asset/live-commerce-mullae.jpg" alt="서울 문래 마이다스 미디어 타워">
+                  <img src="asset/seoul.png" alt="서울 문래 마이다스 미디어 타워">
                   <span>서울 문래</span>
                   <h4>마이다스 미디어 타워</h4>
                   <p>소형 라이브 스튜디오·실시간 송출·편집/VFX/디자인 조직이 한 건물에서 움직입니다.</p>
@@ -455,7 +449,7 @@
             <div class="kicker">AFTER LIVE</div>
             <h2 id="after-live-title">방송이 끝나도 콘텐츠는 계속됩니다</h2>
             <p>라이브 촬영 소스를 쇼츠·릴스·SNS 광고 소재로 재가공합니다. 모바일·편집·모션팀이 내부에 있어 동일한 톤으로 빠르게 제작됩니다.</p>
-            <button class="button button-video" type="button" data-video-open="live-short">
+            <button class="button button-video" type="button" data-video-open="live-short" data-video-src="asset/live-commerce-shortform-sample.mp4" data-video-title="라이브커머스 숏폼 샘플" data-video-eyebrow="AFTER LIVE · SHORT FORM">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M9 7.6v8.8c0 .8.88 1.28 1.55.84l6.7-4.4a1 1 0 0 0 0-1.68l-6.7-4.4A1 1 0 0 0 9 7.6Z"></path>
               </svg>
@@ -494,11 +488,11 @@
             <p>라이브커머스는 홈쇼핑 인서트, 브랜드 홍보, 숏폼 제작과 함께 설계될 때 더 강하게 작동합니다.</p>
           </div>
           <div class="related-services">
-            <a href="midas-service-home-shopping.html">홈쇼핑 인서트</a>
-            <a class="active" href="midas-service-live-commerce.html">라이브커머스 제작·운영</a>
-            <a href="midas-service-voucher.html">수출•혁신바우처 영상</a>
-            <a href="midas-service-tvcf.html">TVCF·브랜드 홍보</a>
-            <a href="midas-service-ai.html">AI 영상</a>
+            <a class="related-service-card" href="midas-service-home-shopping.html"><video src="asset/insert.mp4" muted loop playsinline preload="metadata"></video><span>홈쇼핑 인서트</span></a>
+            <a class="related-service-card active" href="midas-service-live-commerce.html"><video src="asset/service-mobile-live.mp4" muted loop playsinline preload="metadata"></video><span>라이브커머스 제작·운영</span></a>
+            <a class="related-service-card" href="midas-service-voucher.html"><video src="asset/service-voucher.mp4" muted loop playsinline preload="metadata"></video><span>수출•혁신바우처 영상</span></a>
+            <a class="related-service-card" href="midas-service-tvcf.html"><video src="asset/service-tvcf.mp4" muted loop playsinline preload="metadata"></video><span>TVCF·브랜드 홍보</span></a>
+            <a class="related-service-card" href="midas-service-ai.html"><video src="asset/service-ai.mp4" muted loop playsinline preload="metadata"></video><span>AI 영상</span></a>
           </div>
         </div>
       </section>
