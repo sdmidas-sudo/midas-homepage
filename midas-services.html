@@ -377,21 +377,67 @@
       background: var(--bg);
       padding: 24px;
       text-decoration: none;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: transform 180ms ease, border-color 180ms ease;
     }
 
-    .index-card:hover {
+    .index-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(4, 7, 12, 0.18), rgba(4, 7, 12, 0.76));
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .index-card:hover,
+    .index-card:focus-visible,
+    .index-card.touch-preview {
       transform: translateY(-4px);
       border-color: var(--accent);
+    }
+
+    .index-card:hover::after,
+    .index-card:focus-visible::after,
+    .index-card.touch-preview::after {
+      opacity: 1;
+    }
+
+    .index-video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 180ms ease, transform 360ms ease;
+      pointer-events: none;
+    }
+
+    .index-card:hover .index-video,
+    .index-card:focus-visible .index-video,
+    .index-card.touch-preview .index-video {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .index-card > :not(.index-video) {
+      position: relative;
+      z-index: 1;
     }
 
     .index-card span {
       color: var(--quiet);
       font-size: 13px;
       font-weight: 900;
+      transition: opacity 160ms ease, transform 160ms ease;
     }
 
     .index-card strong {
@@ -400,6 +446,42 @@
       line-height: 1.2;
       font-weight: 920;
       word-break: keep-all;
+      transition: color 180ms ease, font-size 180ms ease, text-shadow 180ms ease;
+    }
+
+    .index-card-caption {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 750;
+      word-break: keep-all;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .index-card:hover span,
+    .index-card:focus-visible span,
+    .index-card.touch-preview span,
+    .index-card:hover .index-card-caption,
+    .index-card:focus-visible .index-card-caption,
+    .index-card.touch-preview .index-card-caption {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .index-card:hover strong,
+    .index-card:focus-visible strong,
+    .index-card.touch-preview strong {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffffff;
+      font-size: clamp(30px, 3.2vw, 48px);
+      line-height: 1.12;
+      text-align: center;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
     }
 
     .service-section {
@@ -972,25 +1054,35 @@
 
       <section class="service-index" aria-label="서비스 바로가기">
         <div class="wrap index-grid">
-          <a class="index-card" href="#voucher">
+          <a class="index-card" href="#voucher" aria-label="바우처 영상 설명으로 이동">
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-voucher.mp4"></video>
             <span>01</span>
             <strong>바우처 영상</strong>
+            <p class="index-card-caption">수출·혁신바우처 목적에 맞춘 제품·기업 홍보 영상</p>
           </a>
-          <a class="index-card" href="#live">
+          <a class="index-card" href="#live" aria-label="라이브커머스 판매 방송 설명으로 이동">
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-mobile-live.mp4"></video>
             <span>02</span>
             <strong>라이브커머스 판매 방송</strong>
+            <p class="index-card-caption">기획, 큐시트, 촬영, 송출까지 연결하는 판매 방송</p>
           </a>
-          <a class="index-card" href="#insert">
+          <a class="index-card" href="#insert" aria-label="홈쇼핑 인서트 설명으로 이동">
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/insert.mp4"></video>
             <span>03</span>
             <strong>홈쇼핑 인서트</strong>
+            <p class="index-card-caption">제품의 셀링포인트를 구매로 연결하는 인서트 영상</p>
           </a>
-          <a class="index-card" href="#ai">
+          <a class="index-card" href="#ai" aria-label="AI 영상 설명으로 이동">
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-ai.mp4"></video>
             <span>04</span>
             <strong>AI 영상</strong>
+            <p class="index-card-caption">표현과 제작 속도를 확장하는 생성형 AI 영상</p>
           </a>
-          <a class="index-card" href="#tvcf">
+          <a class="index-card" href="#tvcf" aria-label="TVCF·브랜드 홍보 설명으로 이동">
+            <video class="index-video" muted loop playsinline preload="metadata" src="asset/service-tvcf.mp4"></video>
             <span>05</span>
             <strong>TVCF·브랜드 홍보</strong>
+            <p class="index-card-caption">브랜드 메시지를 광고 문법에 맞춰 압축하는 영상</p>
           </a>
         </div>
       </section>
@@ -1254,6 +1346,9 @@
     const themeToggle = document.getElementById("theme-toggle");
     const menuToggle = document.getElementById("menu-toggle");
     const nav = document.getElementById("site-nav");
+    const indexCards = document.querySelectorAll(".index-card");
+    const hoverQuery = window.matchMedia ? window.matchMedia("(hover: hover) and (pointer: fine)") : { matches: true };
+    const hasHoverPointer = () => hoverQuery.matches;
 
     const savedTheme = localStorage.getItem("mc-theme");
     if (savedTheme === "light" || savedTheme === "dark") {
@@ -1264,6 +1359,61 @@
       const next = site.dataset.theme === "light" ? "dark" : "light";
       site.dataset.theme = next;
       localStorage.setItem("mc-theme", next);
+    });
+
+    const playIndexCardVideo = (card) => {
+      const video = card.querySelector(".index-video");
+      if (!video) return;
+      try {
+        video.currentTime = 0;
+      } catch (error) {}
+      video.play().catch(() => {});
+    };
+
+    const stopIndexCardVideo = (card) => {
+      const video = card.querySelector(".index-video");
+      if (!video) return;
+      video.pause();
+      try {
+        video.currentTime = 0;
+      } catch (error) {}
+    };
+
+    const clearIndexPreviews = (except = null) => {
+      indexCards.forEach((card) => {
+        if (card === except) return;
+        card.classList.remove("touch-preview");
+        stopIndexCardVideo(card);
+      });
+    };
+
+    indexCards.forEach((card) => {
+      card.addEventListener("pointerenter", () => playIndexCardVideo(card));
+      card.addEventListener("pointerleave", () => {
+        if (!card.classList.contains("touch-preview")) {
+          stopIndexCardVideo(card);
+        }
+      });
+      card.addEventListener("focusin", () => playIndexCardVideo(card));
+      card.addEventListener("focusout", () => stopIndexCardVideo(card));
+
+      card.addEventListener("click", (event) => {
+        if (hasHoverPointer()) {
+          clearIndexPreviews();
+          return;
+        }
+
+        if (card.classList.contains("touch-preview")) {
+          clearIndexPreviews();
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        clearIndexPreviews(card);
+        card.classList.add("touch-preview");
+        playIndexCardVideo(card);
+      });
     });
 
     const closeMenu = () => {
@@ -1288,6 +1438,13 @@
       if (!nav.classList.contains("open")) return;
       if (event.target.closest("#site-nav, #menu-toggle")) return;
       closeMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (hasHoverPointer()) return;
+      if (!event.target.closest(".index-card")) {
+        clearIndexPreviews();
+      }
     });
   </script>
 </body>
