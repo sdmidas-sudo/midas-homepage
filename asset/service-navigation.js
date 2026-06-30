@@ -119,15 +119,10 @@
     menuToggle.setAttribute("aria-controls", panel.id);
     menuToggle.setAttribute("aria-expanded", String(panel.classList.contains("is-open")));
 
-    menuToggle.addEventListener(
-      "click",
-      (event) => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        setPanelOpen(!panel.classList.contains("is-open"));
-      },
-      true
-    );
+    menuToggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      setPanelOpen(!panel.classList.contains("is-open"));
+    });
   }
 
   panel.addEventListener("click", (event) => {
