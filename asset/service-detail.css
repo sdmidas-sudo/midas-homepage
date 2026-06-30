@@ -1118,6 +1118,322 @@ body.video-modal-open {
   word-break: keep-all;
 }
 
+.voucher-section {
+  scroll-margin-top: var(--header-h);
+}
+
+.voucher-stack {
+  display: grid;
+  gap: 22px;
+}
+
+.voucher-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.voucher-node,
+.voucher-compare-card,
+.voucher-support-card,
+.voucher-production-grid article,
+.voucher-faq-list details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+
+.voucher-node {
+  min-height: 176px;
+  padding: 22px;
+}
+
+.voucher-node span,
+.voucher-compare-card span,
+.voucher-support-card span,
+.voucher-production-grid span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 920;
+  letter-spacing: 0.12em;
+}
+
+.voucher-node strong,
+.voucher-support-card strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 920;
+  word-break: keep-all;
+}
+
+.voucher-node p,
+.voucher-compare-card p,
+.voucher-support-card p,
+.voucher-production-grid p,
+.voucher-faq-list p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 650;
+  word-break: keep-all;
+}
+
+.voucher-node.highlight,
+.step-card.emphasized {
+  border-color: rgba(63, 182, 255, 0.42);
+  background: rgba(63, 182, 255, 0.1);
+}
+
+.voucher-compare-grid,
+.voucher-support-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.voucher-compare-card {
+  min-height: 210px;
+  padding: 24px;
+}
+
+.voucher-compare-card.export {
+  border-color: rgba(63, 182, 255, 0.34);
+}
+
+.voucher-compare-card.innovation {
+  border-color: rgba(64, 211, 146, 0.34);
+}
+
+.voucher-compare-card.innovation span {
+  color: #40d392;
+}
+
+.voucher-compare-card h3,
+.voucher-production-grid h3 {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 26px;
+  line-height: 1.22;
+  font-weight: 920;
+  word-break: keep-all;
+}
+
+.voucher-compare-card a,
+.voucher-official-links a,
+.section-heading a {
+  color: var(--accent);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.voucher-compare-card a:hover,
+.voucher-compare-card a:focus-visible,
+.voucher-official-links a:hover,
+.voucher-official-links a:focus-visible,
+.section-heading a:hover,
+.section-heading a:focus-visible {
+  text-decoration: underline;
+}
+
+.voucher-handhold-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 34px;
+}
+
+.voucher-disclaimer {
+  margin: 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(63, 182, 255, 0.28);
+  border-radius: var(--radius);
+  background: rgba(63, 182, 255, 0.09);
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 750;
+  word-break: keep-all;
+}
+
+.voucher-support-card {
+  min-height: 180px;
+  padding: 24px;
+}
+
+.voucher-support-table > div {
+  grid-template-columns: 0.75fr 1fr 1fr;
+}
+
+.voucher-official-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.voucher-official-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(63, 182, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(63, 182, 255, 0.09);
+}
+
+.voucher-doc-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.voucher-proof-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.voucher-report-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.voucher-report-gallery figure,
+.voucher-platform-shot {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+
+.voucher-report-gallery img,
+.voucher-platform-shot img,
+.voucher-media-grid img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.voucher-report-gallery img {
+  aspect-ratio: 3 / 4;
+  object-position: top;
+}
+
+.voucher-report-gallery figcaption,
+.voucher-platform-shot figcaption {
+  padding: 12px 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.voucher-platform-shot img {
+  aspect-ratio: 4 / 3;
+  object-position: top;
+}
+
+.voucher-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.voucher-badge-row span,
+.voucher-contact {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(63, 182, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(63, 182, 255, 0.09);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.voucher-production-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.voucher-production-grid article {
+  min-height: 190px;
+  padding: 22px;
+}
+
+.voucher-media-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.voucher-media-grid img {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.voucher-faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.voucher-faq-list details {
+  overflow: hidden;
+}
+
+.voucher-faq-list summary {
+  position: relative;
+  padding: 20px 54px 20px 22px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 900;
+  cursor: pointer;
+  word-break: keep-all;
+  list-style: none;
+}
+
+.voucher-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.voucher-faq-list summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 850;
+}
+
+.voucher-faq-list details[open] summary::after {
+  content: "-";
+}
+
+.voucher-faq-list details p {
+  padding: 0 22px 20px;
+}
+
+.voucher-contact {
+  width: fit-content;
+  margin-top: 18px;
+}
+
 .related-services {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1302,7 +1618,8 @@ body.video-modal-open {
   .feature-block,
   .feature-block.reverse,
   .infra-block,
-  .after-live {
+  .after-live,
+  .voucher-proof-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1316,6 +1633,13 @@ body.video-modal-open {
 
   .reference-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .voucher-flow,
+  .voucher-handhold-grid,
+  .voucher-production-grid,
+  .voucher-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1404,7 +1728,13 @@ body.video-modal-open {
   .step-grid,
   .media-pair,
   .team-grid,
-  .reason-grid {
+  .reason-grid,
+  .voucher-flow,
+  .voucher-compare-grid,
+  .voucher-support-grid,
+  .voucher-doc-list,
+  .voucher-production-grid,
+  .voucher-media-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1478,6 +1808,10 @@ body.video-modal-open {
     grid-template-columns: 1fr;
   }
 
+  .voucher-support-table > div {
+    grid-template-columns: 1fr;
+  }
+
   .comparison-table strong + strong,
   .comparison-table span + span {
     border-left: 0;
@@ -1491,6 +1825,10 @@ body.video-modal-open {
 
   .reference-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .voucher-report-gallery {
+    grid-template-columns: 1fr 1fr;
   }
 
   .backup-banner {
@@ -1518,6 +1856,23 @@ body.video-modal-open {
   .work-list li {
     padding: 18px;
     font-size: 16px;
+  }
+
+  .voucher-node,
+  .voucher-compare-card,
+  .voucher-support-card,
+  .voucher-production-grid article {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .voucher-faq-list summary {
+    padding: 18px 50px 18px 18px;
+    font-size: 16px;
+  }
+
+  .voucher-faq-list details p {
+    padding: 0 18px 18px;
   }
 
   .cta-box,
