@@ -79,7 +79,7 @@
       {
         "@type": "VideoObject",
         "name": "다이슨 인서트 영상 성공사례",
-        "description": "2011년부터 현재까지 인서트를 제작한 다이슨. 15년간 이어온 믿음의 신뢰",
+        "description": "다이슨 생활가전의 사용 경험과 프리미엄 이미지를 홈쇼핑 인서트 문법으로 구성한 대표 장기 파트너십 사례입니다.",
         "thumbnailUrl": ["https://www.midasonair.co.kr/asset/portfolio/01_dyson.png"],
         "embedUrl": "https://www.youtube.com/embed/G2PbFW4f110",
         "publisher": { "@id": "https://www.midasonair.co.kr/#organization" }
@@ -87,7 +87,7 @@
       {
         "@type": "VideoObject",
         "name": "안방그릴 인서트 영상 성공사례",
-        "description": "지난 5년간 매진열풍과 2,500억 달성을 만든 안방그릴 판매 영상입니다.",
+        "description": "안방그릴의 연기 저감, 사용 편의성, 조리 실연을 홈쇼핑 판매 흐름에 맞춰 구성한 대표 판매 성과 사례입니다.",
         "thumbnailUrl": ["https://www.midasonair.co.kr/asset/portfolio/02_anbang.png"],
         "embedUrl": "https://www.youtube.com/embed/g1VbbLwej2k",
         "publisher": { "@id": "https://www.midasonair.co.kr/#organization" }
@@ -536,12 +536,13 @@
     }
 
     .portfolio-hero h1 {
+      max-width: 980px;
       color: var(--ink);
       font-size: clamp(56px, 6vw, 104px);
       line-height: 1.02;
       font-weight: 900;
       word-break: keep-all;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     .portfolio-hero p {
@@ -557,6 +558,64 @@
     .portfolio-section {
       padding: 84px 0 112px;
       background: var(--bg);
+    }
+
+    .portfolio-proof {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 34px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .portfolio-proof h2 {
+      max-width: 880px;
+      color: var(--ink);
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.08;
+      font-weight: 920;
+      word-break: keep-all;
+    }
+
+    .portfolio-proof p {
+      max-width: 820px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .portfolio-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .filter-button {
+      min-height: 40px;
+      padding: 0 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus-visible,
+    .filter-button.active {
+      border-color: rgba(63, 182, 255, 0.58);
+      background: rgba(63, 182, 255, 0.13);
+      color: var(--accent);
+      outline: 0;
     }
 
     .case-grid {
@@ -696,6 +755,180 @@
     .case-card:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
+    }
+
+    .case-grid {
+      --showcase-card-min-w: 370px;
+      gap: 18px;
+    }
+
+    .case-card {
+      min-height: 100%;
+      aspect-ratio: auto;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border-radius: var(--radius);
+      background: var(--panel-2);
+      cursor: default;
+    }
+
+    .case-card::after {
+      display: none;
+    }
+
+    .case-card.is-hidden {
+      display: none;
+    }
+
+    .case-card img,
+    .case-card:hover img,
+    .case-card:focus-visible img,
+    .case-card.touch-preview img {
+      height: auto;
+      aspect-ratio: 16 / 9;
+      filter: none;
+      transform: none;
+    }
+
+    .case-info {
+      --case-x: 0;
+      --case-y: 0;
+      position: static;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 22px;
+      color: var(--ink);
+      pointer-events: auto;
+    }
+
+    .case-name {
+      position: static;
+      width: fit-content;
+      padding: 7px 10px;
+      border-color: rgba(63, 182, 255, 0.38);
+      background: rgba(63, 182, 255, 0.11);
+      color: var(--accent);
+      backdrop-filter: none;
+    }
+
+    .case-card:hover .case-name,
+    .case-card:focus-visible .case-name,
+    .case-card.touch-preview .case-name {
+      opacity: 1;
+      transform: none;
+    }
+
+    .case-info h2,
+    .case-card:hover .case-info h2,
+    .case-card:focus-visible .case-info h2,
+    .case-card.touch-preview .case-info h2 {
+      position: static;
+      color: var(--ink);
+      font-size: 25px;
+      line-height: 1.2;
+      opacity: 1;
+      transform: none;
+    }
+
+    .case-info p,
+    .case-card:hover .case-info p,
+    .case-card:focus-visible .case-info p,
+    .case-card.touch-preview .case-info p {
+      position: static;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      opacity: 1;
+      transform: none;
+    }
+
+    .case-details {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .case-details div {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px 14px;
+    }
+
+    .case-details div + div {
+      border-top: 1px solid var(--line);
+    }
+
+    .case-details dt {
+      color: var(--quiet);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .case-details dd {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .case-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .case-video-link,
+    .case-request-link {
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .case-video-link {
+      border: 0;
+      background: var(--accent);
+      color: #06121c;
+    }
+
+    .case-request-link {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .case-empty {
+      display: none;
+      margin-top: 22px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-2);
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 750;
+      word-break: keep-all;
+    }
+
+    .case-empty.visible {
+      display: block;
     }
 
     .video-modal {
@@ -880,6 +1113,10 @@
         padding: 58px 0 86px;
       }
 
+      .portfolio-proof {
+        grid-template-columns: 1fr;
+      }
+
       .case-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -904,6 +1141,10 @@
       .case-info p {
         font-size: 14px;
         line-height: 1.55;
+      }
+
+      .case-details div {
+        grid-template-columns: 78px minmax(0, 1fr);
       }
 
       .footer-inner {
@@ -977,159 +1218,395 @@
       <section class="portfolio-hero">
         <div class="wrap">
           <div class="kicker">PORTFOLIO</div>
-          <h1>판매를 위한 인서트 영상</h1>
-          <p>마이다스가 만든 성공사례</p>
+          <h1>숫자와 사례로 보는 판매 영상</h1>
+          <p>다이슨 장기 인서트 제작, 안방그릴 대표 판매 성과, 코웨이 제품 라인업까지. 마이다스가 실제로 만든 커머스 영상 사례입니다.</p>
         </div>
       </section>
 
       <section class="portfolio-section">
         <div class="wrap">
+          <div class="portfolio-proof">
+            <div>
+              <div class="kicker">PROVEN CASES</div>
+              <h2>브랜드명이 아니라, 무엇을 만들었는지가 보이도록 정리했습니다.</h2>
+              <p>각 사례는 제품군, 제작 범위, 사용 채널, 핵심 소구, 마이다스 역할을 같은 기준으로 확인할 수 있습니다. 공개 가능한 영상은 바로 재생하고, 비공개 성과 자료는 상담 시 샘플로 요청할 수 있습니다.</p>
+            </div>
+            <a class="button button-primary" href="midas-project.html">샘플 요청하기</a>
+          </div>
+
+          <div class="portfolio-filter" aria-label="성공사례 필터">
+            <button class="filter-button active" type="button" data-filter="all">전체</button>
+            <button class="filter-button" type="button" data-filter="home-shopping">홈쇼핑 인서트</button>
+            <button class="filter-button" type="button" data-filter="live-commerce">라이브커머스</button>
+            <button class="filter-button" type="button" data-filter="voucher">수출·혁신바우처</button>
+            <button class="filter-button" type="button" data-filter="life">생활가전</button>
+            <button class="filter-button" type="button" data-filter="kitchen">주방가전</button>
+            <button class="filter-button" type="button" data-filter="food">식품</button>
+            <button class="filter-button" type="button" data-filter="health">건강기능식품</button>
+            <button class="filter-button" type="button" data-filter="beauty">뷰티</button>
+            <button class="filter-button" type="button" data-filter="install">설치상품</button>
+            <button class="filter-button" type="button" data-filter="living">리빙</button>
+          </div>
+
           <div class="case-grid">
-            <article class="case-card" data-youtube="G2PbFW4f110" role="button" tabindex="0" aria-label="다이슨 영상 보기">
+            <article class="case-card" data-categories="home-shopping life">
               <img src="asset/portfolio/01_dyson.png" alt="다이슨 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">다이슨</span>
-                <h2>15년의 다이슨 인서트</h2>
-                <p>2011년부터 현재까지 인서트를 제작한 다이슨. 15년간 이어온 믿음의 신뢰</p>
+                <h2>프리미엄 생활가전의 사용 경험을 판매 장면으로</h2>
+                <p>기능 설명에 머물지 않고 실제 사용 장면, 성능 체감, 프리미엄 이미지를 홈쇼핑 인서트 문법으로 압축했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>생활가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · CG · 제품 실연</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 상세페이지</dd></div>
+                  <div><dt>핵심 소구</dt><dd>흡입 성능, 프리미엄 사용 경험, 청소 편의성</dd></div>
+                  <div><dt>성과</dt><dd>2011년부터 이어진 대표 장기 파트너십 사례</dd></div>
+                  <div><dt>역할</dt><dd>셀링포인트 구성, 실사용 장면 연출, 후반 그래픽</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="G2PbFW4f110">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="g1VbbLwej2k" role="button" tabindex="0" aria-label="안방그릴 영상 보기">
+            <article class="case-card" data-categories="home-shopping kitchen">
               <img src="asset/portfolio/02_anbang.png" alt="안방그릴 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">안방그릴</span>
-                <h2>완판을 만든 안방그릴</h2>
-                <p>지난 5년간 매진열풍! 2,500억 달성</p>
+                <h2>연기 저감과 조리 실연을 한눈에 보여준 주방가전 사례</h2>
+                <p>제품의 핵심 기능을 조리 장면과 비교 컷으로 구성해 방송 중 바로 이해되는 구매 이유를 만들었습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>주방가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 제품 실연 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 판매 채널</dd></div>
+                  <div><dt>핵심 소구</dt><dd>연기 저감, 사용 편의성, 조리 실연</dd></div>
+                  <div><dt>성과</dt><dd>매진 이슈와 장기 판매 성과를 만든 대표 사례</dd></div>
+                  <div><dt>역할</dt><dd>문제 제기, 조리 시연, 기능 비교, 그래픽 구성</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="g1VbbLwej2k">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="lLfSTdGRnlc" role="button" tabindex="0" aria-label="clover 영상 보기">
+            <article class="case-card" data-categories="voucher living">
               <img src="asset/portfolio/15_clover.png" alt="clover 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">clover</span>
-                <h2>clover 수출•혁신바우처 영상</h2>
-                <p>제품 강점을 효과적으로 전달</p>
+                <h2>바우처 제출과 해외 상담에 활용할 수 있는 제품 홍보영상</h2>
+                <p>제품 강점, 사용 방식, 브랜드 신뢰 요소를 짧은 러닝타임 안에 정리한 수출·혁신바우처 제작 사례입니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>제품 홍보영상</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 자막 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>바우처 산출물 · 해외 바이어 상담 · 온라인</dd></div>
+                  <div><dt>핵심 소구</dt><dd>제품 사용성, 브랜드 신뢰, 수출 상담 대응</dd></div>
+                  <div><dt>성과</dt><dd>수출·혁신바우처 홍보영상 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>사업 목적에 맞춘 구성안, 촬영, 납품 파일 정리</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="lLfSTdGRnlc">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="wLHizfWR02M" role="button" tabindex="0" aria-label="미라클피플사 영상 보기">
+            <article class="case-card" data-categories="voucher living">
               <img src="asset/portfolio/16_miracle.png" alt="미라클피플사 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">미라클피플사</span>
-                <h2>미라클피플사 수출•혁신바우처 영상</h2>
-                <p>브랜드 신뢰를 담아</p>
+                <h2>브랜드 신뢰를 담은 바우처 홍보영상</h2>
+                <p>기업 소개와 제품 메시지를 함께 정리해 공공지원사업 산출물과 영업 자료로 활용하기 쉽게 제작했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>기업·제품 홍보영상</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 그래픽 · 자막</dd></div>
+                  <div><dt>사용 채널</dt><dd>수출·혁신바우처 제출 · 온라인 홍보</dd></div>
+                  <div><dt>핵심 소구</dt><dd>기업 신뢰, 제품 이해, 해외 홍보 활용성</dd></div>
+                  <div><dt>성과</dt><dd>바우처 홍보영상 수행 사례</dd></div>
+                  <div><dt>역할</dt><dd>기획 구성, 인터뷰·제품 컷 촬영, 결과물 납품</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="wLHizfWR02M">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="RnM0FXvO9uI" role="button" tabindex="0" aria-label="나비엔 라방 영상 보기">
+            <article class="case-card" data-categories="live-commerce install life">
               <img src="asset/portfolio/17_navien_1.jpg" alt="나비엔 라방 성공사례">
               <div class="case-info">
                 <span class="case-name">나비엔 라방</span>
-                <h2>나비엔 라이브커머스 영상</h2>
-                <p>라이브커머스 흐름에 맞춰 제품 강점을 빠르게 전달한 영상</p>
+                <h2>설치상품의 이해도를 높인 라이브커머스 숏폼 사례</h2>
+                <p>라이브커머스 흐름에 맞춰 제품 강점과 현장감을 빠르게 전달하고, 방송 후 활용 가능한 짧은 영상으로 확장했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>설치상품 · 생활가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>라이브 구성 · 촬영 · 편집 · 숏폼 재가공</dd></div>
+                  <div><dt>사용 채널</dt><dd>라이브커머스 · 숏폼 · SNS</dd></div>
+                  <div><dt>핵심 소구</dt><dd>설치상품 이해, 실사용 장면, 혜택 전달</dd></div>
+                  <div><dt>성과</dt><dd>라이브커머스 영상 활용 사례</dd></div>
+                  <div><dt>역할</dt><dd>라이브 흐름에 맞춘 장면 구성과 재편집</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="RnM0FXvO9uI">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="FVRKUZlJ7e4" role="button" tabindex="0" aria-label="고비 영상 보기">
+            <article class="case-card" data-categories="home-shopping living">
               <img src="asset/portfolio/03_gobi_1.png" alt="고비 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">고비</span>
-                <h2>패션 인서트 대작, 고비</h2>
-                <p>초대형 스케일과 로케이션으로 제작한 인서트의 대작</p>
+                <h2>브랜드 무드를 스케일 있게 보여준 패션·리빙 인서트</h2>
+                <p>로케이션과 대형 화면 구성을 활용해 브랜드 이미지와 제품 디테일을 동시에 설득한 인서트 영상입니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>패션 · 리빙</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 로케이션 촬영 · 편집 · 컬러 보정</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 브랜드 홍보</dd></div>
+                  <div><dt>핵심 소구</dt><dd>브랜드 무드, 소재감, 라이프스타일 장면</dd></div>
+                  <div><dt>성과</dt><dd>대형 스케일 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>콘셉트 기획, 화면 연출, 브랜드 톤 정리</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="FVRKUZlJ7e4">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="BTRh660N0Gg" role="button" tabindex="0" aria-label="테팔 영상 보기">
+            <article class="case-card" data-categories="home-shopping kitchen life">
               <img src="asset/portfolio/04_tefal.png" alt="테팔 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">테팔</span>
-                <h2>테팔 주방용품 & 생활가전</h2>
-                <p>사용 편의성을 빠르게 전달한 판매 영상</p>
+                <h2>조리와 생활 편의성을 빠르게 보여준 주방가전 영상</h2>
+                <p>실제 사용 장면과 기능 비교를 통해 제품이 왜 필요한지 방송 중 바로 이해되도록 구성했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>주방가전 · 생활가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 제품 실연 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 판매 채널</dd></div>
+                  <div><dt>핵심 소구</dt><dd>사용 편의성, 조리 결과, 생활 효율</dd></div>
+                  <div><dt>성과</dt><dd>주방·생활가전 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>사용 동선 설계, 실연 장면, 후반 자막 구성</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="BTRh660N0Gg">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="70TjI9-N_DI" role="button" tabindex="0" aria-label="코웨이 영상 보기">
+            <article class="case-card" data-categories="home-shopping life install living">
               <img src="asset/portfolio/05_coway.png" alt="코웨이 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">코웨이</span>
-                <h2>코웨이의 제품 경험 중심 인서트</h2>
-                <p>10년을 함께한 코웨이. 정수기부터 비데, 의류건조기, 매트리스, 안마의자까지 다양한 라인업들을 마이다스가 함께 했습니다.</p>
+                <h2>렌탈 생활가전 라인업을 제품 경험 중심으로 구성</h2>
+                <p>정수기, 비데, 의류건조기, 매트리스, 안마의자 등 다양한 라인업을 생활 장면 안에서 이해되도록 설계했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>렌탈 생활가전 · 리빙</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 세트 촬영 · 모델 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 상세페이지</dd></div>
+                  <div><dt>핵심 소구</dt><dd>제품 경험, 편의성, 라이프스타일</dd></div>
+                  <div><dt>성과</dt><dd>다양한 제품 라인업을 함께한 장기 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>생활 세트 구성, 사용 장면 연출, 구매 이유 정리</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="70TjI9-N_DI">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="RRXb6wI9IQI" role="button" tabindex="0" aria-label="로보락 영상 보기">
+            <article class="case-card" data-categories="home-shopping life">
               <img src="asset/portfolio/06_roborock.png" alt="로보락 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">로보락</span>
-                <h2>로보락, 청소 성능을 한눈에</h2>
+                <h2>청소 성능과 자동화를 한눈에 보여준 로봇청소기 사례</h2>
+                <p>기능 나열보다 바닥 환경, 장애물, 청소 결과가 보이는 장면을 중심으로 제품 차별점을 전달했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>생활가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>실연 구성 · 촬영 · 편집 · CG</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 판매 채널</dd></div>
+                  <div><dt>핵심 소구</dt><dd>청소 성능, 자동화, 사용 편의성</dd></div>
+                  <div><dt>성과</dt><dd>로봇청소기 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>테스트 장면 설계, 청소 결과 표현, 그래픽 보강</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="RRXb6wI9IQI">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="GxN_BkqXtNw" role="button" tabindex="0" aria-label="휴롬 영상 보기">
+            <article class="case-card" data-categories="home-shopping kitchen health">
               <img src="asset/portfolio/07_hurom.png" alt="휴롬 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">휴롬</span>
-                <h2>휴롬, 건강한 브랜드 이미지</h2>
+                <h2>건강한 브랜드 이미지를 살린 주방가전 인서트</h2>
+                <p>원물, 착즙 과정, 섭취 장면을 연결해 제품 기능과 건강한 라이프스타일을 함께 전달했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>주방가전 · 건강식품 연계</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 푸드 스타일링 · 편집</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 홍보</dd></div>
+                  <div><dt>핵심 소구</dt><dd>건강 이미지, 조작 편의성, 원물 표현</dd></div>
+                  <div><dt>성과</dt><dd>건강 콘셉트 제품 영상 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>푸드 장면 구성, 사용 컷 촬영, 브랜드 톤 연출</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="GxN_BkqXtNw">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="x9LuqfbR4MU" role="button" tabindex="0" aria-label="뉴트리원 영상 보기">
+            <article class="case-card" data-categories="home-shopping health beauty">
               <img src="asset/portfolio/08_nutri.png" alt="뉴트리원 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">뉴트리원</span>
-                <h2>짧고 강한 핵심 메시지</h2>
+                <h2>성분 신뢰와 섭취 편의성을 압축한 건강기능식품 영상</h2>
+                <p>제품 메시지를 짧고 강하게 전달하고, 섭취 상황과 기대 이미지를 홈쇼핑 흐름에 맞춰 구성했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>건강기능식품</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 상세페이지</dd></div>
+                  <div><dt>핵심 소구</dt><dd>성분 신뢰, 섭취 편의성, 이너뷰티</dd></div>
+                  <div><dt>성과</dt><dd>건강기능식품 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>핵심 메시지 정리, 성분 그래픽, 사용 장면 구성</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="x9LuqfbR4MU">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="6z-DUTfkjpg" role="button" tabindex="0" aria-label="귀뚜라미 영상 보기">
+            <article class="case-card" data-categories="home-shopping install life">
               <img src="asset/portfolio/09_kiturami.png" alt="귀뚜라미 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">귀뚜라미</span>
-                <h2>귀뚜라미의 신뢰를 담아</h2>
+                <h2>설치상품의 신뢰와 사용 환경을 보여준 제품 영상</h2>
+                <p>전문성이 필요한 설치상품을 생활 공간, 사용 이유, 브랜드 신뢰 중심으로 쉽게 이해되도록 구성했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>설치상품 · 생활가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 세트 촬영 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 판매 채널</dd></div>
+                  <div><dt>핵심 소구</dt><dd>설치 신뢰, 기능성, 계절 수요</dd></div>
+                  <div><dt>성과</dt><dd>설치상품 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>설치 전후 이해, 사용 환경 연출, 정보 그래픽</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="6z-DUTfkjpg">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="9bd-cKFMoJg" role="button" tabindex="0" aria-label="신일 영상 보기">
+            <article class="case-card" data-categories="home-shopping life">
               <img src="asset/portfolio/10_shinil.png" alt="신일 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">신일</span>
-                <h2>신일만의 계절가전 판매 전략</h2>
+                <h2>계절 수요를 구매 이유로 연결한 생활가전 인서트</h2>
+                <p>시즌별 문제 상황과 제품 사용 장면을 빠르게 연결해 홈쇼핑 방송에서 필요한 구매 동기를 만들었습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>계절가전 · 생활가전</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 제품 실연</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 판매 채널</dd></div>
+                  <div><dt>핵심 소구</dt><dd>계절 수요, 기능성, 편의성</dd></div>
+                  <div><dt>성과</dt><dd>계절가전 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>문제 상황 구성, 사용 컷 촬영, 방송용 편집</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="9bd-cKFMoJg">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="-eQnOwGTk7o" role="button" tabindex="0" aria-label="MD팩터 영상 보기">
+            <article class="case-card" data-categories="home-shopping beauty">
               <img src="asset/portfolio/11_MD.png" alt="MD팩터 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">MD팩터</span>
-                <h2>차이를 보여준 완판 인서트</h2>
-                <p>제품 사용 전후의 차이를 직관적으로 보여주는 판매 구성</p>
+                <h2>사용 전후의 차이를 직관적으로 보여준 뷰티 인서트</h2>
+                <p>뷰티 제품에서 중요한 체감 포인트를 전후 비교, 사용 장면, 핵심 메시지로 빠르게 전달했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>뷰티</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 상세페이지</dd></div>
+                  <div><dt>핵심 소구</dt><dd>사용 전후 차이, 사용감, 신뢰감</dd></div>
+                  <div><dt>성과</dt><dd>뷰티 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>비교 장면 구성, 모델 촬영, 방송용 자막 설계</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="-eQnOwGTk7o">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="Z0hi5ztHiDM" role="button" tabindex="0" aria-label="동국제약 센텔리안 영상 보기">
+            <article class="case-card" data-categories="home-shopping beauty">
               <img src="asset/portfolio/12_Centellian.png" alt="동국제약 센텔리안 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">동국제약 센텔리안</span>
-                <h2>신뢰를 더한 뷰티 영상, 센텔리안</h2>
+                <h2>브랜드 신뢰를 더한 더마 뷰티 영상</h2>
+                <p>제약 기반 브랜드의 신뢰감과 피부 효능 메시지를 홈쇼핑 고객이 이해하기 쉬운 흐름으로 정리했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>더마 뷰티</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 상세페이지</dd></div>
+                  <div><dt>핵심 소구</dt><dd>브랜드 신뢰, 피부 효능, 프리미엄</dd></div>
+                  <div><dt>성과</dt><dd>더마 뷰티 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>효능 메시지 구성, 사용 장면, 신뢰 그래픽</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="Z0hi5ztHiDM">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="N2UHQy3POWo" role="button" tabindex="0" aria-label="비쎌 영상 보기">
+            <article class="case-card" data-categories="home-shopping life living">
               <img src="asset/portfolio/13_Bissell.png" alt="비쎌 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">비쎌</span>
-                <h2>문제를 해결하는 인서트</h2>
+                <h2>생활 속 문제를 제품 해결력으로 연결한 인서트</h2>
+                <p>청소 전후 차이와 사용 편의성을 직접 보여줘 제품이 해결하는 문제를 직관적으로 전달했습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>생활가전 · 리빙</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 실연 · 편집 · 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 판매 채널</dd></div>
+                  <div><dt>핵심 소구</dt><dd>문제 해결, 청소 결과, 사용 편의성</dd></div>
+                  <div><dt>성과</dt><dd>리빙가전 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>문제 상황 연출, 전후 비교, 기능 그래픽</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="N2UHQy3POWo">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
 
-            <article class="case-card" data-youtube="a8w3D-6zehs" role="button" tabindex="0" aria-label="오스템 영상 보기">
+            <article class="case-card" data-categories="home-shopping living">
               <img src="asset/portfolio/14_osstem.png" alt="오스템 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">오스템</span>
-                <h2>쉽게 이해되는 전문성</h2>
+                <h2>전문 제품의 가치를 쉽게 이해시키는 영상 구성</h2>
+                <p>전문성이 높은 제품도 시청자가 바로 이해할 수 있도록 상황, 기능, 신뢰 요소를 단계적으로 보여줬습니다.</p>
+                <dl class="case-details">
+                  <div><dt>제품군</dt><dd>전문 제품 · 리빙</dd></div>
+                  <div><dt>제작 범위</dt><dd>기획 · 촬영 · 편집 · 정보 그래픽</dd></div>
+                  <div><dt>사용 채널</dt><dd>TV홈쇼핑 · 온라인 홍보</dd></div>
+                  <div><dt>핵심 소구</dt><dd>전문성, 사용 이해, 브랜드 신뢰</dd></div>
+                  <div><dt>성과</dt><dd>전문 제품 인서트 제작 사례</dd></div>
+                  <div><dt>역할</dt><dd>어려운 정보를 쉬운 장면과 그래픽으로 전환</dd></div>
+                </dl>
+                <div class="case-actions">
+                  <button class="case-video-link case-watch" type="button" data-youtube="a8w3D-6zehs">영상 보기</button>
+                  <a class="case-request-link" href="midas-project.html">샘플 요청</a>
+                </div>
               </div>
             </article>
           </div>
+          <p class="case-empty" id="case-empty">해당 카테고리의 공개 사례는 정리 중입니다. 비공개 샘플은 프로젝트 문의에서 요청하실 수 있습니다.</p>
         </div>
       </section>
     </main>
@@ -1161,14 +1638,13 @@
   <script>
     const site = document.getElementById("site");
     const themeToggle = document.getElementById("theme-toggle");
-    const menuToggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("site-nav");
-    const portfolioCards = document.querySelectorAll(".case-card[data-youtube]");
+    const portfolioCards = document.querySelectorAll(".case-card");
+    const portfolioWatchButtons = document.querySelectorAll(".case-watch[data-youtube]");
+    const filterButtons = document.querySelectorAll(".filter-button[data-filter]");
+    const caseEmpty = document.getElementById("case-empty");
     const portfolioVideoModal = document.getElementById("portfolio-video-modal");
     const portfolioVideoFrame = document.getElementById("portfolio-video-frame");
     const portfolioVideoClose = document.getElementById("portfolio-video-close");
-    const hoverQuery = window.matchMedia ? window.matchMedia("(hover: hover) and (pointer: fine)") : { matches: true };
-    const hasHoverPointer = () => hoverQuery.matches;
 
     const savedTheme = localStorage.getItem("mc-theme");
     if (savedTheme === "light" || savedTheme === "dark") {
@@ -1190,41 +1666,35 @@
       portfolioVideoClose.focus();
     };
 
-    const clearTouchPreviews = (except = null) => {
-      portfolioCards.forEach((card) => {
-        if (card === except) return;
-        card.classList.remove("touch-preview");
-      });
-    };
-
     const closePortfolioVideo = () => {
       portfolioVideoModal.classList.remove("open");
       portfolioVideoModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
       portfolioVideoFrame.src = "";
-      clearTouchPreviews();
     };
 
-    portfolioCards.forEach((card) => {
-      card.addEventListener("click", (event) => {
-        if (!hasHoverPointer() && !card.classList.contains("touch-preview")) {
-          event.preventDefault();
-          event.stopPropagation();
-          clearTouchPreviews(card);
-          card.classList.add("touch-preview");
-          return;
-        }
-        clearTouchPreviews();
-        openPortfolioVideo(card.dataset.youtube);
+    const filterCases = (filter) => {
+      let visibleCount = 0;
+
+      portfolioCards.forEach((card) => {
+        const categories = (card.dataset.categories || "").split(/\s+/);
+        const isVisible = filter === "all" || categories.includes(filter);
+        card.classList.toggle("is-hidden", !isVisible);
+        if (isVisible) visibleCount += 1;
       });
 
-      card.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          clearTouchPreviews();
-          openPortfolioVideo(card.dataset.youtube);
-        }
+      caseEmpty?.classList.toggle("visible", visibleCount === 0);
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+        filterCases(button.dataset.filter);
       });
+    });
+
+    portfolioWatchButtons.forEach((button) => {
+      button.addEventListener("click", () => openPortfolioVideo(button.dataset.youtube));
     });
 
     portfolioVideoClose.addEventListener("click", closePortfolioVideo);
@@ -1238,13 +1708,6 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && portfolioVideoModal.classList.contains("open")) {
         closePortfolioVideo();
-      }
-    });
-
-    document.addEventListener("click", (event) => {
-      if (hasHoverPointer()) return;
-      if (!event.target.closest(".case-card[data-youtube]")) {
-        clearTouchPreviews();
       }
     });
 
