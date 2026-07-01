@@ -911,6 +911,130 @@ main {
   aspect-ratio: 9 / 16;
 }
 
+.live-video-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 34px;
+}
+
+.live-youtube-frame,
+.live-video-meta,
+.live-package-card,
+.live-channel-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+
+.live-youtube-frame {
+  overflow: hidden;
+}
+
+.live-youtube-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  border: 0;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+
+.live-video-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 26px;
+}
+
+.live-video-meta span,
+.live-package-card span,
+.live-channel-card span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 26px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 920;
+  letter-spacing: 0.12em;
+}
+
+.live-video-meta h3,
+.live-package-card h3,
+.live-channel-card h3 {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.22;
+  font-weight: 920;
+  word-break: keep-all;
+}
+
+.live-video-meta p,
+.live-package-card p,
+.live-channel-card p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.68;
+  font-weight: 680;
+  word-break: keep-all;
+}
+
+.live-video-points {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.live-video-points li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 760;
+  word-break: keep-all;
+}
+
+.live-video-points li::before {
+  content: "";
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.live-package-grid,
+.live-channel-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.live-package-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.live-channel-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.live-package-card,
+.live-channel-card {
+  min-height: 190px;
+  padding: 22px;
+}
+
 .after-live {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
@@ -2353,6 +2477,12 @@ body.video-modal-open {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .live-video-showcase,
+  .live-package-grid,
+  .live-channel-grid {
+    grid-template-columns: 1fr;
+  }
+
   .voucher-flow,
   .voucher-handhold-grid,
   .voucher-production-grid,
@@ -2447,6 +2577,8 @@ body.video-modal-open {
   .media-pair,
   .team-grid,
   .reason-grid,
+  .live-package-grid,
+  .live-channel-grid,
   .insert-category-grid,
   .insert-case-grid,
   .insert-deliverable-grid,
@@ -2468,6 +2600,8 @@ body.video-modal-open {
   .step-card,
   .team-grid article,
   .reason-grid article,
+  .live-package-card,
+  .live-channel-card,
   .insert-category-grid article,
   .insert-deliverable-grid article,
   .insert-prep-card,
@@ -2481,6 +2615,9 @@ body.video-modal-open {
   .step-card h3,
   .team-grid h3,
   .reason-grid h3,
+  .live-video-meta h3,
+  .live-package-card h3,
+  .live-channel-card h3,
   .insert-category-grid h3,
   .insert-case-card h3,
   .insert-deliverable-grid h3,
@@ -2499,6 +2636,10 @@ body.video-modal-open {
   .feature-copy p,
   .team-grid p,
   .reason-grid p,
+  .live-video-meta p,
+  .live-video-points li,
+  .live-package-card p,
+  .live-channel-card p,
   .insert-category-grid p,
   .insert-case-card p,
   .insert-deliverable-grid p,
@@ -2526,6 +2667,9 @@ body.video-modal-open {
   .feature-copy,
   .team-grid article,
   .reason-grid article,
+  .live-video-meta,
+  .live-package-card,
+  .live-channel-card,
   .insert-category-grid article,
   .insert-case-card,
   .insert-deliverable-grid article,
@@ -2655,6 +2799,14 @@ body.video-modal-open {
 
   .reference-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .live-video-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .live-youtube-frame iframe {
+    min-height: auto;
   }
 
   .voucher-report-gallery {
