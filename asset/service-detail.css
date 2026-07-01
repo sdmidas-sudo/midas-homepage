@@ -1213,6 +1213,10 @@ body.video-modal-open {
   word-break: keep-all;
 }
 
+.insert-category-grid .button {
+  margin-top: 16px;
+}
+
 .insert-case-card {
   min-height: 280px;
   overflow: hidden;
