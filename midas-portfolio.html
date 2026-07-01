@@ -467,6 +467,12 @@
       box-shadow: 0 14px 34px rgba(63, 182, 255, 0.22);
     }
 
+    .button-secondary {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+    }
+
     .site-header .button-primary {
       width: 120px;
       height: 40px;
@@ -555,6 +561,41 @@
       word-break: keep-all;
     }
 
+    .hero-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 44px;
+    }
+
+    .hero-proof-card {
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .hero-proof-card strong {
+      color: var(--ink);
+      font-size: clamp(30px, 3.2vw, 48px);
+      line-height: 1;
+      font-weight: 920;
+      letter-spacing: 0;
+    }
+
+    .hero-proof-card span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
     .portfolio-section {
       padding: 84px 0 112px;
       background: var(--bg);
@@ -586,6 +627,41 @@
       font-size: 17px;
       line-height: 1.7;
       font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .case-criteria {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .case-criteria li {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .case-criteria strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .case-criteria span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      font-weight: 750;
       word-break: keep-all;
     }
 
@@ -772,6 +848,30 @@
       cursor: default;
     }
 
+    .case-card.is-featured {
+      border-color: rgba(63, 182, 255, 0.42);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.36), inset 0 0 0 1px rgba(63, 182, 255, 0.08);
+    }
+
+    .case-feature-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #06121c;
+      font-size: 12px;
+      font-weight: 920;
+      line-height: 1;
+      box-shadow: 0 10px 24px rgba(63, 182, 255, 0.28);
+    }
+
     .case-card::after {
       display: none;
     }
@@ -931,6 +1031,33 @@
       display: block;
     }
 
+    .portfolio-closing-cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      margin-top: 40px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .portfolio-closing-cta p {
+      color: var(--ink-soft);
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .portfolio-closing-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
     .video-modal {
       position: fixed;
       inset: 0;
@@ -1049,6 +1176,10 @@
     }
 
     @media (max-width: 1060px) {
+      .hero-proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .case-grid {
         grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--showcase-card-min-w)), 1fr));
       }
@@ -1103,10 +1234,15 @@
 
       .portfolio-hero h1 {
         font-size: clamp(30px, 8.6vw, 44px);
+        word-break: break-all;
+        overflow-wrap: break-word;
+        line-break: anywhere;
       }
 
       .portfolio-hero p {
         font-size: 18px;
+        word-break: normal;
+        overflow-wrap: anywhere;
       }
 
       .portfolio-section {
@@ -1115,6 +1251,26 @@
 
       .portfolio-proof {
         grid-template-columns: 1fr;
+      }
+
+      .portfolio-proof h2,
+      .case-info h2,
+      .portfolio-proof p,
+      .case-criteria span,
+      .portfolio-closing-cta p {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        line-break: anywhere;
+      }
+
+      .hero-proof-grid,
+      .case-criteria,
+      .portfolio-closing-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-closing-actions {
+        justify-content: flex-start;
       }
 
       .case-grid {
@@ -1220,6 +1376,24 @@
           <div class="kicker">PORTFOLIO</div>
           <h1>숫자와 사례로 보는 판매 영상</h1>
           <p>다이슨 15년간 인서트 제작, 안방그릴 누적 매출 2,500억 판매 성과, 코웨이 제품 라인업까지. 마이다스가 실제로 만든 커머스 영상 사례입니다.</p>
+          <div class="hero-proof-grid" aria-label="주요 성공 지표">
+            <article class="hero-proof-card">
+              <strong>15년</strong>
+              <span>다이슨 인서트 제작 경험</span>
+            </article>
+            <article class="hero-proof-card">
+              <strong>2,500억</strong>
+              <span>안방그릴 누적 매출 판매 성과</span>
+            </article>
+            <article class="hero-proof-card">
+              <strong>4,000편+</strong>
+              <span>홈쇼핑·세일즈 영상 제작 경험</span>
+            </article>
+            <article class="hero-proof-card">
+              <strong>17개</strong>
+              <span>전 홈쇼핑 채널 경험 기반 제작</span>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -1230,6 +1404,20 @@
               <div class="kicker">PROVEN CASES</div>
               <h2>브랜드명이 아니라, 무엇을 만들었는지가 보이도록 정리했습니다.</h2>
               <p>각 사례는 제품군, 제작 범위, 사용 채널, 핵심 소구, 마이다스 역할을 같은 기준으로 확인할 수 있습니다. 공개 가능한 영상은 바로 재생하고, 비공개 성과 자료는 상담 시 샘플로 요청할 수 있습니다.</p>
+              <ul class="case-criteria" aria-label="성공사례 확인 기준">
+                <li>
+                  <strong>제작 범위</strong>
+                  <span>기획, 촬영, 실연, 편집, CG, 자막까지 어디까지 맡았는지 확인합니다.</span>
+                </li>
+                <li>
+                  <strong>사용 채널</strong>
+                  <span>TV홈쇼핑, 라이브커머스, 온라인 상세페이지, 숏폼 활용까지 구분합니다.</span>
+                </li>
+                <li>
+                  <strong>성과와 역할</strong>
+                  <span>확인 가능한 성과는 숫자로, 그 외 사례는 구매 이유를 만든 방식으로 설명합니다.</span>
+                </li>
+              </ul>
             </div>
             <a class="button button-primary" href="midas-project.html">샘플 요청하기</a>
           </div>
@@ -1249,7 +1437,8 @@
           </div>
 
           <div class="case-grid">
-            <article class="case-card" data-categories="home-shopping life">
+            <article class="case-card is-featured" data-categories="home-shopping life">
+              <span class="case-feature-badge">대표 사례</span>
               <img src="asset/portfolio/01_dyson.png" alt="다이슨 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">다이슨</span>
@@ -1270,7 +1459,8 @@
               </div>
             </article>
 
-            <article class="case-card" data-categories="home-shopping kitchen">
+            <article class="case-card is-featured" data-categories="home-shopping kitchen">
+              <span class="case-feature-badge">대표 사례</span>
               <img src="asset/portfolio/02_anbang.png" alt="안방그릴 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">안방그릴</span>
@@ -1291,7 +1481,8 @@
               </div>
             </article>
 
-            <article class="case-card" data-categories="voucher living">
+            <article class="case-card is-featured" data-categories="voucher living">
+              <span class="case-feature-badge">대표 사례</span>
               <img src="asset/portfolio/15_clover.png" alt="clover 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">clover</span>
@@ -1312,7 +1503,8 @@
               </div>
             </article>
 
-            <article class="case-card" data-categories="voucher living">
+            <article class="case-card is-featured" data-categories="voucher living">
+              <span class="case-feature-badge">대표 사례</span>
               <img src="asset/portfolio/16_miracle.png" alt="미라클피플사 인서트 영상 성공사례">
               <div class="case-info">
                 <span class="case-name">미라클피플사</span>
@@ -1333,7 +1525,8 @@
               </div>
             </article>
 
-            <article class="case-card" data-categories="live-commerce install life">
+            <article class="case-card is-featured" data-categories="live-commerce install life">
+              <span class="case-feature-badge">대표 사례</span>
               <img src="asset/portfolio/17_navien_1.jpg" alt="나비엔 라방 성공사례">
               <div class="case-info">
                 <span class="case-name">나비엔 라방</span>
@@ -1607,6 +1800,13 @@
             </article>
           </div>
           <p class="case-empty" id="case-empty">해당 카테고리의 공개 사례는 정리 중입니다. 비공개 샘플은 프로젝트 문의에서 요청하실 수 있습니다.</p>
+          <div class="portfolio-closing-cta">
+            <p>공개 영상 외에도 제품군과 채널에 따라 보여드릴 수 있는 비공개 샘플이 있습니다. 상담 시 필요한 제품군과 판매 채널을 알려주시면 가까운 사례를 기준으로 안내드립니다.</p>
+            <div class="portfolio-closing-actions">
+              <a class="button button-primary" href="midas-project.html">비공개 샘플 요청</a>
+              <a class="button button-secondary" href="midas-service-home-shopping.html">홈쇼핑 인서트 상담</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
