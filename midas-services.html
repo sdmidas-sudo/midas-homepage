@@ -223,6 +223,9 @@
     .info-grid > *,
     .process-card > *,
     .process-list > *,
+    .package-head > *,
+    .package-grid > *,
+    .package-card > *,
     .service-actions > *,
     .cta-box > *,
     .footer-inner > * {
@@ -796,6 +799,140 @@
       margin-top: 30px;
     }
 
+    .package-section {
+      padding: 104px 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .package-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.58fr);
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .package-head h2 {
+      margin-top: 16px;
+      color: var(--ink);
+      font-size: clamp(38px, 4vw, 56px);
+      line-height: 1.08;
+      font-weight: 920;
+      word-break: keep-all;
+    }
+
+    .package-head p {
+      color: var(--ink-soft);
+      font-size: 17px;
+      line-height: 1.75;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .package-card {
+      min-height: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: var(--bg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-card.featured {
+      border-color: rgba(63, 182, 255, 0.45);
+      background: linear-gradient(180deg, rgba(63, 182, 255, 0.1), rgba(63, 182, 255, 0.03)), var(--bg);
+      box-shadow: 0 18px 44px rgba(63, 182, 255, 0.1);
+    }
+
+    .package-card span {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+    }
+
+    .package-card h3 {
+      margin-top: 12px;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.24;
+      font-weight: 920;
+      word-break: keep-all;
+    }
+
+    .package-card ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .package-card li {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    .package-card li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      display: inline-block;
+      margin: 0 9px 2px 0;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .package-fit {
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .package-fit strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--quiet);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+    }
+
+    .package-note {
+      margin-top: 22px;
+      border: 1px solid rgba(63, 182, 255, 0.34);
+      border-radius: var(--card-radius);
+      background: rgba(63, 182, 255, 0.08);
+      padding: 22px 24px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 750;
+      word-break: keep-all;
+    }
+
+    .package-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
     .process-section {
       padding: 94px 0;
       background: var(--bg);
@@ -969,6 +1106,7 @@
       .hero-grid,
       .service-block,
       .service-section.alt .service-block,
+      .package-head,
       .process-card,
       .cta-box {
         grid-template-columns: 1fr;
@@ -1062,6 +1200,7 @@
       }
 
       .service-section,
+      .package-section,
       .process-section,
       .cta-panel {
         padding: 72px 0;
@@ -1093,6 +1232,12 @@
         grid-template-columns: 1fr;
       }
 
+      .package-grid,
+      .package-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
       .button {
         width: 100%;
         max-width: 100%;
@@ -1107,6 +1252,7 @@
       }
 
       .service-copy h2,
+      .package-head h2,
       .cta-box h2 {
         font-size: 32px;
       }
@@ -1437,6 +1583,91 @@
               <a class="button button-primary" href="midas-project.html">TVCF·브랜드 홍보 문의하기</a>
               <a class="button button-secondary" href="midas-service-tvcf.html">자세히 보기</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="package-section" id="packages">
+        <div class="wrap">
+          <div class="package-head">
+            <div>
+              <div class="kicker">PACKAGE GUIDE</div>
+              <h2>문의 전 기준이 되는<br>상담 패키지</h2>
+            </div>
+            <p>전체 가격을 고정해 공개하기보다 제품, 채널, 촬영 범위에 맞춰 가장 효율적인 구성을 제안합니다.</p>
+          </div>
+
+          <div class="package-grid" aria-label="서비스별 상담 기준 패키지">
+            <article class="package-card">
+              <span>01 INSERT BASIC</span>
+              <h3>인서트 베이직</h3>
+              <ul>
+                <li>구성안</li>
+                <li>1일 촬영</li>
+                <li>기본 편집</li>
+                <li>자막/그래픽</li>
+              </ul>
+              <p class="package-fit"><strong>추천 고객</strong>온라인 판매 영상, 소규모 제품</p>
+            </article>
+
+            <article class="package-card featured">
+              <span>02 STANDARD</span>
+              <h3>홈쇼핑 스탠다드</h3>
+              <ul>
+                <li>기획</li>
+                <li>세트 촬영</li>
+                <li>제품 실연</li>
+                <li>모델/그래픽</li>
+                <li>방송용 편집</li>
+              </ul>
+              <p class="package-fit"><strong>추천 고객</strong>TV홈쇼핑 입점·론칭 제품</p>
+            </article>
+
+            <article class="package-card">
+              <span>03 PREMIUM</span>
+              <h3>프리미엄 세일즈 필름</h3>
+              <ul>
+                <li>대형 세트</li>
+                <li>모델</li>
+                <li>CG</li>
+                <li>브랜드컷</li>
+                <li>숏폼 재가공</li>
+              </ul>
+              <p class="package-fit"><strong>추천 고객</strong>대형 브랜드, 주력 상품</p>
+            </article>
+
+            <article class="package-card">
+              <span>04 LIVE COMMERCE</span>
+              <h3>라이브커머스 운영형</h3>
+              <ul>
+                <li>큐시트</li>
+                <li>쇼호스트</li>
+                <li>송출</li>
+                <li>배너</li>
+                <li>결과 리포트</li>
+              </ul>
+              <p class="package-fit"><strong>추천 고객</strong>네이버/유튜브/자사몰 라이브</p>
+            </article>
+
+            <article class="package-card">
+              <span>05 VOUCHER</span>
+              <h3>바우처 홍보영상</h3>
+              <ul>
+                <li>기획</li>
+                <li>촬영</li>
+                <li>편집</li>
+                <li>다국어 자막</li>
+                <li>결과보고 자료</li>
+              </ul>
+              <p class="package-fit"><strong>추천 고객</strong>수출·혁신바우처 선정 기업</p>
+            </article>
+          </div>
+
+          <p class="package-note">정확한 견적은 촬영 일수, 모델·세트·그래픽 범위, 납품 채널에 따라 달라집니다. 예산대와 일정에 맞춰 가장 효율적인 구성을 제안드립니다.</p>
+
+          <div class="package-actions">
+            <a class="button button-primary" href="midas-project.html">견적 문의</a>
+            <a class="button button-secondary" href="#process">제작 절차 보기</a>
           </div>
         </div>
       </section>
