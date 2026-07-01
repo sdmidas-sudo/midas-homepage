@@ -545,6 +545,10 @@ main {
   margin-top: 36px;
 }
 
+.live-track-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .live-stat {
   min-height: 180px;
   padding: 24px;
@@ -909,6 +913,122 @@ main {
 .reference-gallery img,
 .short-gallery img {
   aspect-ratio: 9 / 16;
+}
+
+.live-reference-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 34px;
+}
+
+.live-reference-proof,
+.live-reference-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.live-reference-proof {
+  margin: 0;
+}
+
+.live-reference-proof img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.live-reference-proof figcaption {
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.live-reference-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+}
+
+.live-reference-card > span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid rgba(63, 182, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(63, 182, 255, 0.1);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 920;
+  letter-spacing: 0.1em;
+}
+
+.live-reference-card h3 {
+  margin: 18px 0 0;
+  color: var(--ink);
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.1;
+  font-weight: 920;
+  word-break: keep-all;
+}
+
+.live-reference-card dl {
+  display: grid;
+  margin: 28px 0 0;
+}
+
+.live-reference-card dl div {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.live-reference-card dt {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 920;
+  letter-spacing: 0.1em;
+}
+
+.live-reference-card dd {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.62;
+  font-weight: 760;
+  word-break: keep-all;
+}
+
+.live-reference-card .button {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.live-reference-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 750;
+  word-break: keep-all;
+}
+
+.reference-gallery-support {
+  margin-top: 26px;
 }
 
 .live-video-showcase {
@@ -2656,9 +2776,14 @@ body.video-modal-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .live-track-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .feature-block,
   .feature-block.reverse,
   .infra-block,
+  .live-reference-feature,
   .after-live,
   .voucher-proof-grid,
   .studio-space-card:first-child,
@@ -2693,6 +2818,7 @@ body.video-modal-open {
   }
 
   .live-video-showcase,
+  .live-reference-feature,
   .live-package-grid,
   .live-channel-grid {
     grid-template-columns: 1fr;
@@ -2794,6 +2920,7 @@ body.video-modal-open {
   .reason-grid,
   .live-package-grid,
   .live-channel-grid,
+  .live-reference-feature,
   .consult-package-grid,
   .insert-category-grid,
   .insert-case-grid,
@@ -2819,6 +2946,7 @@ body.video-modal-open {
   .reason-grid article,
   .live-package-card,
   .live-channel-card,
+  .live-reference-card,
   .consult-package-card,
   .insert-category-grid article,
   .insert-deliverable-grid article,
@@ -2837,6 +2965,7 @@ body.video-modal-open {
   .live-video-meta h3,
   .live-package-card h3,
   .live-channel-card h3,
+  .live-reference-card h3,
   .consult-package-card h3,
   .insert-category-grid h3,
   .insert-case-card h3,
@@ -2861,6 +2990,8 @@ body.video-modal-open {
   .live-video-points li,
   .live-package-card p,
   .live-channel-card p,
+  .live-reference-card dd,
+  .live-reference-note,
   .consult-package-card p,
   .consult-package-card li,
   .insert-category-grid p,
@@ -2895,6 +3026,7 @@ body.video-modal-open {
   .live-video-meta,
   .live-package-card,
   .live-channel-card,
+  .live-reference-card,
   .insert-category-grid article,
   .insert-case-card,
   .tvcf-case-card,
@@ -2906,6 +3038,21 @@ body.video-modal-open {
   .studio-process article {
     min-width: 0;
     max-width: 100%;
+  }
+
+  .live-reference-proof img {
+    min-height: auto;
+    max-height: 620px;
+  }
+
+  .live-reference-card dl div {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .live-reference-card .button {
+    width: 100%;
+    margin-top: 18px;
   }
 
   .studio-metric {
