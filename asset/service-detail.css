@@ -1636,9 +1636,24 @@ body.video-modal-open {
   display: flex;
   flex-direction: column;
   padding: 24px;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel-2);
+}
+
+.tvcf-case-thumb {
+  margin: -24px -24px 22px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.tvcf-case-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .tvcf-case-card > span {
@@ -1691,15 +1706,35 @@ body.video-modal-open {
   word-break: keep-all;
 }
 
-.tvcf-case-note {
+.tvcf-case-note,
+.tvcf-case-link {
   margin-top: auto;
   padding-top: 18px;
   border-top: 1px solid var(--line);
+}
+
+.tvcf-case-note {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
   font-weight: 750;
   word-break: keep-all;
+}
+
+.tvcf-case-link {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 920;
+  text-decoration: none;
+}
+
+.tvcf-case-link:hover,
+.tvcf-case-link:focus-visible {
+  text-decoration: underline;
+  outline: 0;
 }
 
 .insert-flow-note {
