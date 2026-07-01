@@ -26,16 +26,45 @@
 
   headerActions?.append(panel);
 
-  const createCtaLink = ({ href, label, className = "" }) => {
+  const ctaIcons = {
+    project: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>',
+    kakao: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4C6.48 4 2 7.52 2 11.86c0 2.72 1.76 5.12 4.43 6.53l-.86 3.04a.45.45 0 0 0 .68.5l3.72-2.45c.66.12 1.34.19 2.03.19 5.52 0 10-3.52 10-7.81S17.52 4 12 4Z"></path></svg>',
+    top: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.78 19.78 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.78 19.78 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.79a2 2 0 0 1-.45 2.11L8.05 9.89a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.89.31 1.83.53 2.79.66A2 2 0 0 1 22 16.92Z"></path></svg>'
+  };
+
+  const fillCtaContent = (element, { label, icon = "project" }) => {
+    const iconWrap = document.createElement("span");
+    iconWrap.className = "quick-cta-icon";
+    iconWrap.innerHTML = ctaIcons[icon] || ctaIcons.project;
+
+    const labelWrap = document.createElement("span");
+    labelWrap.className = "quick-cta-label";
+    labelWrap.textContent = label;
+
+    element.append(iconWrap, labelWrap);
+    element.setAttribute("aria-label", label);
+  };
+
+  const createCtaLink = ({ href, label, className = "", icon }) => {
     const link = document.createElement("a");
     link.href = href;
-    link.textContent = label;
     link.className = className;
+    fillCtaContent(link, { label, icon });
     if (/^https?:\/\//.test(href)) {
       link.target = "_blank";
       link.rel = "noopener";
     }
     return link;
+  };
+
+  const createCtaButton = ({ label, className = "", icon, onClick }) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = className;
+    fillCtaContent(button, { label, icon });
+    button.addEventListener("click", onClick);
+    return button;
   };
 
   const quickCta = document.createElement("aside");
@@ -45,17 +74,24 @@
   const desktopCta = document.createElement("div");
   desktopCta.className = "global-quick-cta-desktop";
   [
-    { href: "midas-project.html", label: "견적 문의", className: "primary" },
-    { href: "midas-portfolio.html", label: "성공사례 보기" },
-    { href: "midas-studio.html", label: "촬영센터 둘러보기" }
+    { href: "midas-project.html", label: "프로젝트 문의", className: "primary", icon: "project" },
+    { href: "https://pf.kakao.com/_VLnPX", label: "카카오 채널 상담", className: "kakao", icon: "kakao" }
   ].forEach((item) => desktopCta.append(createCtaLink(item)));
+  desktopCta.append(
+    createCtaButton({
+      label: "TOP",
+      className: "top",
+      icon: "top",
+      onClick: () => window.scrollTo({ top: 0, behavior: "smooth" })
+    })
+  );
 
   const mobileCta = document.createElement("div");
   mobileCta.className = "global-quick-cta-mobile";
   [
-    { href: "tel:0226759767", label: "전화 상담", className: "phone" },
-    { href: "https://pf.kakao.com/_VLnPX", label: "카카오 상담", className: "kakao" },
-    { href: "midas-project.html", label: "견적 문의", className: "primary" }
+    { href: "tel:0226759767", label: "전화 상담", className: "phone", icon: "phone" },
+    { href: "https://pf.kakao.com/_VLnPX", label: "카카오 상담", className: "kakao", icon: "kakao" },
+    { href: "midas-project.html", label: "견적 문의", className: "primary", icon: "project" }
   ].forEach((item) => mobileCta.append(createCtaLink(item)));
 
   quickCta.append(desktopCta, mobileCta);
