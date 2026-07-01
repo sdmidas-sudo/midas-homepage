@@ -409,6 +409,21 @@ body.nav-open {
   background: rgba(8, 12, 18, 0.78);
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(16px);
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+body.nav-open .global-quick-cta-desktop,
+body.service-dropdown-open .global-quick-cta-desktop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
 }
 
 .global-quick-cta-desktop a {

@@ -71,6 +71,9 @@
   const setPanelOpen = (open) => {
     panel.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
+    if (open) {
+      document.body.classList.remove("service-dropdown-open");
+    }
     if (nav.classList.contains("open")) {
       nav.classList.remove("open");
     }
@@ -83,8 +86,10 @@
   };
 
   const setExpanded = (expanded) => {
+    const showDesktopDropdown = expanded && !isMobileMenuOpen();
     serviceLink.setAttribute("aria-expanded", String(expanded));
     serviceItem.classList.toggle("is-open", expanded);
+    document.body.classList.toggle("service-dropdown-open", showDesktopDropdown);
   };
 
   const closeServiceMenu = () => {
