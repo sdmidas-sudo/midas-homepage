@@ -1361,6 +1361,10 @@ main {
   background: #000000;
 }
 
+.video-modal.video-modal-widescreen .video-modal-panel {
+  width: min(calc(100% - 32px), 1080px);
+}
+
 .video-modal.video-modal-minimal .video-modal-header {
   position: absolute;
   top: 12px;
@@ -1434,6 +1438,19 @@ main {
 .video-modal.video-modal-minimal .video-modal-media {
   max-height: 88vh;
   border: 0;
+}
+
+.video-modal-youtube[hidden] {
+  display: none;
+}
+
+.video-modal-youtube {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius);
+  background: #000000;
 }
 
 body.video-modal-open {
@@ -1706,8 +1723,7 @@ body.video-modal-open {
   word-break: keep-all;
 }
 
-.tvcf-case-note,
-.tvcf-case-link {
+.tvcf-case-note {
   margin-top: auto;
   padding-top: 18px;
   border-top: 1px solid var(--line);
@@ -1725,10 +1741,20 @@ body.video-modal-open {
   display: inline-flex;
   align-items: center;
   width: 100%;
+  margin-top: auto;
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  appearance: none;
+  background: transparent;
   color: var(--accent);
+  font-family: inherit;
   font-size: 14px;
   font-weight: 920;
+  line-height: 1.2;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .tvcf-case-link:hover,

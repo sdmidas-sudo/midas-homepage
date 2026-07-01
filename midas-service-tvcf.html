@@ -141,6 +141,24 @@
         </div>
       </section>
 
+      <div class="video-modal" id="live-short-modal" role="dialog" aria-modal="true" aria-labelledby="live-short-title" hidden>
+        <div class="video-modal-backdrop" data-video-close></div>
+        <div class="video-modal-panel" role="document">
+          <div class="video-modal-header">
+            <div>
+              <p class="video-modal-eyebrow" id="live-short-eyebrow" hidden></p>
+              <h2 id="live-short-title">TVCF 영상</h2>
+            </div>
+            <button class="video-modal-close" type="button" data-video-close aria-label="영상 닫기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18"></path>
+              </svg>
+            </button>
+          </div>
+          <iframe id="live-youtube-frame" class="video-modal-youtube" title="TVCF 영상" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen hidden></iframe>
+        </div>
+      </div>
+
       <section class="detail-section alt insert-section" aria-labelledby="tvcf-stats-title">
         <div class="wrap">
           <div class="section-heading">
@@ -197,7 +215,7 @@
                   <dd>건강기능식품의 원료 신뢰, 제품 인지, 짧은 러닝타임 안의 메시지 집중도</dd>
                 </div>
               </dl>
-              <a class="tvcf-case-link" href="https://youtu.be/TG2YqFjmZY8" target="_blank" rel="noopener">영상 보기</a>
+              <button class="tvcf-case-link" type="button" data-video-open="live-short" data-youtube="TG2YqFjmZY8" data-video-title="크릴56 15초 TVCF" data-video-eyebrow="TVCF CASE" data-video-label="크릴56 15초 TVCF 영상 재생">영상 보기</button>
             </article>
             <article class="tvcf-case-card">
               <figure class="tvcf-case-thumb">
@@ -215,7 +233,7 @@
                   <dd>브랜드 위상, 제품 신뢰, 프리미엄 이미지</dd>
                 </div>
               </dl>
-              <a class="tvcf-case-link" href="https://youtu.be/VrDgRTv7gvU" target="_blank" rel="noopener">영상 보기</a>
+              <button class="tvcf-case-link" type="button" data-video-open="live-short" data-youtube="VrDgRTv7gvU" data-video-title="캐리어 브랜드 홍보영상" data-video-eyebrow="BRAND CASE" data-video-label="캐리어 브랜드 홍보영상 재생">영상 보기</button>
             </article>
             <article class="tvcf-case-card">
               <figure class="tvcf-case-thumb">
@@ -233,7 +251,7 @@
                   <dd>67년 헤리티지, 기술 진화 서사, 브랜드 신뢰</dd>
                 </div>
               </dl>
-              <a class="tvcf-case-link" href="https://youtu.be/GfC9RIEGDfM" target="_blank" rel="noopener">영상 보기</a>
+              <button class="tvcf-case-link" type="button" data-video-open="live-short" data-youtube="GfC9RIEGDfM" data-video-title="신일전자 67주년 브랜드 홍보영상" data-video-eyebrow="BRAND CASE" data-video-label="신일전자 67주년 브랜드 홍보영상 재생">영상 보기</button>
             </article>
           </div>
         </div>

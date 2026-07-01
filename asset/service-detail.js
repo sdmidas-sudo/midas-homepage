@@ -15,11 +15,16 @@
 
   const videoModal = document.getElementById("live-short-modal");
   const video = document.getElementById("live-short-video");
+  const youtubeFrame = document.getElementById("live-youtube-frame");
   const videoTitle = document.getElementById("live-short-title");
   const videoEyebrow = document.getElementById("live-short-eyebrow");
   const videoOpenButtons = document.querySelectorAll("[data-video-open='live-short']");
   const videoCloseButtons = videoModal?.querySelectorAll("[data-video-close]");
   let activeVideoTrigger = null;
+
+  const getYoutubeEmbedUrl = (youtubeId) => (
+    `https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0&playsinline=1`
+  );
 
   const openVideoModal = (trigger) => {
     if (!videoModal) return;
@@ -28,15 +33,31 @@
     const nextSrc = trigger?.dataset.videoSrc;
     const nextTitle = trigger?.dataset.videoTitle;
     const nextEyebrow = trigger?.dataset.videoEyebrow;
+    const youtubeId = trigger?.dataset.youtube;
+    const isYoutube = Boolean(youtubeId && youtubeFrame);
     const isMinimal = trigger?.dataset.videoMinimal === "true";
     const accessibleLabel = trigger?.dataset.videoLabel || nextTitle || "영상";
 
-    if (video && nextSrc && !video.currentSrc.endsWith(nextSrc)) {
-      video.pause();
-      video.src = nextSrc;
-      video.load();
+    if (youtubeFrame) {
+      youtubeFrame.hidden = !isYoutube;
+      youtubeFrame.title = accessibleLabel;
+      youtubeFrame.src = isYoutube ? getYoutubeEmbedUrl(youtubeId) : "";
+    }
+    if (video) {
+      if (isYoutube) {
+        video.pause();
+        video.hidden = true;
+      } else {
+        video.hidden = false;
+        if (nextSrc && !video.currentSrc.endsWith(nextSrc)) {
+          video.pause();
+          video.src = nextSrc;
+          video.load();
+        }
+      }
     }
     videoModal.classList.toggle("video-modal-minimal", isMinimal);
+    videoModal.classList.toggle("video-modal-widescreen", isYoutube);
     if (isMinimal) {
       videoModal.removeAttribute("aria-labelledby");
       videoModal.setAttribute("aria-label", accessibleLabel);
@@ -56,7 +77,7 @@
     videoModal.hidden = false;
     document.body.classList.add("video-modal-open");
     videoModal.querySelector(".video-modal-close")?.focus();
-    const playPromise = video?.play();
+    const playPromise = isYoutube ? null : video?.play();
     playPromise?.catch(() => {});
   };
 
@@ -66,9 +87,14 @@
     video?.pause();
     if (video) {
       video.currentTime = 0;
+      video.hidden = false;
+    }
+    if (youtubeFrame) {
+      youtubeFrame.src = "";
+      youtubeFrame.hidden = true;
     }
     videoModal.hidden = true;
-    videoModal.classList.remove("video-modal-minimal");
+    videoModal.classList.remove("video-modal-minimal", "video-modal-widescreen");
     videoModal.setAttribute("aria-labelledby", "live-short-title");
     videoModal.removeAttribute("aria-label");
     document.body.classList.remove("video-modal-open");
