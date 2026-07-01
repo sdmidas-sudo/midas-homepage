@@ -31,6 +31,10 @@
     link.href = href;
     link.textContent = label;
     link.className = className;
+    if (/^https?:\/\//.test(href)) {
+      link.target = "_blank";
+      link.rel = "noopener";
+    }
     return link;
   };
 
@@ -50,7 +54,7 @@
   mobileCta.className = "global-quick-cta-mobile";
   [
     { href: "tel:0226759767", label: "전화 상담", className: "phone" },
-    { href: "midas-project.html?contact=kakao#project-form", label: "카카오 상담", className: "kakao" },
+    { href: "https://pf.kakao.com/_VLnPX", label: "카카오 상담", className: "kakao" },
     { href: "midas-project.html", label: "견적 문의", className: "primary" }
   ].forEach((item) => mobileCta.append(createCtaLink(item)));
 
