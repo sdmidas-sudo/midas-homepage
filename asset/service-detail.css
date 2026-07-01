@@ -1035,6 +1035,142 @@ main {
   padding: 22px;
 }
 
+.consult-package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.consult-package-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+
+.consult-package-card.featured {
+  border-color: rgba(63, 182, 255, 0.44);
+  background: rgba(63, 182, 255, 0.09);
+}
+
+.consult-package-card span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 26px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 920;
+  letter-spacing: 0.12em;
+}
+
+.consult-package-card h3 {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.24;
+  font-weight: 920;
+  word-break: keep-all;
+}
+
+.consult-package-card p,
+.consult-package-card li {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.62;
+  font-weight: 650;
+  word-break: keep-all;
+}
+
+.consult-package-card p {
+  margin-top: 12px;
+}
+
+.consult-package-list {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.consult-package-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.consult-package-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.consult-package-fit {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.consult-package-fit strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.consult-package-link {
+  min-height: 42px;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0 16px;
+  border: 1px solid rgba(63, 182, 255, 0.42);
+  border-radius: 999px;
+  background: rgba(63, 182, 255, 0.08);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.consult-package-link:hover,
+.consult-package-link:focus-visible {
+  border-color: var(--accent);
+  background: rgba(63, 182, 255, 0.15);
+  outline: 0;
+}
+
+.consult-package-note {
+  margin-top: 22px;
+  padding: 20px 22px;
+  border: 1px solid rgba(63, 182, 255, 0.3);
+  border-radius: var(--radius);
+  background: rgba(63, 182, 255, 0.09);
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.consult-package-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
 .after-live {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
@@ -2579,6 +2715,7 @@ body.video-modal-open {
   .reason-grid,
   .live-package-grid,
   .live-channel-grid,
+  .consult-package-grid,
   .insert-category-grid,
   .insert-case-grid,
   .insert-deliverable-grid,
@@ -2602,6 +2739,7 @@ body.video-modal-open {
   .reason-grid article,
   .live-package-card,
   .live-channel-card,
+  .consult-package-card,
   .insert-category-grid article,
   .insert-deliverable-grid article,
   .insert-prep-card,
@@ -2618,6 +2756,7 @@ body.video-modal-open {
   .live-video-meta h3,
   .live-package-card h3,
   .live-channel-card h3,
+  .consult-package-card h3,
   .insert-category-grid h3,
   .insert-case-card h3,
   .insert-deliverable-grid h3,
@@ -2640,6 +2779,8 @@ body.video-modal-open {
   .live-video-points li,
   .live-package-card p,
   .live-channel-card p,
+  .consult-package-card p,
+  .consult-package-card li,
   .insert-category-grid p,
   .insert-case-card p,
   .insert-deliverable-grid p,
