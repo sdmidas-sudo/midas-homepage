@@ -26,6 +26,44 @@
 
   headerActions?.append(panel);
 
+  const createCtaLink = ({ href, label, className = "" }) => {
+    const link = document.createElement("a");
+    link.href = href;
+    link.textContent = label;
+    link.className = className;
+    return link;
+  };
+
+  const quickCta = document.createElement("aside");
+  quickCta.className = "global-quick-cta";
+  quickCta.setAttribute("aria-label", "빠른 상담 메뉴");
+
+  const desktopCta = document.createElement("div");
+  desktopCta.className = "global-quick-cta-desktop";
+  [
+    { href: "midas-project.html", label: "견적 문의", className: "primary" },
+    { href: "midas-portfolio.html", label: "성공사례 보기" },
+    { href: "midas-studio.html", label: "촬영센터 둘러보기" }
+  ].forEach((item) => desktopCta.append(createCtaLink(item)));
+
+  const mobileCta = document.createElement("div");
+  mobileCta.className = "global-quick-cta-mobile";
+  [
+    { href: "tel:0226759767", label: "전화 상담", className: "phone" },
+    { href: "midas-project.html?contact=kakao#project-form", label: "카카오 상담", className: "kakao" },
+    { href: "midas-project.html", label: "견적 문의", className: "primary" }
+  ].forEach((item) => mobileCta.append(createCtaLink(item)));
+
+  quickCta.append(desktopCta, mobileCta);
+  document.body.append(quickCta);
+  document.body.classList.add("has-global-quick-cta");
+
+  const preferredContact = new URLSearchParams(window.location.search).get("contact");
+  if (preferredContact === "kakao") {
+    const kakaoOption = document.querySelector('input[name="선호 연락 방법"][value="카카오톡"]');
+    if (kakaoOption) kakaoOption.checked = true;
+  }
+
   const setPanelOpen = (open) => {
     panel.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
