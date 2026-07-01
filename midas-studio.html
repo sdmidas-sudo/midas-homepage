@@ -78,10 +78,11 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="asset/service-detail.css">
+  <link rel="stylesheet" href="asset/service-detail.css?v=20260701-1">
   <link rel="stylesheet" href="asset/service-navigation.css?v=20260701-3">
   <script src="asset/service-detail.js" defer></script>
   <script src="asset/service-navigation.js?v=20260701-3" defer></script>
+  <script src="asset/studio-gallery.js?v=20260701-1" defer></script>
 </head>
 <body>
   <div class="site studio-page" id="site" data-theme="dark">
@@ -218,10 +219,44 @@
 
           <div class="studio-space-grid">
             <article class="studio-space-card">
-              <div class="studio-space-media triple">
-                <img src="asset/studio-living.jpg" alt="리빙·주방 제품 시연 촬영 세트">
-                <img src="asset/studio-kitchen.jpg" alt="주방 라이프스타일 촬영 세트">
-                <img src="asset/studio-bathroom.jpg" alt="욕실 제품 촬영 세트">
+              <div class="studio-space-media studio-gallery" data-studio-gallery aria-label="리빙·주방·욕실 세트 사진">
+                <div class="studio-gallery-track">
+                  <figure class="studio-gallery-slide is-active">
+                    <img src="asset/studio-living.jpg" alt="리빙 제품 시연 촬영 세트">
+                    <figcaption>리빙 대표 세트</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-living-set-01.jpg" alt="거실 라이프스타일 촬영 세트 전경">
+                    <figcaption>거실 세트 01</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-living-set-02.jpg" alt="거실 소파와 테이블이 구성된 촬영 세트">
+                    <figcaption>거실 세트 02</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-living-set-03.jpg" alt="거실 가구와 소품이 배치된 촬영 세트">
+                    <figcaption>거실 세트 03</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-kitchen.jpg" alt="주방 라이프스타일 촬영 세트">
+                    <figcaption>주방 대표 세트</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-kitchen-set-01.jpg" alt="주방 조리대와 수납장이 구성된 촬영 세트">
+                    <figcaption>주방 세트 01</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-bathroom.jpg" alt="욕실 제품 촬영 세트">
+                    <figcaption>욕실 세트</figcaption>
+                  </figure>
+                </div>
+                <button class="studio-gallery-button prev" type="button" data-gallery-prev aria-label="이전 이미지">
+                  <span aria-hidden="true">&#8249;</span>
+                </button>
+                <button class="studio-gallery-button next" type="button" data-gallery-next aria-label="다음 이미지">
+                  <span aria-hidden="true">&#8250;</span>
+                </button>
+                <div class="studio-gallery-counter" aria-live="polite">1 / 7</div>
               </div>
               <div class="studio-space-copy">
                 <span>Studio A·B·D·E·F</span>
@@ -232,8 +267,32 @@
             </article>
 
             <article class="studio-space-card">
-              <div class="studio-space-media">
-                <img src="asset/studio-garden.jpg" alt="정원과 야외 라이프스타일 촬영 공간">
+              <div class="studio-space-media studio-gallery" data-studio-gallery aria-label="가든·야외 촬영 공간 사진">
+                <div class="studio-gallery-track">
+                  <figure class="studio-gallery-slide is-active">
+                    <img src="asset/studio-garden.jpg" alt="정원과 야외 라이프스타일 촬영 공간">
+                    <figcaption>가든 대표 공간</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-garden-set-01.jpg" alt="가든 테라스 촬영 공간">
+                    <figcaption>가든 세트 01</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-garden-set-02.jpg" alt="야외 가든 라이프스타일 촬영 공간">
+                    <figcaption>가든 세트 02</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-camper-van-01.jpg" alt="캠핑카와 야외 소품이 있는 아웃도어 촬영 공간">
+                    <figcaption>캠핑카·아웃도어</figcaption>
+                  </figure>
+                </div>
+                <button class="studio-gallery-button prev" type="button" data-gallery-prev aria-label="이전 이미지">
+                  <span aria-hidden="true">&#8249;</span>
+                </button>
+                <button class="studio-gallery-button next" type="button" data-gallery-next aria-label="다음 이미지">
+                  <span aria-hidden="true">&#8250;</span>
+                </button>
+                <div class="studio-gallery-counter" aria-live="polite">1 / 4</div>
               </div>
               <div class="studio-space-copy">
                 <span>Studio A·B · Outdoor</span>
@@ -257,8 +316,36 @@
             </article>
 
             <article class="studio-space-card">
-              <div class="studio-space-media">
-                <img src="asset/studio-room.jpg" alt="방 세트와 리빙 소품이 구성된 촬영 공간">
+              <div class="studio-space-media studio-gallery" data-studio-gallery aria-label="키즈·룸 전환 세트 사진">
+                <div class="studio-gallery-track">
+                  <figure class="studio-gallery-slide is-active">
+                    <img src="asset/studio-room.jpg" alt="방 세트와 리빙 소품이 구성된 촬영 공간">
+                    <figcaption>룸 대표 세트</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-bedroom-set-01.jpg" alt="침실 가구와 침구가 구성된 촬영 세트">
+                    <figcaption>침실 세트 01</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-bedroom-set-02.jpg" alt="침대와 협탁이 배치된 침실 촬영 세트">
+                    <figcaption>침실 세트 02</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-kids-room-01.jpg" alt="아이방 가구와 소품이 구성된 촬영 세트">
+                    <figcaption>아이방 세트</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-fitness-room-01.jpg" alt="홈트레이닝 제품 촬영이 가능한 운동 공간">
+                    <figcaption>운동·홈트 세트</figcaption>
+                  </figure>
+                </div>
+                <button class="studio-gallery-button prev" type="button" data-gallery-prev aria-label="이전 이미지">
+                  <span aria-hidden="true">&#8249;</span>
+                </button>
+                <button class="studio-gallery-button next" type="button" data-gallery-next aria-label="다음 이미지">
+                  <span aria-hidden="true">&#8250;</span>
+                </button>
+                <div class="studio-gallery-counter" aria-live="polite">1 / 5</div>
               </div>
               <div class="studio-space-copy">
                 <span>Studio F</span>
@@ -281,8 +368,24 @@
             </article>
 
             <article class="studio-space-card">
-              <div class="studio-space-media">
-                <img src="asset/studio-hero.jpg" alt="대형 세트와 촬영 지원 공간">
+              <div class="studio-space-media studio-gallery" data-studio-gallery aria-label="부대시설 사진">
+                <div class="studio-gallery-track">
+                  <figure class="studio-gallery-slide is-active">
+                    <img src="asset/studio-hero.jpg" alt="대형 세트와 촬영 지원 공간">
+                    <figcaption>대형 세트 지원 공간</figcaption>
+                  </figure>
+                  <figure class="studio-gallery-slide">
+                    <img src="asset/studio-support-facilities-01.jpg" alt="촬영센터 부대시설과 대기 공간">
+                    <figcaption>부대시설</figcaption>
+                  </figure>
+                </div>
+                <button class="studio-gallery-button prev" type="button" data-gallery-prev aria-label="이전 이미지">
+                  <span aria-hidden="true">&#8249;</span>
+                </button>
+                <button class="studio-gallery-button next" type="button" data-gallery-next aria-label="다음 이미지">
+                  <span aria-hidden="true">&#8250;</span>
+                </button>
+                <div class="studio-gallery-counter" aria-live="polite">1 / 2</div>
               </div>
               <div class="studio-space-copy">
                 <span>Waiting Room · Parking · Set Workshop</span>

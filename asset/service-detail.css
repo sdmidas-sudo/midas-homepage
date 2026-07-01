@@ -1646,6 +1646,9 @@ body.video-modal-open {
 }
 
 .studio-metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 156px;
   padding: 22px;
 }
@@ -1739,6 +1742,130 @@ body.video-modal-open {
   background: var(--panel);
 }
 
+.studio-space-media.studio-gallery {
+  position: relative;
+  display: block;
+  isolation: isolate;
+}
+
+.studio-gallery:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.studio-gallery-track {
+  position: relative;
+  min-height: inherit;
+  height: 100%;
+}
+
+.studio-gallery-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.studio-gallery-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.studio-gallery-slide img {
+  aspect-ratio: auto;
+}
+
+.studio-gallery-slide figcaption,
+.studio-gallery-counter {
+  position: absolute;
+  z-index: 2;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.66);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+}
+
+.studio-gallery-slide figcaption {
+  left: 14px;
+  bottom: 14px;
+  max-width: calc(100% - 96px);
+  padding: 0 12px;
+}
+
+.studio-gallery-counter {
+  right: 14px;
+  bottom: 14px;
+  padding: 0 10px;
+}
+
+.studio-gallery-button {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.64);
+  color: #ffffff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+  backdrop-filter: blur(12px);
+}
+
+.studio-gallery-button.prev {
+  left: 12px;
+}
+
+.studio-gallery-button.next {
+  right: 12px;
+}
+
+.studio-gallery-button span {
+  display: block;
+  margin-top: -2px;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.studio-gallery-button:hover,
+.studio-gallery-button:focus-visible {
+  border-color: rgba(63, 182, 255, 0.7);
+  background: rgba(63, 182, 255, 0.24);
+  color: #ffffff;
+  outline: 0;
+}
+
+.studio-gallery-button.prev:hover,
+.studio-gallery-button.prev:focus-visible {
+  transform: translate(-2px, -50%);
+}
+
+.studio-gallery-button.next:hover,
+.studio-gallery-button.next:focus-visible {
+  transform: translate(2px, -50%);
+}
+
+.studio-gallery-button:disabled {
+  display: none;
+}
+
 .studio-space-media.double {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1764,7 +1891,7 @@ body.video-modal-open {
   object-fit: cover;
 }
 
-.studio-space-media:not(.double):not(.triple) img,
+.studio-space-media:not(.double):not(.triple):not(.studio-gallery) img,
 .studio-space-media.video video {
   aspect-ratio: 16 / 10;
 }
@@ -2413,6 +2540,44 @@ body.video-modal-open {
     grid-template-rows: none;
   }
 
+  .studio-space-media.studio-gallery {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .studio-gallery-track {
+    min-height: 0;
+  }
+
+  .studio-gallery-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .studio-gallery-button.prev {
+    left: 10px;
+  }
+
+  .studio-gallery-button.next {
+    right: 10px;
+  }
+
+  .studio-gallery-slide figcaption,
+  .studio-gallery-counter {
+    bottom: 10px;
+    min-height: 30px;
+    font-size: 11.5px;
+  }
+
+  .studio-gallery-slide figcaption {
+    left: 10px;
+    max-width: calc(100% - 88px);
+  }
+
+  .studio-gallery-counter {
+    right: 10px;
+  }
+
   .studio-space-media.triple img:first-child,
   .studio-xr-gallery img:first-child {
     grid-row: auto;
@@ -2422,6 +2587,10 @@ body.video-modal-open {
   .studio-space-media video,
   .studio-xr-gallery img {
     aspect-ratio: 16 / 10;
+  }
+
+  .studio-space-media.studio-gallery img {
+    aspect-ratio: auto;
   }
 
   .studio-xr-copy h2,
