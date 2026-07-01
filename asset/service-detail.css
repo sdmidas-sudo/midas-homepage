@@ -1383,6 +1383,15 @@ body.video-modal-open {
   gap: 14px;
 }
 
+.voucher-title-cards {
+  margin-top: 28px;
+  grid-template-columns: 1fr;
+}
+
+.voucher-title-cards .voucher-compare-card {
+  min-height: 0;
+}
+
 .voucher-compare-card {
   min-height: 210px;
   padding: 24px;
