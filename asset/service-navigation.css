@@ -1,3 +1,11 @@
+html {
+  scroll-padding-top: calc(var(--header-h, 80px) + 16px);
+}
+
+[id] {
+  scroll-margin-top: calc(var(--header-h, 80px) + 16px);
+}
+
 .nav-service {
   position: relative;
   display: inline-flex;

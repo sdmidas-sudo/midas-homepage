@@ -1841,7 +1841,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="asset/service-navigation.css?v=20260630-5">
+  <link rel="stylesheet" href="asset/service-navigation.css?v=20260701-1">
   <script src="asset/service-navigation.js?v=20260630-5" defer></script>
 </head>
 <body>
@@ -2478,7 +2478,7 @@
     };
 
     const navigateToServiceDetail = (card) => {
-      const url = card.dataset.serviceUrl;
+      const url = card.getAttribute("href") || card.dataset.serviceUrl;
       if (!url) return;
       window.location.href = url;
     };
@@ -2511,13 +2511,11 @@
       card.addEventListener("click", (event) => {
         if (hasHoverPointer()) {
           clearTouchPreviews();
-          navigateToServiceDetail(card);
           return;
         }
 
         if (card.classList.contains("touch-preview")) {
           clearTouchPreviews();
-          navigateToServiceDetail(card);
           return;
         }
 
